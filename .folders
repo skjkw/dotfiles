@@ -1,0 +1,5 @@
+%inbox  "Inbox"
+%Sent   "Sent"
+%Trash  "Trash"
+%Junk   "Junk"
++draft  "Draft"

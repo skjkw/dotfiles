@@ -1,0 +1,417 @@
+デバイス確認
+lsblk
+
+parted /dev/sda print
+
+parted /dev/sda
+-----
+mklabel gpt
+mkpart ESP fat32 1M 513M
+set 1 boot on
+mkpart primary ext3 513M 19G
+mkpart primary linux-swap 19G 100%
+-----
+
+mkfs.vfat -F32 /dev/sda1
+mkfs.ext4 /dev/sda2
+
+mkswap /dev/sda3
+swapon /dev/sda3
+
+mount /dev/sda3 /mnt
+mkdir -p /mnt/boot
+mount /dev/sda2 /mnt/boot
+
+vi /etc/pacman.d/mirrorlist
+-----
+## Score 2.1,Japan を一番上へ
+-----
+
+pacstrap /mnt base base-devel vim
+
+genfstab -U -p /mnt >> /mnt/etc/fstab
+
+arch-chroot /mnt /bin/bash
+
+vim /etc/locale.gen
+-----
+en_US.UTF-8 UTF-8
+ja_JP.UTF-8 UTF-8
+-----
+
+locale-gen
+
+echo LANG=en_US.UTF-8 > /etc/locale.conf
+export LANG=en_US.UTF-8
+
+ln -s /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+
+hwclock --systohc --utc
+
+echo arch > /etc/hostname
+
+vim /etc/hosts
+-----
+127.0.0.1 localhost.localdomain localhost arch
+::1 localhost.localdomain localhost arch
+-----
+
+インターフェース名確認
+ip link
+
+systemctl enable dhcpcd@[インターフェース名].service
+
+passwd
+
+pacman -S dosfstools efibootmgr
+
+pacman -S gummiboot
+gummiboot --path=/boot install
+
+vim /boot/loader/entries/arch.conf
+追記
+-----
+title       Arch Linux
+linux       /vmlinuz-linux
+initrd      /initramfs-linux.img
+options     root=/dev/sda2 rw
+-----
+
+vim /boot/loader/loader.conf
+追記
+-----
+default     arch
+timeout     0
+-----
+
+exit
+
+reboot
+
+
+vim /etc/resolv.conf
+-----
+nameserver 8.8.8.8
+nameserver 8.8.4.4
+-----
+
+useradd -m -g wheel shun
+passwd shun
+
+visudo
+
+以下コメントイン
+-----
+Defaults env_keep += "HOME"
+%wheel ALL=(ALL) ALL
+-----
+
+pacman -S zsh
+
+chsh
+-----
+/bin/zsh
+-----
+
+pacman -S xorg-server xorg-server-utils xorg-xinit xorg-xclock xterm
+
+pacman -S xf86-video-vesa
+
+pacman -S slim archlinux-themes-slim slim-themes
+pacman -S awesome
+
+pacman -S virtualbox-guest-utils
+
+vim /etc/modules-load.d/virtualbox.conf
+追記
+-----
+vboxguest
+vboxsf
+vboxvideo
+-----
+
+cp /etc/skel/.xinitrc ~/
+cp /etc/X11/xinit/xinitrc ~/.xinitrc
+
+vim ~/.xinitrc
+一番上に記載する
+-----
+/usr/bin/VBoxClient-all
+exec awesome
+-----
+
+vim /etc/slim.conf
+-----
+追記
+daemon yes
+変更
+current-theme archlinux-simplyblack
+-----
+
+systemctl enable slim.service
+
+mkdir -p ~/.config/awesome/
+cp /etc/xdg/awesome/rc.lua ~/.config/awesome
+
+vim ~/.config/awesome/rc.lua
+
+yaourt導入
+
+vim /etc/pacman.conf
+追記
+-----
+[archlinuxfr]
+SigLevel = Never
+Server = http://repo.archlinux.fr/$arch
+-----
+
+pacman --sync --refresh yaourt
+
+yaourt -S git xcompmgr ttf-ricty rxvt-unicode
+
+vim ~/.xinitrc
+追記
+-----
+xcompmgr &
+-----
+
+vim .Xdefaults
+-----
+https://github.com/tsu-nera/dotfiles/blob/master/.Xdefaults
+
+git clone https://github.com/mikar/awesome-themes ~/.config/awesome/themes
+
+cd
+git clone https://github.com/zsh-users/antigen.git
+
+vim ~/.zshrc
+追記
+-----
+source ~/.zshrc.antigen
+-----
+
+vim ~/.zshrc.antigen
+追記
+-----
+source ~/antigen/antigen.zsh
+
+antigen-lib
+
+antigen use oh-my-zsh
+antigen-bundle git
+
+autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+add-zsh-hook chpwd chpwd_recent_dirs
+zstyle ':chpwd:*' recent-dirs-max 5000
+zstyle ':chpwd:*' recent-dirs-default yes
+zstyle ':completion:*' recent-dirs-insert both
+
+antigen-bundle zsh-users/zaw
+antigen-bundle zsh-users/zsh-syntax-highlighting
+
+bindkey '^@' zaw-cdr
+bindkey '^R' zaw-history
+bindkey '^X^F' zaw-git-files
+bindkey '^X^B' zaw-git-branches
+bindkey '^X^P' zaw-process
+bindkey '^X^T' zaw-tmux
+
+antigen bundle mollifier/anyframe
+
+bindkey '^xb' anyframe-widget-cdr
+bindkey '^x^b' anyframe-widget-checkout-git-branch
+
+bindkey '^xr' anyframe-widget-execute-history
+bindkey '^x^r' anyframe-widget-execute-history
+
+bindkey '^xp' anyframe-widget-put-history
+bindkey '^x^p' anyframe-widget-put-history
+
+bindkey '^xg' anyframe-widget-cd-ghq-repository
+bindkey '^x^g' anyframe-widget-cd-ghq-repository
+
+bindkey '^xk' anyframe-widget-kill
+bindkey '^x^k' anyframe-widget-kill
+
+bindkey '^xi' anyframe-widget-insert-git-branch
+bindkey '^x^i' anyframe-widget-insert-git-branch
+
+bindkey '^xf' anyframe-widget-insert-filename
+bindkey '^x^f' anyframe-widget-insert-filename
+
+antigen bundle chrissicool/zsh-256color
+
+antigen-theme ys
+
+antigen-apply
+-----
+
+yaourt -S wget
+
+wget https://github.com/peco/peco/releases/download/v0.3.2/peco_linux_amd64.tar.gz
+tar zxvf peco_linux_amd64.tar.gz
+
+sudo cp peco_linux_amd64/peco /usr/local/bin/peco
+
+curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go | python
+
+vim ~/.zshrc
+追記
+-----
+export PATH="/home/shun/.cask/bin:$PATH"
+-----
+
+mkdir repo && cd repo
+
+git clone https://azul@git.codebreak.com/azul/dotfiles.git
+
+groupadd vboxsf
+gpasswd -a shun vboxsf
+systemctl enable vboxservice.service
+
+wget https://aur.archlinux.org/packages/cm/cmigemo-git/cmigemo-git.tar.gz
+tar xvzf cmigemo-git.tar.gz
+cd cmigemo-git
+yaourt -S nkf
+makepkg -s
+sudo pacman -U cmigemo-git----.pkg.tar.xz
+
+yaourt -S the_silver_searcher
+yaourt -S tig
+
+ln -s ~/repo/dotfiles/.tigrc ~/.tigrc
+ln -s ~/repo/dotfiles/.emacs.d ~/.emacs.d
+ln -s ~/repo/dotfiles/.vimrc ~/.vimrc
+ln -s ~/repo/dotfiles/conf.d ~/.conf.d
+
+mkdir -p ~/.vim/bundle
+curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh > install.sh
+
+sh ./install.sh
+
+xset r rate 195 62
+
+yaourt -S global
+
+emacs --daemon
+emacsclient
+
+vim ~/.zshrc
+追記
+-----
+alias ekill='emacsclient -e "(kill-emacs)"'
+alias e='emacsclient -nw -a ""'
+-----
+
+yaourt -S emacs-ddskk
+
+git clone https://github.com/riywo/anyenv ~/.anyenv
+echo 'export PATH="$HOME/.anyenv/bin:$PATH"' >> ~/.zshrc
+echo 'eval "$(anyenv init -)"' >> ~/.zshrc
+exec $SHELL -l
+
+anyenv install phpenv
+exec $SHELL -l
+
+yaourt -S re2c libmcrypt bison27 php-tidy libxslt
+
+bison は削除する
+
+peco利用法
+-----
+カレントディレクトリ配下のファイル一覧検索
+指定ディレクトリ配下のファイル一覧検索
+
+git-issue
+
+anyenv install pyenv nodenv
+exec $SHELL -l
+
+pyenv install 2.7.10
+pyenv global 2.7.10
+pyenv rehash
+
+nodenv install 0.12.4
+nodenv global 2.7.10
+nodenv rehash
+
+rbenv install 2.2.2
+rbenv global 2.2.2
+rbenv rehash
+
+vim ~/.emacs.d/init-loader-directory/999-local-definition.el
+-----
+;;; 基本設定
+(setq migemo-command "/usr/bin/cmigemo")
+
+;;; migemo-dict のパスを指定
+(setq migemo-dictionary "/usr/share/migemo/utf-8/migemo-dict")
+
+-----
+
+npm install -g tern
+
+M-x package-list-packages
+以下をインストールする
+-----
+tern
+tern-auto-complete
+
+30-js2-mode.el
+-----
+(defun js2-mode-hooks()
+  (tern-mode t)
+  (eval-after-load 'tern
+    '(progn
+       (require 'auto-complete)
+       (auto-complete-mode t)
+       (require 'tern-auto-complete)
+       (tern-ac-setup))))
+
+(add-hook 'js2-mode-hook 'js2-mode-hooks)
+-----
+
+function peco-gitbranch() {
+        # commiterdate:relativeを commiterdate:localに変更すると普通の時刻表示
+        local selected_line="$(git for-each-ref --format='%(refname:short) | %(committerdate:relative) | %(committername) | %(subject)' --sort=-committerdate refs/heads refs/remotes \
+            | column -t -s '|' \
+            | peco \
+            | head -n 1 \
+            | awk '{print $1}')"
+        if [ -n "$selected_line" ]; then
+            BUFFER="git checkout ${selected_line}"
+            CURSOR=$#BUFFER
+            # ↓そのまま実行の場合
+            zle accept-line
+        fi
+        zle clear-screen
+    }
+zle -N peco-gitbranch
+bindkey '^x^b' peco-gitbranch
+
+function peco-select-gitadd() {
+    local SELECTED_FILE_TO_ADD="$(git status --porcelain | \
+                                  peco --query "$LBUFFER" | \
+                                  awk -F ' ' '{print $NF}')"
+    if [ -n "$SELECTED_FILE_TO_ADD" ]; then
+      BUFFER="git add $(echo "$SELECTED_FILE_TO_ADD" | tr '\n' ' ')"
+      CURSOR=$#BUFFER
+    fi
+    zle accept-line
+    zle clear-screen
+}
+zle -N peco-select-gitadd
+bindkey "^x^a" peco-select-gitadd
+
+if [ $DISPLAY ]; then
+    xset r rate 180 25
+fi
+yaourt -S net-tools
+yaourt -S virtualbox-host-modules
+sudo vim /etc/modules-load.d/virtualbox.conf
+systemctl disable dhcpcd.service
+systemctl disable dhcpcd@enp0s3.service
+systemctl disable dhcpcd@enp0s8.service
+yaourt -S netctl
+sudo cp -p /etc/netctl/examples/ethernet-dhcp /etc/netctl/en1
+sudo cp -p /etc/netctl/examples/ethernet-statics /etc/netctl/en2

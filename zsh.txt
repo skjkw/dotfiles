@@ -1,0 +1,7 @@
+git clone git://github.com/rupa/z
+
+_Z_CMD=j
+source ~/.zsh/z.sh
+precmd() {
+  _z --add "$(pwd -P)"
+}
