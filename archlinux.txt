@@ -246,13 +246,40 @@ antigen-theme ys
 antigen-apply
 -----
 
+mkdir tmp && cd tmp
+
+hub インストール
+-----
+wget https://github.com/github/hub/releases/download/v2.2.1/hub-linux-amd64-2.2.1.tar.gz
+
+tar zxvf hub-linux-amd64.2.2.1.tar.gz
+
+sudo cp hub-linux-amd64.2.2.1/hub /usr/local/bin/hub
+
+echo 'eval "$(hub alias -s)"'  >> ~/.zshrc
+
+mkdir -p ~/.zsh/completions
+
+cp etc/hub.zsh_completion ~/.zsh/completions/ \
+mv ~/.zsh/completions/hub.zsh_completion ~/.zsh/completions/_hub
+
+vim ~/.zshrc
+-----
+fpath=(~/.zsh/completions $fpath)
+autoload -U compinit && compinit
+-----
+
 yaourt -S wget
 
+peco インストール
+-----
 wget https://github.com/peco/peco/releases/download/v0.3.2/peco_linux_amd64.tar.gz
 tar zxvf peco_linux_amd64.tar.gz
 
 sudo cp peco_linux_amd64/peco /usr/local/bin/peco
 
+emacs caskインストール
+-----
 curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go | python
 
 vim ~/.zshrc
@@ -263,18 +290,54 @@ export PATH="/home/shun/.cask/bin:$PATH"
 
 mkdir repo && cd repo
 
-git clone https://azul@git.codebreak.com/azul/dotfiles.git
+cd ~/.ssh
+ssh-keygen -t rsa -C shun.kajikawa@gmail.com
+
+インタラクティブ
+-----
+-> github_rsa
+-> Enter
+-> Enter
+
+chmod 600 github_rsa
+
+cat ~/.ssh/github_rsa.pub
+
+ssh -T github-albleo888
+
+公開鍵をgithubへ登録
+
+~/.ssh/config
+追記
+-----
+Host github-albleo888
+    HostName github.com
+    IdentityFile ~/.ssh/github_rsa
+    IdentitiesOnly yes
+    TCPKeepAlive yes
+    PreferredAuthentications publickey
+    User git
+    Port 22
+-----
+
+/* git clone https://azul@git.codebreak.com/azul/dotfiles.git */
+git clone git@github-albleo888:albleo888/dotfiles.git
 
 groupadd vboxsf
 gpasswd -a shun vboxsf
 systemctl enable vboxservice.service
 
+yaourt -S cmigemo-git
+
+古い
+-----
 wget https://aur.archlinux.org/packages/cm/cmigemo-git/cmigemo-git.tar.gz <- not found
 tar xvzf cmigemo-git.tar.gz
 cd cmigemo-git
 yaourt -S nkf
 makepkg -s
 sudo pacman -U cmigemo-git----.pkg.tar.xz
+-----
 
 yaourt -S the_silver_searcher
 yaourt -S tig
@@ -282,7 +345,16 @@ yaourt -S tig
 ln -s ~/repo/dotfiles/.tigrc ~/.tigrc
 ln -s ~/repo/dotfiles/.emacs.d ~/.emacs.d
 ln -s ~/repo/dotfiles/.vimrc ~/.vimrc
-ln -s ~/repo/dotfiles/conf.d ~/.conf.d
+ln -s ~/repo/dotfiles/conf.d ~/.vim/conf.d
+
+wget https://github.com/hukl/Smyck-Color-Scheme/zipball/master
+
+mv master smyck-color-scheme.zip
+yaourt -S unzip
+unzip smyck-color-scheme.zip
+cd hukl-Smyck-Color-Scheme-fc16622
+mkdir -p ~/.vim/colors
+cp smyck.vim ~/.vim/colors/
 
 mkdir -p ~/.vim/bundle
 curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh > install.sh
@@ -316,6 +388,12 @@ exec $SHELL -l
 // phpに必要なパッケージ
 yaourt -S re2c libmcrypt bison27 php-tidy libxslt libjpeg-turbo libpng
 bison は削除する
+
+phpenv install
+phpenv install {任意のversion}
+phpenv global {任意のversion}
+phpenv rehash
+php --version
 
 peco利用法
 -----
