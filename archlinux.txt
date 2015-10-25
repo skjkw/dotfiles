@@ -18,9 +18,9 @@ mkfs.ext4 /dev/sda2
 mkswap /dev/sda3
 swapon /dev/sda3
 
-mount /dev/sda3 /mnt
+mount /dev/sda2 /mnt
 mkdir -p /mnt/boot
-mount /dev/sda2 /mnt/boot
+mount /dev/sda1 /mnt/boot
 
 vi /etc/pacman.d/mirrorlist
 -----
@@ -65,8 +65,8 @@ passwd
 
 pacman -S dosfstools efibootmgr
 
-pacman -S gummiboot
-gummiboot --path=/boot install
+pacman -S systemd
+bootctl --path=/boot install
 
 vim /boot/loader/entries/arch.conf
 追記
@@ -269,7 +269,7 @@ groupadd vboxsf
 gpasswd -a shun vboxsf
 systemctl enable vboxservice.service
 
-wget https://aur.archlinux.org/packages/cm/cmigemo-git/cmigemo-git.tar.gz
+wget https://aur.archlinux.org/packages/cm/cmigemo-git/cmigemo-git.tar.gz <- not found
 tar xvzf cmigemo-git.tar.gz
 cd cmigemo-git
 yaourt -S nkf
@@ -313,8 +313,8 @@ exec $SHELL -l
 anyenv install phpenv
 exec $SHELL -l
 
-yaourt -S re2c libmcrypt bison27 php-tidy libxslt
-
+// phpに必要なパッケージ
+yaourt -S re2c libmcrypt bison27 php-tidy libxslt libjpeg-turbo libpng
 bison は削除する
 
 peco利用法
