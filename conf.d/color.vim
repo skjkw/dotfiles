@@ -9,7 +9,10 @@ if has("gui_running")
         set background=dark
     endif
 else
-    colorscheme smyck
+    colorscheme molokai
+    let g:molokai_original = 1
+    let g:rehash256 = 1
+    set background=dark
 endif
 
 " カレント行ハイライトON
