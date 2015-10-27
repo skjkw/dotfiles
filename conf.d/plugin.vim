@@ -367,6 +367,7 @@ nnoremap <silent> <Leader>gc :Gcommit<CR>
 nnoremap <silent> <Leader>gb :Gblame<CR>
 nnoremap <silent> <Leader>gd :Gdiff<CR>
 nnoremap <silent> <Leader>gl :Glog<CR>
+nnoremap <silent> <Leader>gf :Git fetch --all<Space>
 
 nnoremap <silent> <Leader>gm :MerginalToggle<CR>
 
