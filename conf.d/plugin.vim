@@ -689,3 +689,22 @@ let g:syntastic_ruby_checkers = ['rubocop']
 let g:syntastic_php_checkers=['php', 'phpcs']
 let g:syntastic_javascript_checkers=['jshint']
 let g:syntastic_quite_warnings=0
+
+
+" -------------------------------
+" QfixGrep
+" -------------------------------
+let MyGrep_ExcludeReg = '[~#]$\|\.bak$\|\.o$\|\.obj$\|\.exe$\|[/\\]tags$\|^tags$|[/\\]svn[/\\]|[/\\].git[/\\]|[/\\]logs[/\\]'
+
+" -------------------------------
+" Gmail
+" -------------------------------
+let g:gmail_imap = 'imap.gmail.com:993'
+let g:gmail_smtp = 'smtp.gmail.com:465'
+let g:gmail_user_name = 'nc.s.kajikawa@gmail.com'
+
+" -------------------------------
+" Redmine
+" -------------------------------
+let g:rmine_server_url = 'http://192.168.24.229/redmine/'
+let g:rmine_access_key = 'ab67c3f439099729d5bdd75958cbe473308293b6'

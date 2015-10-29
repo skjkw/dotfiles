@@ -167,7 +167,17 @@ NeoBundle 'yuku-t/vim-ref-ri'
 NeoBundle 'AndrewRadev/switch.vim'
 
 " browser
-" NeoBundle 'yuratomo/w3m.vim'
+NeoBundleLazy 'yuratomo/w3m.vim', {
+      \ 'autoload' : {'commands': 'W3mTab'}
+      \ }
+
+" gmail
+NeoBundleLazy 'yuratomo/gmail.vim', {
+      \ 'autoload' : {'commands': 'Gmail'}
+      \ }
+
+" redmine
+NeoBundle 'basyura/rmine.vim'
 
 " debug
 NeoBundleLazy 'joonty/vdebug.git', {
@@ -257,6 +267,8 @@ NeoBundle 'tpope/vim-endwise', { 'autoloard' : {
             \ 'insert' : 1,
             \ 'filetypes' : 'ruby',
             \ }}
+
+NeoBundle 'fuenor/qfixgrep'
 
 call neobundle#end()
 
