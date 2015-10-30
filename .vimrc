@@ -67,6 +67,7 @@ NeoBundleLazy   'Shougo/neosnippet.vim', {
       \ }
 NeoBundle 'Shougo/vinarise'
 NeoBundle 'Shougo/neomru.vim'
+NeoBundle 'Shougo/neoyank.vim'
 
 
 " unite
@@ -138,7 +139,7 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'rking/ag.vim'
 
 " database
-" NeoBundle 'mattn/webapi-vim'
+NeoBundle 'mattn/webapi-vim'
 
 " textobject
 NeoBundle 'tpope/vim-surround'
@@ -216,11 +217,7 @@ NeoBundleLazy   'ujihisa/neco-look', {
       \ 'type' : 'nosync',
       \}
 
-NeoBundleLazy   'vim-jp/vital.vim', {
-      \ 'autoload' : {
-      \   'commands' : 'Vitalize',
-      \   }
-      \ }
+NeoBundle 'vim-jp/vital.vim'
 
 NeoBundleLazy   'jceb/vim-hier', {
       \ 'autoload' : {

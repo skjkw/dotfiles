@@ -617,7 +617,7 @@ function! s:bundle.hooks.on_source(bundle)
     \    "timeout" : 20,
     \    "on_close" : 'detach',
     \    "break_on_open" : 1,
-    \    "ide_key" : '',
+    \    "ide_key" : 'xdebug',
     \    "remote_path" : "",
     \    "local_path" : "",
     \    "debug_window_level" : 0,
@@ -708,3 +708,4 @@ let g:gmail_user_name = 'nc.s.kajikawa@gmail.com'
 " -------------------------------
 let g:rmine_server_url = 'http://192.168.24.229/redmine/'
 let g:rmine_access_key = 'ab67c3f439099729d5bdd75958cbe473308293b6'
+" let g:gmail_default_encoding = 'UTF-8'
