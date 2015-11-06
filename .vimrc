@@ -266,6 +266,7 @@ NeoBundle 'tpope/vim-endwise', { 'autoloard' : {
             \ }}
 
 NeoBundle 'fuenor/qfixgrep'
+NeoBundle 'fuenor/qfixhowm'
 
 call neobundle#end()
 
