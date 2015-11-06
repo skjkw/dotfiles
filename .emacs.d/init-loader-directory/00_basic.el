@@ -82,7 +82,7 @@
 ;;   (toggle-scroll-bar nil))
 
 
-(add-to-list 'default-frame-alist '(font . "Ricty-10"))
+;; (add-to-list 'default-frame-alist '(font . "Ricty-10"))
 
 (setq completion-ignore-case t)
 (global-auto-revert-mode 1)
