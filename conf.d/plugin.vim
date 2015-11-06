@@ -697,6 +697,14 @@ let g:syntastic_quite_warnings=0
 let MyGrep_ExcludeReg = '[~#]$\|\.bak$\|\.o$\|\.obj$\|\.exe$\|[/\\]tags$\|^tags$|[/\\]svn[/\\]|[/\\].git[/\\]|[/\\]logs[/\\]'
 
 " -------------------------------
+" QfixHowm
+" -------------------------------
+"Howmコマンドキーマップ
+let QFixHowm_Key = 'g'
+"Howmコマンドの2ストローク目キーマップ
+let QFixHowm_KeyB = ','
+
+" -------------------------------
 " Gmail
 " -------------------------------
 let g:gmail_imap = 'imap.gmail.com:993'
@@ -708,4 +716,3 @@ let g:gmail_user_name = 'nc.s.kajikawa@gmail.com'
 " -------------------------------
 let g:rmine_server_url = 'http://192.168.24.229/redmine/'
 let g:rmine_access_key = 'ab67c3f439099729d5bdd75958cbe473308293b6'
-" let g:gmail_default_encoding = 'UTF-8'
