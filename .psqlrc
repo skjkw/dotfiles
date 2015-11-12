@@ -1,0 +1,19 @@
+-- デフォルトでは、NULLはスペースとして表示される
+-- 空白なのかnullなのか？これで違いが見えるようになる
+\pset null '[NULL]'
+-- デフォルトでは表形式のフォーマット(1行目がヘッダ)になるが、
+-- データが多い時はより読みやすいように拡張テーブル形式で表示
+\x auto
+-- 詳しいエラー表示
+\set VERBOSITY verbose
+-- データベースごとにヒストリファイルを作る
+\set HISTFILE ~/.psql_history- :DBNAME
+-- エディタ
+\set PSQL_EDITOR /usr/bin/vim
+\setenv EDITOR /usr/bin/vim
+-- プロンプト
+\set PROMPT1 '%n@%m %~%R%# '
+--
+\pset border 0
+--
+\set ON_ERROR_ROLLBACK interactive

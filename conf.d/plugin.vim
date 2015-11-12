@@ -716,3 +716,19 @@ let g:gmail_user_name = 'nc.s.kajikawa@gmail.com'
 " -------------------------------
 let g:rmine_server_url = 'http://192.168.24.229/redmine/'
 let g:rmine_access_key = 'ab67c3f439099729d5bdd75958cbe473308293b6'
+
+
+" -------------------------------
+" TaskList.vim
+" -------------------------------
+nmap <Leader>T <Plug>TaskList
+
+" -------------------------------
+" SQLUtilities
+" -------------------------------
+let g:sqlutil_align_where = 0
+let g:sqlutil_align_comma = 1
+let g:sqlutil_align_first_word = 1
+let g:sqlutil_align_keyword_right = 1
+let g:sqlutil_keyword_case = '\U'
+let g:sqlutil_col_list_terminators = 'primary,reference,unique,check,foreign'

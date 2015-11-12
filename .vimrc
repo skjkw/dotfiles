@@ -268,6 +268,38 @@ NeoBundle 'tpope/vim-endwise', { 'autoloard' : {
 NeoBundle 'fuenor/qfixgrep'
 NeoBundle 'fuenor/qfixhowm'
 
+NeoBundleLazy 'vim-scripts/TaskList.vim', {
+            \ 'autoload': {
+            \    'mappings': ['<Plug>TaskList'],
+            \ }}
+
+NeoBundleLazy 'vim-scripts/SQLUtilities', {
+            \ 'autoload':{
+            \    'filetypes': ['sql'],
+            \ }}
+
+NeoBundle 'kana/vim-smartinput'
+NeoBundleLazy 'davidhalter/jedi-vim', {
+            \ 'autoload': {
+            \    'filetypes': ['py'],
+            \ }}
+NeoBundleLazy 'andviro/flake8-vim', {
+            \ 'autoload': {
+            \    'filetypes': ['py'],
+            \ }}
+NeoBundleLazy 'hynek/vim-python-pep8-indent', {
+            \ 'autoload': {
+            \    'filetypes': ['py'],
+            \ }}
+NeoBundleLazy 'jmcantrell/vim-virtualenv', {
+            \ 'autoload': {
+            \    'filetypes': ['py'],
+            \ }}
+NeoBundleLazy 'bps/vim-textobj-python', {
+            \ 'autoload': {
+            \    'filetypes': ['py'],
+            \ }}
+
 call neobundle#end()
 
 filetype plugin indent on     " Required!

@@ -115,3 +115,5 @@ set display=lastline
 set pumheight=10
 " ステータスライン表示
 set statusline=%{g:Date()}\%<%f%{exists('g:loaded_fugitive')?fugitive#statusline():''}%=%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%y%{tagbar#currenttag('[%s]','')}[%l/%L][%c%V]%3p%%
+" インデントを丸める
+set shiftround
