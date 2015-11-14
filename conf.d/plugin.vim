@@ -1,6 +1,5 @@
 " --------------------------------------------------------------------------------
 " --------------------------------------------------------------------------------
-
 let mapleader = "\<Space>"
 
 " Plugin key-mappings.
@@ -82,26 +81,6 @@ inoremap <expr><C-e>  neocomplete#cancel_popup()
 " buffer開いたらneoconでcache
 autocmd BufReadPost,BufEnter,BufWritePost :neocompleteCachingBuffer <buffer>
 
-" FileType毎のOmni補完を設定
-" autocmd FileType python     setlocal omnifunc=jedi#completions
-" autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-" autocmd FileType html       setlocal omnifunc=htmlcomplete#CompleteTags
-" autocmd FileType css        setlocal omnifunc=csscomplete#CompleteCSS
-" autocmd FileType xml        setlocal omnifunc=xmlcomplete#CompleteTags
-" autocmd FileType php        setlocal omnifunc=phpcomplete#CompletePHP
-" autocmd FileType c          setlocal omnifunc=ccomplete#Complete
-" autocmd FileType ruby       setlocal omnifunc=rubycomplete#Complete
-" autocmd FileType java       setlocal omnifunc=javacomplete#Complete
-
-" Enable heavy omni completion.
-"if !exists('g:neocomplete#omni_patterns')
-  "let g:neocomplete#omni_patterns = {}
-"endif
-"let g:neocomplete#omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
-"let g:neocomplete#omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-"let g:neocomplete#omni_patterns.c = '\%(\.\|->\)\h\w*'
-"let g:neocomplete#omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
-
 " --------------------------------------------------------------------------------
 " --------------------------------------------------------------------------------
 " Anywhere SID.
@@ -153,8 +132,6 @@ nnoremap <silent> [Tag]p :tabprevious<CR>
 "prefix keyの設定
 " vinarise
 let g:vinarise_enable_auto_detect = 1
-"ヒストリー/ヤンク機能を有効化
-let g:unite_source_history_yank_enable =1
 
 let g:unite_source_file_rec_max_cache_files=5000
 
@@ -225,17 +202,11 @@ let g:vimfiler_enable_auto_cd = 1
 
 " --------------------------------------------------------------------------------
 " --------------------------------------------------------------------------------
-nnoremap <C-e> <Esc>$a
-inoremap <C-e> <Esc>$a
-nnoremap <C-a> <Esc>^i
-inoremap <C-a> <Esc>^i
-
 vnoremap <silent> <C-p> "0p<CR>
 
 " --------------------------------------------------------------------------------
 " --------------------------------------------------------------------------------
 " let g:textmanip_enable_mappings = 1
-
 nmap ,d <Plug>(textmanip-duplicate-down)
 nmap ,d <Plug>(textmanip-duplicate-down)
 xmap ,D <Plug>(textmanip-duplicate-up)
@@ -268,19 +239,18 @@ let g:unite_enable_start_insert = 1
 let g:unite_enable_ignore_case = 1
 let g:unite_enable_smart_case = 1
 
-
 " --------------------------------------------------------------------------------
 " --------------------------------------------------------------------------------
 " for javascript
-autocmd FileType javascript noremap <buffer>  <Leader>jsb :call JsBeautify()<cr>
+" autocmd FileType javascript noremap <buffer>  <Leader>jsb :call JsBeautify()<cr>
 " for html
-autocmd FileType html noremap <buffer> <Leader>jsb :call HtmlBeautify()<cr>
+" autocmd FileType html noremap <buffer> <Leader>jsb :call HtmlBeautify()<cr>
 " for css or scss
-autocmd FileType css noremap <buffer> <Leader>jsb :call CSSBeautify()<cr>
+" autocmd FileType css noremap <buffer> <Leader>jsb :call CSSBeautify()<cr>
 
 " --------------------------------------------------------------------------------
 " --------------------------------------------------------------------------------
-"" over.vim {{{
+" over.vim {{{
 " over.vimの起動
 nnoremap <silent> <C-a>m :OverCommandLine<CR>
 " カーソル下の単語をハイライト付きで置換
@@ -293,7 +263,7 @@ nnoremap <silent> <C-c>b y:OverCommandLine<CR>%s!<C-r>=substitute(@0, '!', '\\!'
 " --------------------------------------------------------------------------------
 " --------------------------------------------------------------------------------
 " yankround.vim {{{
-"" キーマップ
+" キーマップ
 nmap p <Plug>(yankround-p)
 xmap p <Plug>(yankround-p)
 nmap P <Plug>(yankround-P)
@@ -302,10 +272,10 @@ xmap gp <Plug>(yankround-gp)
 nmap gP <Plug>(yankround-gP)
 nmap <C-p> <Plug>(yankround-prev)
 nmap <C-n> <Plug>(yankround-next)
-"" 履歴取得数
+" 履歴取得数
 xmap ,d <Plug>(textmanip-duplicate-down)
 let g:yankround_max_history = 100
-""履歴一覧(kien/ctrlp.vim)
+"履歴一覧(kien/ctrlp.vim)
 nnoremap <silent>g<C-p> :<C-u>CtrlPYankRound<CR>
 " }}}
 
@@ -318,10 +288,10 @@ let g:ctrlp_open_new_file       = 1   " 新規ファイル作成時にタブで�
 
 " --------------------------------------------------------------------------------
 " --------------------------------------------------------------------------------
- " vim-gitgutter
- let g:gitgutter_sign_added = '✚ '
- let g:gitgutter_sign_modified = '➜ '
- let g:gitgutter_sign_removed = '✘ '
+" vim-gitgutter
+"  let g:gitgutter_sign_added = '✚ '
+"  let g:gitgutter_sign_modified = '➜ '
+"  let g:gitgutter_sign_removed = '✘ '
 
 " --------------------------------------------------------------------------------
 " --------------------------------------------------------------------------------
@@ -453,7 +423,7 @@ nnoremap U :<C-U>GundoToggle<CR>
 
 " --------------------------------------------------------------------------------
 " --------------------------------------------------------------------------------
-nnoremap <silent><C-q> :Switch<CR>
+" nnoremap <silent><C-q> :Switch<CR>
 
 function! PhpSyntaxOverride()
   hi! def link phpDocTags  phpDefine
@@ -500,8 +470,8 @@ let g:ctrlp_open_new_file = 'r'
 let g:ctrlp_extensions = ['tag', 'quickfix', 'dir', 'line', 'mixed', 'filer', 'funky']
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:18'
 
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " Linux/MacOSX
-set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+" set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " Linux/MacOSX
+" set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 
@@ -523,65 +493,17 @@ let dbext_default_dbname="sw2_kajikawa"
 let dbext_default_host="192.168.24.130"
 let dbext_default_buffer_lines=20
 
-let g:ftplugin_sql_omni_key = '<C-c>w'
-let g:ftplugin_sql_omni_key_right = '<C-c>wi'
-let g:ftplugin_sql_omni_key_left  = '<C-c>wh'
+let g:ftplugin_sql_omni_key = '<c-k>'
+let g:ftplugin_sql_omni_key_right = '<c-n>'
+let g:ftplugin_sql_omni_key_left  = '<c-s>'
+let g:omni_sql_include_owner = 0
 
-exec 'inoremap <silent> '.g:ftplugin_sql_omni_key_right.' <C-R>=sqlcomplete#DrillIntoTable()<CR>'
-exec 'inoremap <silent> '.g:ftplugin_sql_omni_key_left.'  <C-R>=sqlcomplete#DrillOutOfColumns()<CR>'
-exec 'inoremap <buffer> '.g:ftplugin_sql_omni_key.'t <C-\><C-O>:call sqlcomplete#Map("table")<CR><C-X><C-O>'
-exec 'inoremap <buffer> '.g:ftplugin_sql_omni_key.'c <C-\><C-O>:call sqlcomplete#Map("column")<CR><C-X><C-O>'
-exec 'inoremap <buffer> '.g:ftplugin_sql_omni_key.'l <C-\><C-O>:call sqlcomplete#Map("column-csv")<CR><C-X><C-O>'
-exec 'inoremap <buffer> '.g:ftplugin_sql_omni_key.'R <C-\><C-O>:call sqlcomplete#Map("resetCache")<CR><C-X><C-O>'
-
-" -----------------------------------------------------------------------------
-"  php-doc
-" -----------------------------------------------------------------------------
-" autocmd FileType php inoremap <C-@> <ESC>:call PhpDocSingle()<CR>
-" autocmd FileType php nnoremap <C-@> :call PhpDocSingle()<CR>
-" autocmd FileType php vnoremap <C-@> :call PhpDocRange()<CR>
-" let g:pdv_cfg_Type = "mixed"
-" let g:pdv_cfg_Package = ""
-" let g:pdv_cfg_Version = ""
-" let g:pdv_cfg_Copyright = ""
-" let g:pdv_cfg_Author = "Shun Kajikawa"
-" let g:pdv_cfg_License = ""
-"
-" " After phpDoc standard
-" let g:pdv_cfg_CommentHead = "/**"
-" let g:pdv_cfg_Comment1 = " * "
-" let g:pdv_cfg_Commentn = " *"
-" let g:pdv_cfg_CommentTail = " */"
-" let g:pdv_cfg_CommentSingle = "// "
-"
-" " Attributes settings
-" let g:pdv_cfg_Uses       = 0
-" let g:pdv_cfg_php4always = 0
-" let g:pdv_cfg_php4guess  = 0
-
-let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
-autocmd FileType php nnoremap <buffer> <C-@> :call pdv#DocumentWithSnip()<CR>
-
-let g:UltiSnipsExpandTrigger="<c-tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-n>"
-let g:UltiSnipsJumpBackwardTrigger="<c-p>"
-
-" " 演算子の間に空白を入れる
-" inoremap <buffer><expr> < search('^#include\%#', 'bcn')? ' <': smartchr#loop(' < ', ' << ', '<')
-" inoremap <buffer><expr> > search('^#include <.*\%#', 'bcn')? '>': smartchr#loop(' > ', ' >> ', '>')
-" inoremap <buffer><expr> + smartchr#loop(' + ', '++', '+')
-" inoremap <buffer><expr> - smartchr#loop(' - ', '--', '-')
-" inoremap <buffer><expr> / smartchr#loop(' / ', '// ', '/')
-" " *はポインタで使うので、空白はいれない
-" inoremap <buffer><expr> & smartchr#loop(' & ', ' && ', '&')
-" inoremap <buffer><expr> % smartchr#loop(' % ', '%')
-" inoremap <buffer><expr> <Bar> smartchr#loop(' <Bar> ', ' <Bar><Bar> ', '<Bar>')
-" inoremap <buffer><expr> , smartchr#loop(', ', ',')
-" " 3項演算子の場合は、後ろのみ空白を入れる
-" inoremap <buffer><expr> ? smartchr#loop('? ', '?')
-" inoremap <buffer><expr> : smartchr#loop(': ', '::', ':')
-
-" inoremap <buffer><expr> F smartchr#loop('F', '$')
+" exec 'inoremap <silent> '.g:ftplugin_sql_omni_key_right.' <C-R>=sqlcomplete#DrillIntoTable()<CR>'
+" exec 'inoremap <silent> '.g:ftplugin_sql_omni_key_left.'  <C-R>=sqlcomplete#DrillOutOfColumns()<CR>'
+" exec 'inoremap <buffer> '.g:ftplugin_sql_omni_key.'t <C-\><C-O>:call sqlcomplete#Map("table")<CR><C-X><C-O>'
+" exec 'inoremap <buffer> '.g:ftplugin_sql_omni_key.'c <C-\><C-O>:call sqlcomplete#Map("column")<CR><C-X><C-O>'
+" exec 'inoremap <buffer> '.g:ftplugin_sql_omni_key.'l <C-\><C-O>:call sqlcomplete#Map("column-csv")<CR><C-X><C-O>'
+" exec 'inoremap <buffer> '.g:ftplugin_sql_omni_key.'R <C-\><C-O>:call sqlcomplete#Map("resetCache")<CR><C-X><C-O>'
 
 " -----------------------------------------------------------------------------
 "  MultipleSearch
@@ -590,7 +512,9 @@ nnoremap * :Search <C-R><C-W><CR>
 nnoremap + :SearchReset<CR>
 let g:MultipleSearchMaxColors = 4
 
-" Open junk file."{{{
+" -----------------------------------------------------------------------------
+"  Open junk file
+" -----------------------------------------------------------------------------
 command! -nargs=0 JunkFile call s:open_junk_file()
 function! s:open_junk_file()
   let l:junk_dir = $HOME . '/.vim_junk'. strftime('/%Y/%m')
@@ -602,9 +526,7 @@ function! s:open_junk_file()
   if l:filename != ''
     execute 'edit ' . l:filename
   endif
-endfunction"}}}
-
-
+endfunction
 " -----------------------------------------------------------------------------
 "  vdebug
 " -----------------------------------------------------------------------------

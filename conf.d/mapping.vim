@@ -41,9 +41,6 @@ noremap sl  $
 nnoremap s/  *
 noremap sm  %
 
-" キーのリマップ
-nnoremap [ %
-
 " 行末までヤンクする
 nnoremap Y y$
 
@@ -73,3 +70,6 @@ inoremap <C-f> <Right>
 inoremap <C-e> <End>
 inoremap <C-a> <Home>
 inoremap <C-d> <Del>
+
+vnoremap ; :
+vnoremap : ;

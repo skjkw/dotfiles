@@ -33,21 +33,21 @@ endif
 
 NeoBundle 'Shougo/unite.vim.git'
 NeoBundleLazy 'Shougo/vimfiler', {
-    \   'depends' : ["Shougo/unite.vim"],
-    \   'autoload' : {
-    \       'commands' : [ "VimFilerTab", "VimFiler", "VimFilerExplorer", "VimFilerBufferDir" ],
-    \       'mappings' : ['<Plug>(vimfiler_switch)'],
-    \       'explorer' : 1,
-    \   }
-    \}
+   \   'depends' : ["Shougo/unite.vim"],
+   \   'autoload' : {
+   \       'commands' : [ "VimFilerTab", "VimFiler", "VimFilerExplorer", "VimFilerBufferDir" ],
+   \       'mappings' : ['<Plug>(vimfiler_switch)'],
+   \       'explorer' : 1,
+   \   }
+   \}
 NeoBundle 'Shougo/vimproc.git', {
-    \ 'build' : {
-    \    'cygwin' : 'make -f make_cygwin.mak',
-    \    'mac' : 'make -f make_mac.mak',
-    \    'linux' : 'make',
-    \    'unix' : 'gmake',
-    \    },
-    \}
+   \ 'build' : {
+   \    'cygwin' : 'make -f make_cygwin.mak',
+   \    'mac' : 'make -f make_mac.mak',
+   \    'linux' : 'make',
+   \    'unix' : 'gmake',
+   \    },
+   \}
 NeoBundleLazy 'Shougo/vimshell', {
     \ 'depends' : 'Shougo/vimproc',
     \ 'autoload' : {
@@ -298,6 +298,10 @@ NeoBundleLazy 'jmcantrell/vim-virtualenv', {
 NeoBundleLazy 'bps/vim-textobj-python', {
             \ 'autoload': {
             \    'filetypes': ['py'],
+            \ }}
+NeoBundleLazy 'aquach/vim-http-client', {
+            \ 'autoload': {
+            \    'commands': ['HTTPClientDoRequest'],
             \ }}
 
 call neobundle#end()

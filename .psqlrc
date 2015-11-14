@@ -17,3 +17,5 @@
 \pset border 0
 --
 \set ON_ERROR_ROLLBACK interactive
+-- ページャ
+\setenv PAGER /usr/bin/vimpager
