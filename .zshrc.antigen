@@ -1,0 +1,53 @@
+source ~/antigen/antigen.zsh
+
+autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+add-zsh-hook chpwd chpwd_recent_dirs
+
+zstyle ':chpwd:*' recent-dirs-max 5000
+zstyle ':chpwd:*' recent-dirs-default yes
+zstyle ':completion:*' recent-dirs-insert both
+
+antigen-use oh-my-zsh
+
+antigen bundle git
+
+antigen bundle zsh-users/zaw
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+# bindkey '^@' zaw-cdr
+# bindkey '^R' zaw-history
+# bindkey '^X^F' zaw-git-files
+# bindkey '^X^B' zaw-git-branches
+# bindkey '^X^P' zaw-process
+# bindkey '^X^T' zaw-tmux
+
+antigen bundle mollifier/anyframe
+
+antigen-bundle Tarrasch/zsh-bd
+
+antigen bundle zsh-users/zsh-completions
+
+bindkey '^xb' anyframe-widget-cdr
+# bindkey '^x^b' anyframe-widget-checkout-git-branch
+
+bindkey '^xr' anyframe-widget-execute-history
+bindkey '^x^r' anyframe-widget-execute-history
+
+bindkey '^xp' anyframe-widget-put-history
+bindkey '^x^p' anyframe-widget-put-history
+
+bindkey '^xk' anyframe-widget-kill
+bindkey '^x^k' anyframe-widget-kill
+
+bindkey '^xi' anyframe-widget-insert-git-branch
+bindkey '^x^i' anyframe-widget-insert-git-branch
+
+bindkey '^xf' anyframe-widget-insert-filename
+bindkey '^x^f' anyframe-widget-insert-filename
+
+antigen bundle chrissicool/zsh-256color
+
+antigen-theme ys
+
+antigen-apply
+
