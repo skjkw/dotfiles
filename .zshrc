@@ -1,10 +1,9 @@
 source ~/.zshrc.antigen
-source ~/.zshrc.local
 export PATH="/home/kajikawa/.cask/bin:$PATH"
 export GOPATH=~/go
 export PATH=$PATH:~/go/bin
 export LANG=C
-export LESS='-R'
+
 alias ekill='emacsclient -e "(kill-emacs)"'
 alias en='emacsclient -nw -a ""'
 alias e='emacsclient -c -a ""'
@@ -19,6 +18,14 @@ man() {
         LESS_TERMCAP_us=$'\E[04;38;5;146m' \
         man "$@"
 }
+
+alias c='pygmentize -O style=monokai -f console256 -g -O encoding=utf-8'
+function cl() {
+    c $1 | nl -n ln -b a
+}
+alias cl=cl
+export LESS='-iMR'
+# export LESSOPEN='|lessfilter %s'
 
 eval $(dircolors -b)
 export PATH="$HOME/.anyenv/bin:$PATH"
@@ -93,6 +100,49 @@ select-word-style default
 # / も区切りと扱うので、^W でディレクトリ１つ分を削除できる
 zstyle ':zle:*' word-chars " /=;@:{},|"
 zstyle ':zle:*' word-style unspecified
+
+# show_buffer_stack() {
+#     POSTDISPLAY="
+# stack: $LBUFFER"
+#     zle push-line-or-edit
+# }
+# zle -N show_buffer_stack
+# setopt noflowcontrol
+# bindkey '^Q' show_buffer_stack
+
+local p_buffer_stack=""
+local -a buffer_stack_arr
+
+function make_p_buffer_stack()
+{
+    if [[ ! $#buffer_stack_arr > 0 ]]; then
+        p_buffer_stack=""
+        return
+    fi
+    p_buffer_stack="%F{cyan}<stack:$buffer_stack_arr>%f"
+}
+
+function show_buffer_stack()
+{
+    local cmd_str_len=$#LBUFFER
+    [[ cmd_str_len > 10 ]] && cmd_str_len=10
+    buffer_stack_arr=("[$LBUFFER[1,${cmd_str_len}]]" $buffer_stack_arr)
+    make_p_buffer_stack
+    zle push-line-or-edit
+    zle reset-prompt
+}
+
+function check_buffer_stack()
+{
+    [[ $#buffer_stack_arr > 0 ]] && shift buffer_stack_arr
+    make_p_buffer_stack
+}
+
+zle -N show_buffer_stack
+bindkey "^Q" show_buffer_stack
+add-zsh-hook precmd check_buffer_stack
+
+RPROMPT='${p_buffer_stack}'RPROMPT
 
 ########################################
 # 補完
@@ -183,8 +233,23 @@ alias mkdir='mkdir -p'
 
 alias -g J='|jq . L'
 
+alias gd='git diff HEAD'
+
 # sudo の後のコマンドでエイリアスを有効にする
 alias sudo='sudo '
+
+PROJECTS='/home/kajikawa/projects'
+YASATATSU='/cyo'
+FUEL_LOGS='/fuel/app/logs'
+
+EXT='.php'
+DATE=`date '+/%Y/%m/%d'`
+
+if [ ! -e $FUEL_LOGS$DATE$EXT ]; then
+    touch $PROJECTS$YASATATSU$FUEL_LOGS$DATE$EXT
+fi
+
+alias yasalog='less '$PROJECTS$YASATATSU$FUEL_LOGS$DATE$EXT
 
 ########################################
 # OS 別の設定
@@ -202,5 +267,58 @@ esac
 
 ########################################
 function chpwd() { ls -GAF }
+
+########################################
+[[ -s "$HOME/.qfc/bin/qfc.sh" ]] && source "$HOME/.qfc/bin/qfc.sh" ]]
+
+alias jump='_jump'
+alias look='less $(find . -type f -maxdepth 1 | peco)'
+
+function _jump(){
+    __path=$(ag $* | peco | awk -F: '{printf $1}')
+    if [ -n "$__path" ]; then
+        less $__path
+    fi
+}
+
+########################################
+if [ -e ~/.zshrc.local ]; then
+    source ~/.zshrc.local
+fi
+
+########################################
+# ----------------------
+# Git Aliases
+# ----------------------
+alias ga='git add'
+alias gaa='git add .'
+alias gaaa='git add -A'
+alias gb='git branch'
+alias gbd='git branch -d '
+alias gc='git commit'
+alias gcm='git commit -m'
+alias gco='git checkout'
+alias gcob='git checkout -b'
+alias gcom='git checkout master'
+alias gd='git diff'
+alias gda='git diff HEAD'
+alias gi='git init'
+alias gl='git log'
+alias glg='git log --graph --oneline --decorate --all'
+alias gld='git log --pretty=format:"%h %ad %s" --date=short --all'
+alias gm='git merge --no-ff'
+alias gp='git pull'
+alias gss='git status -s'
+alias gst='git stash'
+alias gstl='git stash list'
+alias gstp='git stash pop'
+alias gstd='git stash drop'
+
+########################################
+# ----------------------
+# Git Function
+# ----------------------
+# Git log find by commit message
+function glf() { git log --all --grep="$1"; }
 
 # vim:set ft=zsh:
