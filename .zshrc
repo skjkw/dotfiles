@@ -303,19 +303,6 @@ alias gd='git diff HEAD'
 # sudo の後のコマンドでエイリアスを有効にする
 alias sudo='sudo '
 
-PROJECTS='/home/kajikawa/projects'
-YASATATSU='/cyo'
-FUEL_LOGS='/fuel/app/logs'
-
-EXT='.php'
-DATE=`date '+/%Y/%m/%d'`
-
-if [ ! -e $FUEL_LOGS$DATE$EXT ]; then
-    touch $PROJECTS$YASATATSU$FUEL_LOGS$DATE$EXT
-fi
-
-alias yasalog='less '$PROJECTS$YASATATSU$FUEL_LOGS$DATE$EXT
-
 ########################################
 # OS 別の設定
 case ${OSTYPE} in
