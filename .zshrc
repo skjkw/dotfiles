@@ -2,6 +2,7 @@ source ~/.zshrc.antigen
 export PATH="/home/kajikawa/.cask/bin:$PATH"
 export GOPATH=~/go
 export PATH=$PATH:~/go/bin
+export PATH=$PATH:~/bin
 export LANG=C
 
 alias ekill='emacsclient -e "(kill-emacs)"'
@@ -82,6 +83,51 @@ function peco-ghq-cd () {
 zle -N peco-ghq-cd
 bindkey '^x^g' peco-ghq-cd
 
+function peco-git-merge(){
+    local selected_branch="$(git branch --all | peco --query "$LBUFFER" | sed -e "s/^\*[ ]*//g")"
+    if [ -n "${selected_branch}" ]; then
+        BUFFER="git merge ${selected_branch}"
+        zle accept-line
+    fi
+    zle clear-screen
+}
+zle -N peco-git-merge
+bindkey '^x^m' peco-git-merge
+
+function peco-git-commit-message(){
+    candidates="$(git log --format="%s")"
+    message="$(echo "$candidates" | peco)"
+    if [ -n "${message}" ]; then
+        BUFFER="git commit --verbose --edit --message='${message}'"
+        zle accept-line
+    fi
+    zle clear-screen
+}
+zle -N peco-git-commit-message
+bindkey '^x^o' peco-git-commit-message
+
+function peco-git-stash-pop(){
+    local selected_stash="$(git stash list | peco --query "$LBUFFER" | awk -F: '{print $1}')"
+    if [ -n "${selected_stash}" ]; then
+        BUFFER="git stash pop ${selected_stash}"
+        zle accept-line
+    fi
+    zle clear-screen
+}
+zle -N peco-git-stash-pop
+bindkey '^x^s' peco-git-stash-pop
+
+function peco-git-push(){
+    local selected_remote_branch="$(git branch | peco --query "$LBUFFER" | awk '{print $2}')"
+    if [ -n "${selected_remote_branch}" ]; then
+        BUFFER="git push origin ${selected_remote_branch}"
+        zle accept-line
+    fi
+    zle clear-screen
+}
+zle -N peco-git-push
+bindkey '^x^p' peco-git-push
+
 # if [ $DISPLAY ]; then
 #     xset r rate 200 100
 # fi
@@ -90,8 +136,8 @@ stty -ixon
 
 # ヒストリの設定
 HISTFILE=~/.zsh_history
-HISTSIZE=1000000
-SAVEGIST=1000000
+HISTSIZE=1000
+SAVEHIST=1000000
 
 # 単語の区切り文字を指定する
 autoload -Uz select-word-style
@@ -201,6 +247,7 @@ setopt auto_cd
 
 # cd したら自動的にpushdする
 setopt auto_pushd
+
 # 重複したディレクトリを追加しない
 setopt pushd_ignore_dups
 
@@ -218,6 +265,24 @@ setopt hist_reduce_blanks
 
 # 高機能なワイルドカード展開を使用する
 setopt extended_glob
+
+# 古いコマンドと同じものは無視
+setopt hist_save_no_dups
+
+# 重複を記録しない
+setopt hist_ignore_dups
+
+# 開始と終了を記録
+setopt EXTENDED_HISTORY
+
+# historyコマンドは履歴に登録しない
+setopt hist_no_store
+
+# 補完時にヒストリを自動的に展開
+setopt hist_expand
+
+# 履歴をインクリメンタルに追加
+setopt inc_append_history
 
 ########################################
 # エイリアス
@@ -269,7 +334,7 @@ esac
 function chpwd() { ls -GAF }
 
 ########################################
-[[ -s "$HOME/.qfc/bin/qfc.sh" ]] && source "$HOME/.qfc/bin/qfc.sh" ]]
+# [[ -s "$HOME/.qfc/bin/qfc.sh" ]] && source "$HOME/.qfc/bin/qfc.sh" ]]
 
 alias jump='_jump'
 alias look='less $(find . -type f -maxdepth 1 | peco)'
@@ -303,7 +368,11 @@ alias gcom='git checkout master'
 alias gd='git diff'
 alias gda='git diff HEAD'
 alias gi='git init'
-alias gl='git log'
+alias gl='git logg'
+alias gl1='git log1'
+alias gl2='git log2'
+alias gl3='git log3'
+alias gl4='git log4'
 alias glg='git log --graph --oneline --decorate --all'
 alias gld='git log --pretty=format:"%h %ad %s" --date=short --all'
 alias gm='git merge --no-ff'
