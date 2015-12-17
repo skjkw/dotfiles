@@ -26,7 +26,7 @@ function cl() {
 }
 alias cl=cl
 export LESS='-iMR'
-# export LESSOPEN='|lessfilter %s'
+export LESSOPEN='| lessfilter %s'
 
 eval $(dircolors -b)
 export PATH="$HOME/.anyenv/bin:$PATH"
@@ -127,6 +127,11 @@ function peco-git-push(){
 }
 zle -N peco-git-push
 bindkey '^x^p' peco-git-push
+
+function fzf-git-hash(){
+    git log --color --pretty='format:%C(yellow)%h%Creset %C(magenta)%cd%Creset %s %Cgreen(%an)%Creset %Cred%d%Creset%C(black bold)%ar%Creset' --date=iso | fzf --ansi --multi | awk '{print $1}'
+}
+alias -g H='$(fzf-git-hash)'
 
 # if [ $DISPLAY ]; then
 #     xset r rate 200 100
@@ -327,9 +332,9 @@ alias jump='_jump'
 alias look='less $(find . -type f -maxdepth 1 | peco)'
 
 function _jump(){
-    __path=$(ag $* | peco | awk -F: '{printf $1}')
+    __path="$(ag $* | peco | awk -F: '{printf "-c "$2 " " $1}')"
     if [ -n "$__path" ]; then
-        less $__path
+        vim $__path
     fi
 }
 
