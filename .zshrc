@@ -133,6 +133,16 @@ function fzf-git-hash(){
 }
 alias -g H='$(fzf-git-hash)'
 
+function peco-snippets(){
+    local target="$(cat ~/.pgpass | peco | awk -F: '{print "-h " $1 " -p " $2 " -U " $4 " -d " $3}')"
+    local execute="$(cat ~/.snippets | peco)"
+    if [ -n "${target}" -a -n "${execute}" ]; then
+        eval "psql ${target} -x -c \"${execute}\""
+    fi
+}
+zle -N peco-snippets
+alias pes=peco-snippets
+
 # if [ $DISPLAY ]; then
 #     xset r rate 200 100
 # fi
