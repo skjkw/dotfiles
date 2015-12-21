@@ -318,6 +318,8 @@ alias gd='git diff HEAD'
 # sudo の後のコマンドでエイリアスを有効にする
 alias sudo='sudo '
 
+alias tig='tig --all'
+
 ########################################
 # OS 別の設定
 case ${OSTYPE} in
