@@ -485,13 +485,10 @@ let g:unite_source_gtags_project_config = {
 \   }
 \ }
 
-let dbext_default_profile=""
-let dbext_default_type="PGSQL"
-let dbext_default_user="sw2_user"
-let dbext_default_passwd="sw2_pwd"
-let dbext_default_dbname="sw2_kajikawa"
-let dbext_default_host="192.168.24.130"
+let dbext_default_profile="PG_local"
 let dbext_default_buffer_lines=20
+
+let g:dbext_default_profile_PG_local = 'type=PGSQL:user=sw_user:passwd=sw2_pwd:dbname=sw2_kajikawa:host=192.168.24.130'
 
 let g:ftplugin_sql_omni_key = '<c-k>'
 let g:ftplugin_sql_omni_key_right = '<c-n>'
@@ -625,6 +622,8 @@ let MyGrep_ExcludeReg = '[~#]$\|\.bak$\|\.o$\|\.obj$\|\.exe$\|[/\\]tags$\|^tags$
 let QFixHowm_Key = 'g'
 "Howmコマンドの2ストローク目キーマップ
 let QFixHowm_KeyB = ','
+
+let QFixHowm_FileType = 'qfix_memo'
 
 " -------------------------------
 " Gmail

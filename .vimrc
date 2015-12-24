@@ -304,6 +304,8 @@ NeoBundleLazy 'aquach/vim-http-client', {
             \    'commands': ['HTTPClientDoRequest'],
             \ }}
 
+NeoBundle 'mtth/scratch.vim'
+
 call neobundle#end()
 
 filetype plugin indent on     " Required!

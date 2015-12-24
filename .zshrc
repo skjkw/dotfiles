@@ -312,6 +312,7 @@ alias mv='mv -i'
 alias mkdir='mkdir -p'
 
 alias -g J='|jq . L'
+alias -g Q='|jq .'
 
 alias gd='git diff HEAD'
 
@@ -344,7 +345,7 @@ alias jump='_jump'
 alias look='less $(find . -type f -maxdepth 1 | peco)'
 
 function _jump(){
-    __path="$(ag $* | peco | awk -F: '{printf "-c "$2 " " $1}')"
+    __path="$(ag $* | peco | awk -F: '{printf "-c "$2" "$1}')"
     if [ -n "$__path" ]; then
         vim $__path
     fi
