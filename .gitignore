@@ -30,7 +30,7 @@
 Thumbs.db
 ehthumbs.db
 
-local.vim
+zlocal.vim
 
 # Folder config file
 Desktop.ini
