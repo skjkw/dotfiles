@@ -305,6 +305,7 @@ NeoBundleLazy 'aquach/vim-http-client', {
             \ }}
 
 NeoBundle 'mtth/scratch.vim'
+NeoBundle 'osyo-manga/vim-brightest'
 
 call neobundle#end()
 

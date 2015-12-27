@@ -653,3 +653,23 @@ let g:sqlutil_align_first_word = 1
 let g:sqlutil_align_keyword_right = 1
 let g:sqlutil_keyword_case = '\U'
 let g:sqlutil_col_list_terminators = 'primary,reference,unique,check,foreign'
+
+
+" -------------------------------
+" brightest.vim
+" -------------------------------
+
+" ハイライトするグループ名を設定します
+" アンダーラインで表示する
+let g:brightest#highlight = {
+            \   "group" : "BrightestUnderline"
+            \}
+" ハイライトする単語のパターンを設定します
+" デフォルト（空の文字列の場合）は <cword> が使用されます
+let g:brightest#pattern = '\k\+'
+
+" すべてのウィンドウでハイライト
+let g:brightest#enable_highlight_all_window = 1
+
+" CursorHold 時にハイライトさせる
+let g:brightest#enable_on_CursorHold = 1
