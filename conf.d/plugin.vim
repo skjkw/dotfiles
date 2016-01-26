@@ -549,7 +549,7 @@ unlet s:bundle
 nnoremap <silent> <Leader>vf :VimFiler<CR>
 
 " 入力モード中に素早くJJと入力した場合はESCとみなす
-inoremap jj <Esc>
+" inoremap jj <Esc>
 
 "  " n や N の代わりに使用します。
 " nnoremap n nzz
