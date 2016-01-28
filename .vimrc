@@ -308,14 +308,14 @@ NeoBundle 'mtth/scratch.vim'
 NeoBundle 'osyo-manga/vim-brightest'
 
 NeoBundle 'dahu/vimple'
-
 NeoBundle 'dahu/Asif'
-
 NeoBundle 'Raimondi/VimRegStyle'
-
 NeoBundle 'vim-scripts/SyntaxRange'
-
 NeoBundle 'dahu/vim-asciidoc'
+
+NeoBundle 'plasticboy/vim-markdown'
+NeoBundle 'kannokanno/previm'
+NeoBundle 'tyru/open-browser.vim'
 
 call neobundle#end()
 

@@ -673,3 +673,9 @@ let g:brightest#enable_highlight_all_window = 1
 
 " CursorHold 時にハイライトさせる
 let g:brightest#enable_on_CursorHold = 1
+
+
+" -------------------------------
+" markdown
+" -------------------------------
+au BufRead,BufNewFile *.md set filetype=markdown
