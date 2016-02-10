@@ -131,7 +131,21 @@ bindkey '^x^p' peco-git-push
 function fzf-git-hash(){
     git log --color --pretty='format:%C(yellow)%h%Creset %C(magenta)%cd%Creset %s %Cgreen(%an)%Creset %Cred%d%Creset%C(black bold)%ar%Creset' --date=iso | fzf --ansi --multi | awk '{print $1}'
 }
-alias -g H='$(fzf-git-hash)'
+
+function peco-git-hash(){
+    git log --oneline --branches | peco | awk '{print $1}'
+}
+alias -g H='$(peco-git-hash)'
+
+function peco-git-branch(){
+    git branch | peco | sed -e "s/^\*[ ]*//g"
+}
+alias -g B='$(peco-git-branch)'
+
+function peco-git-files(){
+    git ls-files | peco
+}
+alias -g F='$(peco-git-files)'
 
 function peco-snippets(){
     local target="$(cat ~/.pgpass | peco | awk -F: '{print "-h " $1 " -p " $2 " -U " $4 " -d " $3}')"
@@ -373,6 +387,9 @@ alias gcob='git checkout -b'
 alias gcom='git checkout master'
 alias gd='git diff'
 alias gda='git diff HEAD'
+alias gdh='git diff H'
+alias gdb='git diff B'
+alias gdbf='git diff B -- F'
 alias gi='git init'
 alias gl='git logg'
 alias gl1='git log1'
