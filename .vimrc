@@ -318,6 +318,8 @@ NeoBundle 'kannokanno/previm'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'jreybert/vimagit'
 
+NeoBundle 'tacroe/unite-mark'
+
 call neobundle#end()
 
 filetype plugin indent on     " Required!

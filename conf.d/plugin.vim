@@ -170,11 +170,13 @@ nnoremap <silent> [unite]<CR> :<C-u>call DispatchUniteFileRecAsyncOrGit()<CR>
 " grep検索
 nnoremap <silent> [unite]g  :<C-u>Unite grep -buffer-name=search-buffer<CR>
 "hキーでヒストリ/commandを表示
-nnoremap <silent> [unite]h :<C-u>Unite<Space>history/command<CR>
+nnoremap <silent> [unite]h :<C-u>Unite<Space>history/yank<CR>
 "rキーphpmanual表示
 nnoremap <silent> [unite]r :<C-u>Unite<Space>ref/phpmanual -horizontal<CR>
 "qキーphpmanual表示
 nnoremap <silent> [unite]q :<C-u>UniteResume<CR>
+"mキーmark表示
+nnoremap <silent> [unite]m :<C-u>Unite<Space>mark<CR>
 "unite.vimを開いている間のキーマッピング
 autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()"{{{
@@ -194,6 +196,11 @@ let g:unite_source_grep_default_opts =
             \ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
 let g:unite_source_grep_recursive_opt = ''
 let g:unite_source_grep_max_candidates = 200
+
+let g:neoyank#limit = 1000
+let g:neoyank#file = $HOME.'/.vim/yankring.txt'
+
+let g:unite_source_mark_marks = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"[]^.<>'
 
 " --------------------------------------------------------------------------------
 " --------------------------------------------------------------------------------
