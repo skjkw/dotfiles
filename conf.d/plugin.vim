@@ -184,6 +184,11 @@ function! s:unite_my_settings()"{{{
     nmap <buffer> <ESC> <Plug>(unite_exit)
 endfunction"}}}
 
+autocmd BufEnter *
+\   if empty(&buftype)
+\|     nnoremap <buffer> <C-t> :<C-u>Unite jump<CR>
+\|  endif
+
 nnoremap <silent> <C-c>c :Unite<Space>gtags/context<CR>
 nnoremap <silent> <C-c>r :Unite<Space>gtags/ref<CR>
 nnoremap <silent> <C-c>d :Unite<Space>gtags/def<CR>
