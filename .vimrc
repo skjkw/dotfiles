@@ -320,6 +320,11 @@ NeoBundle 'jreybert/vimagit'
 
 NeoBundle 'tacroe/unite-mark'
 
+NeoBundle 'AndrewRadev/linediff.vim', {
+            \ 'autoload': {
+            \    'commands': ['Linediff'],
+            \ }}
+
 call neobundle#end()
 
 filetype plugin indent on     " Required!
