@@ -389,6 +389,49 @@ exec $SHELL -l
 yaourt -S re2c libmcrypt bison27 php-tidy libxslt libjpeg-turbo libpng
 bison は削除する
 
+-----
+--without-pear
+--with-gd
+--enable-sockets
+--with-jpeg-dir=/usr
+--with-png-dir=/usr
+--enable-exif
+--enable-zip
+--with-zlib
+--with-zlib-dir=/usr
+--with-kerberos
+--with-openssl
+--with-mcrypt=/usr
+--enable-soap
+--enable-xmlreader
+--with-xsl
+--enable-ftp
+--enable-cgi
+--with-curl=/usr
+--with-tidy
+--with-xmlrpc
+--enable-sysvsem
+--enable-sysvshm
+--enable-shmop
+--with-mysql=mysqlnd
+--with-mysqli=mysqlnd
+--with-pdo-mysql=mysqlnd
+--with-pdo-sqlite
+--enable-pcntl
+--with-readline
+--enable-mbstring
+--disable-debug
+--enable-fpm
+--enable-bcmath
+--with-bz2
+--with-pdo-pgsql
+--with-gmp
+--with-apxs2=/usr/sbin/apxs
+-----
+
+libphp5.so を任意のディレクトリに作成する為、パッチを当てる
+参考:http://qiita.com/uchiko/items/5f1843d3d848de619fdf
+
 phpenv install
 phpenv install {任意のversion}
 phpenv global {任意のversion}
