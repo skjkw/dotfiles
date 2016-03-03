@@ -8,10 +8,10 @@ if has('win32')
     set guifontwide=Ricty:h13.5
 elseif has('mac')
     set guioptions-=e
-    set guifont=Ricty\ 10.5
-    set guifontwide=Ricty\ 10.5
+    set guifont=Ricty:h13.5
+    set guifontwide=Ricty:h13.5
 else
     set guioptions-=e
-    set guifont=Ricty\ 10.5
-    set guifontwide=Ricty\ 10.5
+    set guifont=Ricty:h13.5
+    set guifontwide=Ricty:h13.5
 endif
