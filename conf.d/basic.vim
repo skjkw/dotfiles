@@ -118,4 +118,4 @@ set statusline=%{g:Date()}\%<%f%{exists('g:loaded_fugitive')?fugitive#statusline
 " インデントを丸める
 set shiftround
 "
-set synmaxcol=200
+set synmaxcol=300
