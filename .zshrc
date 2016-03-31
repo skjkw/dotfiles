@@ -133,12 +133,12 @@ function fzf-git-hash(){
 }
 
 function peco-git-hash(){
-    git log --oneline --branches | peco | awk '{print $1}'
+    git loghash | peco | awk '{print $1}'
 }
 alias -g H='$(peco-git-hash)'
 
 function peco-git-branch(){
-    git branch | peco | sed -e "s/^\*[ ]*//g"
+    git branch -vv | peco | sed -e "s/^\*[ ]*//g" | awk '{print $1}'
 }
 alias -g B='$(peco-git-branch)'
 

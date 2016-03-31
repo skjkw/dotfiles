@@ -8,6 +8,7 @@
 	quotepath = false
 	autocrlf = false
     excludesfile = /home/kajikawa/.cyo.gitignore
+	attributesfile = /home/kajikawa/.gitattributes
 [push]
 	default = simple
 [alias]
@@ -29,6 +30,7 @@
     log2 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''%C(white)%s%C(reset) %C(bold white)― %an%C(reset)' --abbrev-commit
     log3 = log --graph --date-order -C -M --pretty=format:'<%h> %ad [%an] %Cgreen%d%Creset %s' --all --date=short
     log4 = log --graph --pretty='format:%C(yellow)%h%Cblue%d%Creset %s %C(black bold)%an, %ar%Creset'
+    loghash = log --oneline --decorate --branches --remotes --tags --no-merges --date=iso --pretty='format:%C(yellow)%h %C(red)%d %Creset%s (%C(green)%cn%Creset) [%C(blue)%ad%Creset]'
     sgraph = !"git log --oneline --graph"
     ancestor = !zsh -c 'diff -u <(git rev-list --first-parent "${1:-master}") <(git rev-list --first-parent "${2:-HEAD}") | sed -ne \"s/^ //p\" | head -n 1' -
     unstage = reset HEAD
