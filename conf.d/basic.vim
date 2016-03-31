@@ -55,8 +55,8 @@ set softtabstop=4
 set showtabline=4
 " フォント設定
 if has('win32')
-    set guifont=Myrica\ M:h10
-    set guifontwide=Myrica\ M:h10
+    set guifont=Ricty:h13.5
+    set guifontwide=Ricty:h13.5
 elseif has('mac')
     set guifont=Myrica\ M:h10
     set guifontwide=Myrica\ M:h10

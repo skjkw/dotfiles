@@ -490,12 +490,12 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_funky_matchtype = 'path'
 let g:ctrlp_funky_syntax_highlight = 1
 
-let g:unite_source_gtags_project_config = {
-\   '_': {
-\     'gtags_libpath':
-\       [ '/home/kajikawa/projects/cyo/' ]
-\   }
-\ }
+" let g:unite_source_gtags_project_config = {
+" \   '_': {
+" \     'gtags_libpath':
+" \       [ '/home/kajikawa/projects/cyo/' ]
+" \   }
+" \ }
 
 let dbext_default_profile="PG_local"
 let dbext_default_buffer_lines=20
