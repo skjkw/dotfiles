@@ -674,18 +674,18 @@ let g:sqlutil_col_list_terminators = 'primary,reference,unique,check,foreign'
 
 " ハイライトするグループ名を設定します
 " アンダーラインで表示する
-" let g:brightest#highlight = {
-"             \   "group" : "BrightestUnderline"
-"             \}
+let g:brightest#highlight = {
+            \   "group" : "BrightestUnderline"
+            \}
 " ハイライトする単語のパターンを設定します
 " デフォルト（空の文字列の場合）は <cword> が使用されます
-" let g:brightest#pattern = '\k\+'
+let g:brightest#pattern = '\k\+'
 
 " すべてのウィンドウでハイライト
-" let g:brightest#enable_highlight_all_window = 1
+let g:brightest#enable_highlight_all_window = 1
 
 " CursorHold 時にハイライトさせる
-" let g:brightest#enable_on_CursorHold = 1
+let g:brightest#enable_on_CursorHold = 1
 
 
 " -------------------------------

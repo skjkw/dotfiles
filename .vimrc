@@ -305,7 +305,7 @@ NeoBundleLazy 'aquach/vim-http-client', {
             \ }}
 
 NeoBundle 'mtth/scratch.vim'
-" NeoBundle 'osyo-manga/vim-brightest'
+NeoBundle 'osyo-manga/vim-brightest'
 
 NeoBundle 'dahu/vimple'
 NeoBundle 'dahu/Asif'
@@ -326,7 +326,7 @@ NeoBundle 'AndrewRadev/linediff.vim', {
             \ }}
 
 NeoBundle 'itchyny/vim-parenmatch'
-NeoBundle 'itchyny/vim-cursorword'
+" NeoBundle 'itchyny/vim-cursorword'
 
 call neobundle#end()
 
