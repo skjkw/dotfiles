@@ -1,2 +1,2 @@
-(setq skk-use-azik t)
-(setq skk-azik-keyboard-type 'en)
+;; (setq skk-use-azik t)
+;; (setq skk-azik-keyboard-type 'en)
