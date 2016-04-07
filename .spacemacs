@@ -73,6 +73,7 @@ You should not put any user code in there besides modifying the variable
 values."
   ;; This setq-default sexp is an exhaustive list of all the supported
   ;; spacemacs settings.
+
   (setq-default
    ;; If non nil ELPA repositories are contacted via HTTPS whenever it's
    ;; possible. Set it to nil if you have no way to use HTTPS in your
@@ -152,7 +153,7 @@ values."
    ;; Emacs commands (M-x).
    ;; By default the command key is `:' so ex-commands are executed like in Vim
    ;; with `:' and Emacs commands are executed with `<leader> :'.
-   dotspacemacs-command-key ":"
+   dotspacemacs-command-key ";"
    ;; If non nil `Y' is remapped to `y$'. (default t)
    dotspacemacs-remap-Y-to-y$ t
    ;; Name of the default layout (default "Default")
@@ -302,7 +303,21 @@ you should place you code here."
         (setq skk-server-host "localhost")
         (setq skk-server-portnum 1178)
         )
-  )
+
+    (setq powerline-default-separator 'nil)
+    (setq dotspacemacs-mode-line-unicode-symbols 'nil)
+    (setq spaceline-window-numbers-unicode 'nil)
+    (setq spaceline-workspace-numbers-unicode 'nil)
+
+    (setq-default evil-repeat-find-char ":")
+
+    (global-set-key "\C-h" 'delete-backward-char)
+
+    (define-key evil-normal-state-map (kbd "sh") 'evil-digit-argument-or-evil-beginning-of-line)
+    (define-key evil-normal-state-map (kbd "sh") 'evil-end-of-line)
+    (define-key evil-normal-state-map (kbd "sm") 'evil-jump-item)
+
+    )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
