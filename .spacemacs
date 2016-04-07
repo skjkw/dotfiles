@@ -112,12 +112,12 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark
+   dotspacemacs-themes '(monokai
+                         spacemacs-dark
                          spacemacs-light
                          solarized-light
                          solarized-dark
                          leuven
-                         monokai
                          molokai
                          zenburn)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
@@ -173,9 +173,9 @@ values."
    ;; If non nil then `ido' replaces `helm' for some commands. For now only
    ;; `find-files' (SPC f f), `find-spacemacs-file' (SPC f e s), and
    ;; `find-contrib-file' (SPC f e c) are replaced. (default nil)
-   dotspacemacs-use-ido nil
+   dotspacemacs-use-ido 'helm
    ;; If non nil, `helm' will try to minimize the space it uses. (default nil)
-   dotspacemacs-helm-resize nil
+   dotspacemacs-helm-resize 'helm
    ;; if non nil, the helm header is hidden when there is only one source.
    ;; (default nil)
    dotspacemacs-helm-no-header nil
@@ -291,7 +291,7 @@ you should place you code here."
     ;; バッファ中の行番号表示
     (global-linum-mode t)
     ;; 文字サイズ
-    (set-face-attribute 'linum nil :height 0.75)
+    ;; (set-face-attribute 'linum nil :height 0.75)
 
     ;; for ddskk
     (when (require 'skk nil t)
