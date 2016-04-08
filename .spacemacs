@@ -57,9 +57,14 @@ values."
    dotspacemacs-additional-packages '(
      editorconfig
      ddskk
+     sql-indent
+     auto-install
    )
    ;; A list of packages and/or extensions that will not be install and loaded.
-   dotspacemacs-excluded-packages '()
+   dotspacemacs-excluded-packages '(
+     sql-complete
+     sql-transform
+   )
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
    ;; are declared in a layer which is not a member of
    ;; the list `dotspacemacs-configuration-layers'. (default t)
@@ -174,7 +179,7 @@ values."
    ;; If non nil then `ido' replaces `helm' for some commands. For now only
    ;; `find-files' (SPC f f), `find-spacemacs-file' (SPC f e s), and
    ;; `find-contrib-file' (SPC f e c) are replaced. (default nil)
-   dotspacemacs-use-ido 'helm
+   dotspacemacs-use-ido nil
    ;; If non nil, `helm' will try to minimize the space it uses. (default nil)
    dotspacemacs-helm-resize 'helm
    ;; if non nil, the helm header is hidden when there is only one source.
@@ -203,7 +208,7 @@ values."
    dotspacemacs-fullscreen-at-startup nil
    ;; If non nil `spacemacs/toggle-fullscreen' will not use native fullscreen.
    ;; Use to disable fullscreen animations in OSX. (default nil)
-   dotspacemacs-fullscreen-use-non-native nil
+   dotspacemacs-fullscreen-use-non-native t
    ;; If non nil the frame is maximized when Emacs starts up.
    ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
    ;; (default nil) (Emacs 24.4+ only)
@@ -269,7 +274,32 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place you code here."
 
+  ;;; load-pathを追加する関数を定義
+  (defun add-to-load-path (&rest paths)
+    (let (path)
+      (dolist (path paths paths)
+        (let ((default-directory (expand-file-name (concat user-emacs-directory path))))
+          (add-to-list 'load-path default-directory)
+          (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
+              (normal-top-level-add-subdirs-to-load-path))))))
+
+  ;;; ディレクトリをサブディレクトリごとload-pathに追加
+  (add-to-load-path "elisp")
+
+  ;; ------------------------------
+  ;; auto-install
+  ;; ------------------------------
+  (when(require 'auto-install nil t)
+    ;;インストールディレクトリを設定。.emacs.d/elispに入れる。
+    (setq auto-install-directory "~/.emacs.d/elisp/")
+    ;;EmacsWikiに登録されているelispの名前を取得する
+    (auto-install-update-emacswiki-package-name t)
+    ;;install-elispの関数を利用可能にする
+    (auto-install-compatibility-setup))
+
+    ;; ------------------------------
     ;; linum
+    ;; ------------------------------
     (require 'linum)
     ;; 行移動を契機に描画
     (defvar linum-line-number 0)
@@ -291,10 +321,10 @@ you should place you code here."
     (setq linum-format "%5d")
     ;; バッファ中の行番号表示
     (global-linum-mode t)
-    ;; 文字サイズ
-    ;; (set-face-attribute 'linum nil :height 0.75)
 
-    ;; for ddskk
+    ;; ------------------------------
+    ;; ddskk
+    ;; ------------------------------
     (when (require 'skk nil t)
         (global-set-key (kbd "C-x j") 'skk-auto-fill-mode)
         (setq default-input-method "japanese-skk")
@@ -304,18 +334,66 @@ you should place you code here."
         (setq skk-server-portnum 1178)
         )
 
+    ;; ------------------------------
+    ;; spacemacs
+    ;; ------------------------------
     (setq powerline-default-separator 'nil)
     (setq dotspacemacs-mode-line-unicode-symbols 'nil)
     (setq spaceline-window-numbers-unicode 'nil)
     (setq spaceline-workspace-numbers-unicode 'nil)
-
     (setq-default evil-repeat-find-char ":")
 
+    ;; ------------------------------
+    ;; Global KeyBind
+    ;; ------------------------------
     (global-set-key "\C-h" 'delete-backward-char)
+    (global-set-key (kbd "C-x C-f") 'helm-find-files)
+    (global-set-key (kbd "C-x C-r") 'helm-recentf)
+    (global-set-key (kbd "C-x C-b") 'helm-buffers-list)
 
-    (define-key evil-normal-state-map (kbd "sh") 'evil-digit-argument-or-evil-beginning-of-line)
-    (define-key evil-normal-state-map (kbd "sh") 'evil-end-of-line)
+    ;; ------------------------------
+    ;; Evil
+    ;; ------------------------------
+    (define-key evil-normal-state-map (kbd "s") nil)
+    (define-key evil-normal-state-map (kbd "sh") 'evil-first-non-blank)
+    (define-key evil-normal-state-map (kbd "sl") 'evil-end-of-line)
     (define-key evil-normal-state-map (kbd "sm") 'evil-jump-item)
+    (define-key evil-normal-state-map (kbd "ss") 'evil-substitute)
+
+    (defun evil-swap-key (map key1 key2)
+      ;; MAP中のKEY1とKEY2を入れ替え
+      "Swap KEY1 and KEY2 in MAP."
+      (let ((def1 (lookup-key map key1))
+            (def2 (lookup-key map key2)))
+        (define-key map key1 def2)
+        (define-key map key2 def1)))
+    (evil-swap-key evil-motion-state-map "j" "gj")
+    (evil-swap-key evil-motion-state-map "k" "gk")
+
+    ;; ------------------------------
+    ;; NeoTree
+    ;; ------------------------------
+    (setq neo-theme 'ascii)
+
+    ;; ------------------------------
+    ;; SQL Setting
+    ;; ------------------------------
+    (require 'sql)
+    (sql-set-product "postgres")
+
+    ;; starting SQL mode loading sql-indent / sql-complete
+    (eval-after-load "sql"
+      '(progn
+        (load-library "sql-indent")
+        (load-library "sql-complete")
+        (load-library "sql-transform")))
+
+    (setq auto-mode-alist
+          (cons '("\\.sql$" . sql-mode) auto-mode-alist))
+
+    (add-hook 'sql-interactive-mode-hook
+              (lambda ()
+                (toggle-truncate-lines t)))
 
     )
 
