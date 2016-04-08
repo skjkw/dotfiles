@@ -62,8 +62,7 @@ values."
    )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '(
-     sql-complete
-     sql-transform
+     ;; company
    )
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
    ;; are declared in a layer which is not a member of
@@ -378,24 +377,39 @@ you should place you code here."
     ;; ------------------------------
     ;; SQL Setting
     ;; ------------------------------
-    (require 'sql)
-    (sql-set-product "postgres")
+    (when (require 'sql nil t)
+      (sql-set-product "postgres")
 
-    ;; starting SQL mode loading sql-indent / sql-complete
-    (eval-after-load "sql"
-      '(progn
-        (load-library "sql-indent")
-        (load-library "sql-complete")
-        (load-library "sql-transform")))
+      ;; starting SQL mode loading sql-indent / sql-complete
+      (load-library "sql-indent")
+      (load-library "sql-complete")
+      (load-library "sql-transform")
 
-    (setq auto-mode-alist
-          (cons '("\\.sql$" . sql-mode) auto-mode-alist))
+      (setq auto-mode-alist
+            (cons '("\\.sql$" . sql-mode) auto-mode-alist))
 
-    (add-hook 'sql-interactive-mode-hook
-              (lambda ()
-                (toggle-truncate-lines t)))
+      (add-hook 'sql-interactive-mode-hook
+                (lambda ()
+                  (toggle-truncate-lines t)))
+      )
 
-    )
+    ;; ------------------------------
+    ;; companymode
+    ;; ------------------------------
+    ;; (global-company-mode)
+    ;; (add-to-list 'company-backends 'sql-complete)
+    ;; (diminish 'company-mode " C")
+
+    (ac-config-default)
+    (add-to-list 'ac-modes 'org-mode)
+    (add-to-list 'ac-modes 'sql-mode)
+    (add-to-list 'ac-modes 'sql-interactive-mode)
+    (setq ac-use-fuzzy t)
+
+    (defun ac-quick-help-force ()
+      (interactive)
+      (ac-quick-help t))
+  )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
