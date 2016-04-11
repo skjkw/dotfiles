@@ -134,6 +134,7 @@ NeoBundle 'scrooloose/Syntastic'
 " version
 NeoBundle 'gregsexton/gitv'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'int3/vim-extradite'
 
 " search
 NeoBundle 'rking/ag.vim'
@@ -144,10 +145,17 @@ NeoBundle 'mattn/webapi-vim'
 " textobject
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'kana/vim-textobj-indent'
+NeoBundle 'kana/vim-textobj-syntax'
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'thinca/vim-textobj-comment'
 NeoBundle 'akiyan/vim-textobj-php'
 NeoBundle 'nelstrom/vim-textobj-rubyblock'
+NeoBundle 'kana/vim-textobj-datetime'
+NeoBundle 'kana/vim-textobj-jabraces'
+NeoBundle 'kana/vim-textobj-lastpat'
+NeoBundle 'thinca/vim-textobj-between'
+NeoBundle 'h1mesuke/textobj-wiw'
+NeoBundle 'vimtaku/vim-textobj-sigil'
 
 " skk
 NeoBundle 'tyru/eskk.vim'
@@ -235,8 +243,6 @@ NeoBundleLazy 'tyru/operator-camelize.vim', {
 
 NeoBundle 'akiyan/vim-textobj-xml-attribute'
 
-NeoBundle 'h1mesuke/textobj-wiw'
-NeoBundle 'thinca/vim-textobj-between.git'
 NeoBundle 'tpope/vim-repeat'
 
 NeoBundle 'tobyS/vmustache'
@@ -326,7 +332,9 @@ NeoBundle 'AndrewRadev/linediff.vim', {
             \ }}
 
 NeoBundle 'itchyny/vim-parenmatch'
-" NeoBundle 'itchyny/vim-cursorword'
+
+NeoBundle 'vim-scripts/taglist.vim'
+NeoBundle 'vim-scripts/TagHighlight'
 
 call neobundle#end()
 
