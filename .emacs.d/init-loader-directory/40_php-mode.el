@@ -15,7 +15,7 @@
   (define-key php-mode-map (kbd"C-c r") 'vr/replace)
   (define-key php-mode-map (kbd"C-c q") 'vr/query-replace)
   (define-key php-mode-map (kbd"C-c e") 'vr/mc-mark)
-  (define-key php-mode-map (kbd "C-c ]") 'ac-php-find-symbol-at-point)   ;goto define
+  (define-key php-mode-map (kbd "C-c ]") 'ac-php-find-symbol-at-point) ;goto define
   (define-key php-mode-map (kbd "C-c t") 'ac-php-location-stack-back   ) ;go back
 
   ;; flycheck

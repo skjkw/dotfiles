@@ -7,7 +7,7 @@
   (setq migemo-coding-system 'utf-8-unix)
   (load-library "migemo")
   (migemo-init)
-)
+  )
 
 ;;; 基本設定
 ;; (setq migemo-command "c:/kajikawa/dotfiles/cmigemo-win64/cmigemo.exe")

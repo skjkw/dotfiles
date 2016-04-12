@@ -114,11 +114,11 @@
 (setq x-select-enable-clipboard t)
 
 (if window-system (progn
-    (set-background-color "Black")
-    (set-foreground-color "LightGray")
-    (set-cursor-color "Gray")
-    (set-frame-parameter nil 'alpha 80) ;透明度
-    ))
+                    (set-background-color "Black")
+                    (set-foreground-color "LightGray")
+                    (set-cursor-color "Gray")
+                    (set-frame-parameter nil 'alpha 80) ;透明度
+                    ))
 
 (defun set-alpha (alpha-num)
   "set frame parameter 'alpha"

@@ -1,2 +1,2 @@
-; (require 'evil-tabs)
-; (global-evil-tabs-mode t)
+(require 'evil-tabs)
+(global-evil-tabs-mode t)

@@ -7,7 +7,7 @@
 ;; (diminish 'volatile-highlights-mode)
 ;; (diminish 'yas-minor-mode)
 ;; (diminish 'yascroll-mode)
-;; (diminish 'undo-tree-mode)
+(diminish 'undo-tree-mode)
 ;; (diminish 'smartparens-mode)
 ;; (diminish 'smart-newline)
 ;; (diminish 'auto-complete-mode)

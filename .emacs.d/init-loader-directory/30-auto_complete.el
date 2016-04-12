@@ -3,6 +3,7 @@
 (add-to-list 'ac-modes 'text-mode)
 (add-to-list 'ac-modes 'fundamental-mode)
 (add-to-list 'ac-modes 'org-mode)
+(add-to-list 'ac-modes 'sql-mode)
 (add-to-list 'ac-modes 'sql-interactive-mode)
 (add-to-list 'ac-modes 'php-mode)
 

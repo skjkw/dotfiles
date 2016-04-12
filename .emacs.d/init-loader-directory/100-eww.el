@@ -34,7 +34,7 @@
   (interactive (list
                 (region-or-read-string "Weblio: ")))
   (eww-browse-url (format "http://ejje.weblio.jp/content/%s"
-                      (upcase (url-hexify-string str)))))
+                          (upcase (url-hexify-string str)))))
 ;;; wikipedia
 (defun wikipedia (str)
   (interactive (list

@@ -4,4 +4,5 @@
 
 ;; (when (require 'molokai-theme nil t))
 
-(load-theme 'manoj-dark t)
+;; (load-theme 'manoj-dark t)
+(require 'monokai-theme)
