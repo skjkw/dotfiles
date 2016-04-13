@@ -167,7 +167,6 @@ NeoBundle 'majutsushi/tagbar'
 
 " refence
 NeoBundle 'thinca/vim-ref'
-NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundle 'mojako/ref-sources.vim'
 NeoBundle 'mustardamus/jqapi'
 NeoBundle 'tokuhirom/jsref'
@@ -332,8 +331,6 @@ NeoBundle 'AndrewRadev/linediff.vim', {
             \ }}
 
 NeoBundle 'itchyny/vim-parenmatch'
-
-NeoBundle 'vim-scripts/TagHighlight'
 
 call neobundle#end()
 
