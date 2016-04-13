@@ -333,7 +333,6 @@ NeoBundle 'AndrewRadev/linediff.vim', {
 
 NeoBundle 'itchyny/vim-parenmatch'
 
-NeoBundle 'vim-scripts/taglist.vim'
 NeoBundle 'vim-scripts/TagHighlight'
 
 call neobundle#end()
