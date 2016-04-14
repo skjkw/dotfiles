@@ -1,49 +1,6 @@
 # https://gist.github.com/mitukiii/4234173
 import sys, commands
 from percol.command import SelectorCommand
-from percol.key import SPECIAL_KEYS
-from percol.finder import FinderMultiQueryMigemo, FinderMultiQueryRegex
-
-## prompt
-# Case Insensitive / Match Method に応じてプロンプトに表示
-def dynamic_prompt():
-    prompt = ur""
-    if percol.model.finder.__class__ == FinderMultiQueryMigemo:
-        prompt += "[Migemo]"
-    elif percol.model.finder.__class__ == FinderMultiQueryRegex:
-        prompt += "[Regexp]"
-    else:
-        prompt += "[String]"
-    if percol.model.finder.case_insensitive:
-        prompt += "[a]"
-    else:
-        prompt += "[A]"
-    prompt += "> %q"
-    return prompt
-
-percol.view.__class__.PROMPT = property(lambda self: dynamic_prompt())
-
-## migemo
-# Mac と Ubuntu で辞書のパスを変える
-FinderMultiQueryMigemo.dictionary_path = "/usr/local/share/migemo/utf-8/migemo-dict"
-
-## kill
-# Mac の場合は kill（yank）をクリップボードと共有する
-def copy_end_of_line_as_kill(self):
-    commands.getoutput("echo " + self.model.query[self.model.caret:] + " | pbcopy")
-    self.model.query  = self.model.query[:self.model.caret]
-
-def paste_as_yank(self):
-    self.model.insert_string(commands.getoutput("pbpaste"))
-
-SelectorCommand.kill_end_of_line = copy_end_of_line_as_kill
-SelectorCommand.yank = paste_as_yank
-
-percol.import_keymap({
-    "M-c" : lambda percol: percol.command.toggle_case_sensitive(),
-    "M-m" : lambda percol: percol.command.toggle_finder(FinderMultiQueryMigemo),
-    "M-r" : lambda percol: percol.command.toggle_finder(FinderMultiQueryRegex)
-})
 
 # Emacs like
 percol.import_keymap({
