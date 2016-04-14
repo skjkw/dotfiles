@@ -66,7 +66,7 @@ values."
      dired-ranger
      dired-subtree
      elscreen
-     evil-elscreen
+     evil-tabs
      migemo
    )
    ;; A list of packages and/or extensions that will not be install and loaded.
@@ -361,6 +361,11 @@ you should place you code here."
     ;; ------------------------------
     ;; Evil
     ;; ------------------------------
+
+    (elscreen-start)
+
+    (global-evil-tabs-mode t)
+
     (define-key evil-normal-state-map (kbd "s") nil)
     (define-key evil-normal-state-map (kbd "sh") 'evil-first-non-blank)
     (define-key evil-normal-state-map (kbd "sl") 'evil-end-of-line)
