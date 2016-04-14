@@ -59,10 +59,18 @@ values."
      ddskk
      sql-indent
      auto-install
+     dired+
+     dired-filter
+     dired-k
+     dired-open
+     dired-ranger
+     dired-subtree
+     elscreen
+     evil-elscreen
+     migemo
    )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '(
-     ;; company
    )
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
    ;; are declared in a layer which is not a member of
@@ -393,13 +401,6 @@ you should place you code here."
                   (toggle-truncate-lines t)))
       )
 
-    ;; ------------------------------
-    ;; companymode
-    ;; ------------------------------
-    ;; (global-company-mode)
-    ;; (add-to-list 'company-backends 'sql-complete)
-    ;; (diminish 'company-mode " C")
-
     (ac-config-default)
     (add-to-list 'ac-modes 'org-mode)
     (add-to-list 'ac-modes 'sql-mode)
@@ -409,6 +410,27 @@ you should place you code here."
     (defun ac-quick-help-force ()
       (interactive)
       (ac-quick-help t))
+
+    ;; ------------------------------
+    ;; Dired
+    ;; ------------------------------
+
+    ;; dired-modeでonにする
+    (defun dired-mode-hooks()
+      (dired-filter-mode))
+    (add-hook 'dired-mode-hook 'dired-mode-hooks)
+
+    ;;; iを置き換え
+    (define-key dired-mode-map (kbd "i") 'dired-subtree-insert)
+    ;;; org-modeのようにTABで折り畳む
+    (define-key dired-mode-map (kbd "<tab>") 'dired-subtree-remove)
+
+    (defun dired-subtree-up-dwim (&optional arg)
+      "subtreeの親ディレクトリに移動。そうでなければ親ディレクトリを開く(^の挙動)。"
+      (interactive "p")
+      (or (dired-subtree-up arg)
+          (dired-up-directory)))
+    (define-key dired-mode-map (kbd "^") 'dired-subtree-up-dwim)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
