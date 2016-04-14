@@ -156,6 +156,11 @@ NeoBundle 'kana/vim-textobj-lastpat'
 NeoBundle 'thinca/vim-textobj-between'
 NeoBundle 'h1mesuke/textobj-wiw'
 NeoBundle 'vimtaku/vim-textobj-sigil'
+NeoBundle 'kana/vim-textobj-function'
+NeoBundle 'akiyan/vim-textobj-xml-attribute'
+NeoBundle 'mjbrownie/html-textobjects'
+NeoBundle 'vimtaku/vim-textobj-keyvalue'
+NeoBundle 'kana/vim-textobj-function'
 
 " skk
 NeoBundle 'tyru/eskk.vim'
