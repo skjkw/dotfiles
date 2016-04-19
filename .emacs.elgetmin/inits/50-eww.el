@@ -2,7 +2,7 @@
 (define-key eww-mode-map "r" 'eww-reload)
 (define-key eww-mode-map "c 0" 'eww-copy-page-url)
 (define-key eww-mode-map "p" 'scroll-down)
-(define-key eww-mode-map "n" 'scroll-up)
+(define-key eww-mode-map "n" 'sroll-up)
 
 (defvar eww-disable-colorize t)
 (defun shr-colorize-region--disable (orig start end fg &optional bg &rest _)
@@ -39,3 +39,7 @@
 (defun eww-mode-hook--disable-image ()
   (setq-local shr-put-image-function 'shr-put-image-alt))
 (add-hook 'eww-mode-hook 'eww-mode-hook--disable-image)
+
+(use-package 'ace-link)
+(eval-after-load 'eww '(define-key eww-mode-map "f" 'ace-link-eww))
+(ace-link-setup-default)

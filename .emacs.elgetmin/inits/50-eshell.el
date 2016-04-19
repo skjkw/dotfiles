@@ -135,3 +135,11 @@ Completion is available."))
 
 (add-hook 'comint-output-filter-functions
           'comint-watch-for-password-prompt)
+
+(setq eshell-visual-commands
+  '("vi"                                ; what is going on??
+    "screen" "top"                      ; ok, a valid program...
+    "less" "more"                       ; M-x view-file
+    "lynx" "ncftp"                      ; w3.el, ange-ftp
+    "pine" "tin" "trn" "elm")           ; GNUS!!
+   )

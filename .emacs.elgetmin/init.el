@@ -36,6 +36,8 @@
 (el-get-bundle web-mode)
 (el-get-bundle yasnippet)
 (el-get-bundle paredit)
+(el-get-bundle ace-link)
+(el-get-bundle elscreen)
 (el-get-bundle! init-loader
   (with-eval-after-load-feature 'init-loader
     (setq init-loader-show-log-after-init 'error-only)

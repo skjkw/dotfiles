@@ -3,10 +3,10 @@
   (setq php-serch-url "http://jp.php.net/ja/")
   (setq php-manual-url "http://jp.php.net/manual/ja/")
   (use-package php-extras)
-  ; (use-package php-auto-yasnippets
-  ;   :config
-  ;   (setq php-auto-yasnippet-php-program (format "%s/php-auto-yasnippets/Create-PHP-YASnippet.php" el-get-dir))
-  ;   )
+  (use-package php-auto-yasnippets
+    :config
+    (setq php-auto-yasnippet-php-program (format "%s/php-auto-yasnippets/Create-PHP-YASnippet.php" el-get-dir))
+    )
   )
 
 (defun php-indent-hook ()

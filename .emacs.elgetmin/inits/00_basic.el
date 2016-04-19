@@ -33,6 +33,8 @@
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (show-paren-mode 1)
+(scroll-bar-mode 0)
+(electric-pair-mode 1)
 (setq inhibit-startup-screen t)
 (setq initial-scratch-message "")
 (setq delete-auto-save-files t)
@@ -227,9 +229,6 @@ With argument, do this that many times."
 (setq scroll-step 1)
 (setq scroll-margin 5) ; default=0
 
-;; Scroll window on a page-by-pabe basis with N line overlapping
-;; (setq next-screen-context-lines 1)
-
 (global-set-key (kbd "<f11>") 'bs-cycle-previous)
 (global-set-key (kbd "<C-f11>") 'bs-cycle-next)
 (setq bs-cycle-configuration-name "files-and-scratch")
@@ -239,8 +238,5 @@ With argument, do this that many times."
 (setq-default tab-width 2)
 (setq-default indent-tabs-mode nil)
 (setq indent-line-function 'insert-tab)
-
-(scroll-bar-mode 0)
-(electric-pair-mode 1)
 
 (setq isearch-case-fold-search t)

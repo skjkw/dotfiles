@@ -1,5 +1,4 @@
 ;;;; elisp編集時，カーソル位置の関数の仮引数をエコーエリアに表示
-
 (use-package eldoc)
 (use-package eldoc-extension
   :ensure eldoc-extension)
