@@ -40,7 +40,10 @@
 (el-get-bundle elscreen)
 (el-get-bundle init-loader)
 (el-get-bundle which-key)
-;; (el-get-bundle skk in ddskk)
+(el-get-bundle skk in ddskk)
+(el-get-bundle evil)
+(el-get-bundle evil-elscreen)
+(el-get-bundle foreign-regexp)
 
 (use-package init-loader
   :config

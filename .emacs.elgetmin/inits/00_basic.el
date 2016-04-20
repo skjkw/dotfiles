@@ -240,3 +240,14 @@ With argument, do this that many times."
 (setq indent-line-function 'insert-tab)
 
 (setq isearch-case-fold-search t)
+
+;; .#で始まるファイルは作成しない
+(setq create-lockfiles nil)
+
+;; 現在行ハイライト
+(use-package hl-line)
+(defun global-hl-line-timer-function ()
+  (global-hl-line-unhighlight-all)
+  (let ((global-hl-line-mode t))
+    (global-hl-line-highlight)))
+(setq global-hl-line-timer (run-with-idle-timer 0.03 t 'global-hl-line-timer-function))
