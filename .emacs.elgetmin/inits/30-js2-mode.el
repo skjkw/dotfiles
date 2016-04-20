@@ -6,9 +6,9 @@
   (tern-mode t)
   (eval-after-load 'tern
     '(progn
-       (require 'auto-complete)
+       (use-package auto-complete)
        (auto-complete-mode t)
-       (require 'tern-auto-complete)
+       (use-package tern-auto-complete)
        (tern-ac-setup))))
 
 (add-hook 'js2-mode-hook 'js2-mode-hooks)

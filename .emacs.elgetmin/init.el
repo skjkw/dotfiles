@@ -16,6 +16,7 @@
 ;; ------------------------------
 ;; Packages
 ;; ------------------------------
+(el-get-bundle! use-package)
 (el-get-bundle! with-eval-after-load-feature in tarao/with-eval-after-load-feature-el)
 (el-get-bundle! auto-install)
 (el-get-bundle dired+)
@@ -32,14 +33,19 @@
 (el-get-bundle rainbow-delimiters)
 (el-get-bundle recentf-ext)
 (el-get-bundle undo-tree)
-(el-get-bundle use-package)
 (el-get-bundle web-mode)
 (el-get-bundle yasnippet)
 (el-get-bundle paredit)
 (el-get-bundle ace-link)
 (el-get-bundle elscreen)
-(el-get-bundle! init-loader
+(el-get-bundle init-loader)
+(el-get-bundle which-key)
+;; (el-get-bundle skk in ddskk)
+
+(use-package init-loader
+  :config
   (with-eval-after-load-feature 'init-loader
     (setq init-loader-show-log-after-init 'error-only)
     (setq init-loader-byte-compile t)
-      (init-loader-load "~/.emacs.d/inits")))
+    (init-loader-load "~/.emacs.d/inits"))
+  )

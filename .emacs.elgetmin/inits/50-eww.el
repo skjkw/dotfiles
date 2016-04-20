@@ -40,6 +40,6 @@
   (setq-local shr-put-image-function 'shr-put-image-alt))
 (add-hook 'eww-mode-hook 'eww-mode-hook--disable-image)
 
-(use-package 'ace-link)
+(use-package ace-link)
 (eval-after-load 'eww '(define-key eww-mode-map "f" 'ace-link-eww))
 (ace-link-setup-default)

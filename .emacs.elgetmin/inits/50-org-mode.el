@@ -1,4 +1,4 @@
-(require 'org-install)
+(use-package org-install)
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 
 (setq org-hide-leading-stars t)
@@ -15,3 +15,8 @@
 (global-set-key "\C-cb" 'org-iswitchb)
 
 (transient-mark-mode 1)
+
+;; [DONE]の時現在タイムスタンプが挿入される
+(setq org-log-done 'time)
+
+(setq org-bullets-bullet-list '("■" "◆" "▲" "▶"))

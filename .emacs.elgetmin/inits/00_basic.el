@@ -13,7 +13,7 @@
 (setq set-buffer-file-coding-system 'utf-8-unix)
 
 (when (eq window-system 'darwin)
-  (require 'ucs-normalize)
+  (use-package 'ucs-normalize)
   (setq set-file-name-coding-system 'utf-8-hfs)
   (setq locale-coding-system 'utf-8hfs))
 
@@ -48,7 +48,8 @@
 
 (setq completion-ignore-case t)
 (global-auto-revert-mode 1)
-(require 'uniquify)
+
+(use-package uniquify)
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 
 (defun other-window-or-split ()
@@ -56,7 +57,6 @@
   (when (one-window-p)
     (split-window-horizontally))
   (other-window 1))
-
 (global-set-key (kbd "C-\'") 'other-window-or-split)
 
 (setq x-select-enable-clipboard t)
@@ -174,14 +174,14 @@
 (desktop-save-mode 1)
 
 ;; 動的略語展開
-(global-set-key (kbd "C-W") 'hippie-expand)
-(define-key minibuffer-local-map (kbd "C-W") 'hippie-expand)
-(setq hippie-expand-try-functions-list
-      '(try-complete-file-name-partially
-	try-complete-file-name
-	try-expand-dabbrev
-	try-expand-dabbrev-all-buffers
-	try-expand-dabbrev-from-kill))
+;; (global-set-key (kbd "C-W") 'hippie-expand)
+;; (define-key minibuffer-local-map (kbd "C-W") 'hippie-expand)
+;; (setq hippie-expand-try-functions-list
+;;       '(try-complete-file-name-partially
+;; 	try-complete-file-name
+;; 	try-expand-dabbrev
+;; 	try-expand-dabbrev-all-buffers
+;; 	try-expand-dabbrev-from-kill))
 
 ;; M-<DEL>をkillringの中へ入れない
 (defun delete-word (arg)
