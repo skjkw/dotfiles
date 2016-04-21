@@ -41,9 +41,13 @@
 (el-get-bundle init-loader)
 (el-get-bundle which-key)
 (el-get-bundle skk in ddskk)
-(el-get-bundle evil)
-(el-get-bundle evil-elscreen)
+;; (el-get-bundle evil)
+;; (el-get-bundle evil-elscreen)
 (el-get-bundle foreign-regexp)
+(el-get-bundle sql-indent)
+(el-get-bundle emacswiki:sql-complete)
+(el-get-bundle emacswiki:sql-transform)
+
 
 (use-package init-loader
   :config

@@ -2,7 +2,10 @@
 (define-key eww-mode-map "r" 'eww-reload)
 (define-key eww-mode-map "c 0" 'eww-copy-page-url)
 (define-key eww-mode-map "p" 'scroll-down)
-(define-key eww-mode-map "n" 'sroll-up)
+(define-key eww-mode-map "n" 'scroll-up)
+(define-key eww-mode-map "h" 'eww-next-url)
+(define-key eww-mode-map "k" 'previous-line)
+(define-key eww-mode-map "j" 'next-line)
 
 (defvar eww-disable-colorize t)
 (defun shr-colorize-region--disable (orig start end fg &optional bg &rest _)

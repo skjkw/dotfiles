@@ -1,7 +1,7 @@
-(set-language-environment "Japanese")
+;; (set-language-environment "Japanese")
 (set-locale-environment "en_US.UTF-8")
-(setenv "LC_ALL" "ja_JP.UTF-8")
-(setenv "LANG" "ja_JP.UTF-8")
+;; (setenv "LC_ALL" "ja_JP.UTF-8")
+;; (setenv "LANG" "ja_JP.UTF-8")
 (prefer-coding-system 'utf-8-unix)
 
 (setq set-file-name-coding-system 'utf-8-unix)
@@ -62,30 +62,30 @@
 (setq x-select-enable-clipboard t)
 
 (if window-system (progn
-    (set-background-color "Black")
-    (set-foreground-color "LightGray")
-    (set-cursor-color "Gray")
-    (set-frame-parameter nil 'alpha 90) ;透明度
+                    (set-background-color "Black")
+                    (set-foreground-color "LightGray")
+                    (set-cursor-color "Gray")
+                    (set-frame-parameter nil 'alpha 90) ;透明度
 
-    (defun font-set-ricty-hook ()
-        (set-face-attribute 'default nil
-                            :family "Ricty"
-                            :height 135)
-        (set-fontset-font
-            nil 'japanese-jisx0208
-            (font-spec :family "Ricty"))
-        (tool-bar-mode 0)
-        (toggle-scroll-bar nil)
-        (set-frame-parameter nil 'fullscreen 'maximized)
-      )
+                    (defun font-set-ricty-hook ()
+                      (set-face-attribute 'default nil
+                                          :family "Ricty"
+                                          :height 135)
+                      (set-fontset-font
+                       nil 'japanese-jisx0208
+                       (font-spec :family "Ricty"))
+                      (tool-bar-mode 0)
+                      (toggle-scroll-bar nil)
+                      (set-frame-parameter nil 'fullscreen 'maximized)
+                      )
 
-    (add-hook 'emacs-startup-hook 'font-set-ricty-hook)
-    ))
+                    (add-hook 'emacs-startup-hook 'font-set-ricty-hook)
+                    ))
 
 (defun set-alpha (alpha-num)
-"set frame parameter 'alpha"
-(interactive "nAlpha: ")
-(set-frame-parameter nil 'alpha (cons alpha-num '(90))))
+  "set frame parameter 'alpha"
+  (interactive "nAlpha: ")
+  (set-frame-parameter nil 'alpha (cons alpha-num '(90))))
 
 ;;; メニューのBuffersを階層に分ける
 (msb-mode 1)
@@ -160,13 +160,13 @@
 (defadvice isearch-mode (around isearch-mode-default-string (forward &optional regexp op-fun recursive-edit word-p) activate)
   (if (and transient-mark-mode mark-active (not (eq (mark) (point))))
       (progn
-	(isearch-update-ring (buffer-substring-no-properties (mark) (point)))
-	(deactivate-mark)
-	ad-do-it
-	(if (not forward)
-	    (isearch-repeat-backward)
-	  (goto-char (mark))
-	  (isearch-repeat-forward)))
+        (isearch-update-ring (buffer-substring-no-properties (mark) (point)))
+        (deactivate-mark)
+        ad-do-it
+        (if (not forward)
+            (isearch-repeat-backward)
+          (goto-char (mark))
+          (isearch-repeat-forward)))
     ad-do-it))
 
 (setq desktop-globals-to-save '(extended-command-history))
@@ -185,16 +185,16 @@
 
 ;; M-<DEL>をkillringの中へ入れない
 (defun delete-word (arg)
-    "Delete characters forward until encountering the end of a word.
+  "Delete characters forward until encountering the end of a word.
 With argument, do this that many times."
-    (interactive "p")
-    (delete-region (point) (progn (forward-word arg) (point))))
+  (interactive "p")
+  (delete-region (point) (progn (forward-word arg) (point))))
 
 (defun backward-delete-word (arg)
-    "Delete characters backward until encountering the end of a word.
+  "Delete characters backward until encountering the end of a word.
 With argument, do this that many times."
-    (interactive "p")
-    (delete-word (- arg)))
+  (interactive "p")
+  (delete-word (- arg)))
 
 (global-set-key (read-kbd-macro "<M-DEL>") 'backward-delete-word)
 
@@ -243,6 +243,8 @@ With argument, do this that many times."
 
 ;; .#で始まるファイルは作成しない
 (setq create-lockfiles nil)
+;; *.~ とかのバックアップファイルを作らない
+(setq make-backup-files nil)
 
 ;; 現在行ハイライト
 (use-package hl-line)
@@ -251,3 +253,14 @@ With argument, do this that many times."
   (let ((global-hl-line-mode t))
     (global-hl-line-highlight)))
 (setq global-hl-line-timer (run-with-idle-timer 0.03 t 'global-hl-line-timer-function))
+
+(display-time)
+;; 以下の書式に従ってモードラインに日付・時刻を表示する                 
+(setq display-time-string-forms                                         
+      '((format "[%s/%s/%s(%s) %s:%s]" year month day dayname 24-hours minutes)))
+;; 時刻表示の左隣に日付を追加。    
+(setq display-time-kawakami-form t)
+;; 24時間制                        
+(setq display-time-24hr-format t)
+
+(global-visual-line-mode)
