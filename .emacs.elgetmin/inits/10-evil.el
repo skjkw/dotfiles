@@ -1,9 +1,6 @@
 (use-package evil
   :config
   (evil-mode 1)
-  )
-
-(with-eval-after-load-feature-el 'evil
   (defun evil-swap-key (map key1 key2)
     ;; MAP中のKEY1とKEY2を入れ替え
     "Swap KEY1 and KEY2 in MAP."
