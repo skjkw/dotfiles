@@ -255,12 +255,18 @@ With argument, do this that many times."
 (setq global-hl-line-timer (run-with-idle-timer 0.03 t 'global-hl-line-timer-function))
 
 (display-time)
-;; 以下の書式に従ってモードラインに日付・時刻を表示する                 
-(setq display-time-string-forms                                         
+;; 以下の書式に従ってモードラインに日付・時刻を表示する
+(setq display-time-string-forms
       '((format "[%s/%s/%s(%s) %s:%s]" year month day dayname 24-hours minutes)))
-;; 時刻表示の左隣に日付を追加。    
+;; 時刻表示の左隣に日付を追加。
 (setq display-time-kawakami-form t)
-;; 24時間制                        
+;; 24時間制
 (setq display-time-24hr-format t)
 
 (global-visual-line-mode)
+
+;; タイトルバーにファイルのフルパス表示
+(setq frame-title-format
+            (format "%%f - Emacs@%s" (system-name)))
+
+(which-function-mode t)
