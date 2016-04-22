@@ -45,8 +45,8 @@
 (el-get-bundle init-loader)
 (el-get-bundle which-key)
 (el-get-bundle skk in ddskk)
-;; (el-get-bundle evil)
-;; (el-get-bundle evil-elscreen)
+(el-get-bundle evil)
+(el-get-bundle evil-elscreen)
 (el-get-bundle foreign-regexp)
 (el-get-bundle sql-indent)
 (el-get-bundle emacswiki:sql-complete)
@@ -64,7 +64,7 @@
 (el-get-bundle undo-tree)
 (el-get-bundle undohist)
 (el-get-bundle ggtags)
-;; (el-get-bundle org-bullets)
+(el-get-bundle org-bullets)
 (el-get-bundle point-undo)
 (el-get-bundle json-mode)
 (el-get-bundle flycheck)
@@ -73,6 +73,8 @@
 (el-get-bundle gitignore-mode)
 (el-get-bundle git-gutter+)
 (el-get-bundle git-gutter-fringe+)
+(el-get-bundle magit)
+(el-get-bundle migemo)
 
 (use-package init-loader
   :config

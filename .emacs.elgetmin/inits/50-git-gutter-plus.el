@@ -1,8 +1,8 @@
 (use-package git-gutter+
   :config
+  (use-package git-gutter-fringe+)
   (global-set-key (kbd "C-x g") 'git-gutter+-mode) ; Turn on/off in the current buffer
   (global-set-key (kbd "C-x G") 'global-git-gutter+-mode) ; Turn on/off globally
-  (use-package git-gutter-fringe+)
   )
 
 (eval-after-load 'git-gutter+
