@@ -71,6 +71,7 @@ values."
    )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '(
+    eyebrowse
    )
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
    ;; are declared in a layer which is not a member of
@@ -436,6 +437,11 @@ you should place you code here."
       (or (dired-subtree-up arg)
           (dired-up-directory)))
     (define-key dired-mode-map (kbd "^") 'dired-subtree-up-dwim)
+
+    ;; ------------------------------
+    ;; OrgMode
+    ;; ------------------------------
+    (setq org-bullets-bullet-list '("■" "◆" "▲" "▶"))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
