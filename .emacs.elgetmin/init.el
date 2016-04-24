@@ -75,6 +75,21 @@
 (el-get-bundle git-gutter-fringe+)
 (el-get-bundle magit)
 (el-get-bundle migemo)
+(el-get-bundle evil-leader)
+(el-get-bundle evil-indent-textobject)
+(el-get-bundle evil-visualstar)
+(el-get-bundle evil-exchange)
+(el-get-bundle evil-surround)
+(el-get-bundle evil-matchit)
+(el-get-bundle evil-nerd-commenter)
+(el-get-bundle evil-search-highlight-persist)
+(el-get-bundle evil-numbers)
+(el-get-bundle evil-args)
+(el-get-bundle evil-jumper)
+(el-get-bundle evil-org-mode
+  :name evil-org
+  )
+(el-get-bundle neotree)
 
 (use-package init-loader
   :config
