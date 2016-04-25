@@ -90,7 +90,7 @@
   :name evil-org
   )
 (el-get-bundle neotree)
-;; (el-get-bundle howm)
+(el-get-bundle howm)
 
 (use-package init-loader
   :config
