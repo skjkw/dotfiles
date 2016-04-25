@@ -19,4 +19,9 @@
 ;; [DONE]の時現在タイムスタンプが挿入される
 (setq org-log-done 'time)
 
-(setq org-bullets-bullet-list '("■" "◆" "▲" "▶"))
+(use-package org-bullets
+  :config
+  (setq org-bullets-bullet-list '("■" "◆" "▲" "▶"))
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+  )
+

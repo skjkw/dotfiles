@@ -1,1 +1,1 @@
-(use-package evil-org)
+(require 'evil-org)

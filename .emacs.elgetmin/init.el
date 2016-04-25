@@ -86,10 +86,11 @@
 (el-get-bundle evil-numbers)
 (el-get-bundle evil-args)
 (el-get-bundle evil-jumper)
-(el-get-bundle evil-org-mode
+(el-get-bundle edwtjo/evil-org-mode
   :name evil-org
   )
 (el-get-bundle neotree)
+;; (el-get-bundle howm)
 
 (use-package init-loader
   :config
