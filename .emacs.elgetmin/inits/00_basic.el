@@ -270,3 +270,5 @@ With argument, do this that many times."
             (format "%%f - Emacs@%s" (system-name)))
 
 (which-function-mode t)
+
+(add-to-list 'Info-directory-list "~/.emacs.d/info/mew/info")

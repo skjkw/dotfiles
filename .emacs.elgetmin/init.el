@@ -91,6 +91,7 @@
   )
 (el-get-bundle neotree)
 (el-get-bundle howm)
+(el-get-bundle mew)
 
 (use-package init-loader
   :config
