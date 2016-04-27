@@ -1,5 +1,7 @@
 (require 'howm-mode)
+(use-package elscreen-howm)
 ;; org-mode
+(setq howm-view-title-header "*")
 (add-hook 'org-mode-hook 'howm-mode)
 (add-to-list 'auto-mode-alist '("\\.howm$" . org-mode))
 (add-to-list 'auto-mode-alist '("\\.txt$" . org-mode))
