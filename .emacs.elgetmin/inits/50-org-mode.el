@@ -16,7 +16,29 @@
 
 (transient-mark-mode 1)
 
+;; TODO状態
+(setq org-todo-keywords
+      '((sequence "TODO" "WAIT" "SOMEDAY" "|" "DONE")))
 ;; [DONE]の時現在タイムスタンプが挿入される
 (setq org-log-done 'time)
 
-(setq org-bullets-bullet-list '("■" "◆" "▲" "▶"))
+(use-package org-bullets
+  :config
+  (setq org-bullets-bullet-list '("■" "◆" "▲" "▶"))
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+  )
+
+(setq org-directory "~/org/")
+(setq org-default-notes-file (concat org-directory "agenda.org"))
+(setq org-capture-templates
+      '(("t" "Todo" entry (file+headline nil "Inbox")
+         "** TODO %?\n   %i\n   %a\n   %t")
+        ("b" "Bug" entry (file+headline nil "Inbox")
+         "** TODO %?   :bug:\n   %i\n   %a\n   %t")
+        ("m" "Meeting" entry (file+headline nil "Meeting")
+         "** %?\n %U\n %a\n %i\n")
+        ("j" "Journal" entry (file+datetree "~/org/journal.org")
+         "* %?\nEntered on %U\n %i\n %a")
+        ("i" "Idea" entry (file+headline nil "New Ideas")
+         "** %?\n   %i\n   %a\n   %t")))
+(setq org-agenda-files (list org-default-notes-file ))
