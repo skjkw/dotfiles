@@ -6,7 +6,7 @@
 ;; 別ウィンドウではなく現在のウィンドウに開く
 (setq open-junk-file-find-file-function 'find-file)
 ;; ファイルのフォーマット
-(defvar junk-file-dir "~/program/junk/")
+(defvar junk-file-dir "~/howm/")
 (defvar junk-file-format "%Y/%m/%Y-%m-%d-%H%M%S.")
 (setq open-junk-file-format
       (concat
