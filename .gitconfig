@@ -15,6 +15,7 @@
 	permission-reset = "!git diff -p | grep -E \"^(diff|old mode|new mode)\" | sed -e \"s/^old/NEW/;s/^new/old/;s/^NEW/new/\" | git apply"
     # ファイル名のみの差分を表示する
     difff = diff --name-only
+    diffsf = diff --stat --name-only
     # staged diff
     diffs = diff --cached
     dp = diff --no-prefix
