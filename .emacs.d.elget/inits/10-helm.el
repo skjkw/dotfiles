@@ -11,12 +11,9 @@
 (define-key global-map (kbd "C-x b")   'helm-buffers-list)
 (define-key global-map (kbd "C-x C-b")   'helm-bookmarks)
 (define-key global-map (kbd "C-x C-d")   'helm-descbinds)
-(define-key helm-find-files-map (kbd "C-") 'helm-execute-persistent-action)
-(define-key helm-read-file-map (kbd "C-TAB") 'helm-execute-persistent-action)
+(define-key helm-find-files-map (kbd "TAB") 'helm-execute-persistent-action)
 
 ;;; Enable helm-gtags-mode
-;; (add-hook 'c-mode-hook 'helm-gtags-mode)
-;; (add-hook 'c++-mode-hook 'helm-gtags-mode)
 (add-hook 'asm-mode-hook 'helm-gtags-mode)
 (add-hook 'php-mode-hook 'helm-gtags-mode)
 (add-hook 'ruby-mode-hook 'helm-gtags-mode)

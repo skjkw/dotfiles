@@ -133,7 +133,7 @@ function fzf-git-hash(){
 }
 
 function peco-git-hash(){
-    git loghash | peco | awk '{print $1}'
+    git log --oneline --decorate --branches --remotes --tags --no-merges --date=iso --pretty='format:%h %d %s (%cn) [%ad]' | peco | awk '{print $1}'
 }
 alias -g H='$(peco-git-hash)'
 

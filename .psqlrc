@@ -18,4 +18,4 @@
 --
 \set ON_ERROR_ROLLBACK interactive
 -- ページャ
-\setenv PAGER /usr/bin/vimpager
+\setenv PAGER less
