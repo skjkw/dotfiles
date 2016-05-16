@@ -2,9 +2,9 @@
 
 ** passwd
 
-** useradd -m -G users shun
-
-** passwd shun
+** /etc/ssh/sshd_config
+    - PasswordAuthentication yes
+** /etc/init.d/sshd start
 
 ** ping -c 3 www.gentoo.org
 
@@ -192,9 +192,10 @@
 ** emerge --ask --noreplace net-misc/netifrc
 
 ** nano -w /etc/conf.d/net
-   - config_eth0="192.168.0.2 netmask 255.255.255.0 brd 192.168.0.255"
-   - routes_eth0="default via 192.168.0.1"
-   - config_eth0="dhcp"
+   - config_enp0s3="dhcp"
+
+   - config_enp0s8="192.168.0.2 netmask 255.255.255.0 brd 192.168.0.255"
+   - routes_enp0s8="default via 192.168.0.1"
 
 ** cd /etc/init.d
 
@@ -213,6 +214,9 @@
 
 ** nano -w /etc/conf.d/hwclock
 
+** /etc/ssh/sshd_config
+    - PasswordAuthentication yes
+
 ** rc-update add sshd default
 
 ** emerge --ask sys-boot/grub:2
@@ -223,6 +227,12 @@
 
 ** grub2-mkconfig -o /boot/grub/grub.cfg
 
+** useradd -m -G GROUP USER
+
+** passwd USER
+
+** gpasswd -a USER GROUP
+
 ** exit
 
 ** cd
@@ -232,7 +242,3 @@
 ** umount /mnt/gentoo{/boot,/sys,/proc,}
 
 ** reboot
-
-
-              [2016-04-27 22:02] 
-
