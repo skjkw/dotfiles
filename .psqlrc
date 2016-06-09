@@ -10,6 +10,7 @@
 \set VERBOSITY verbose
 -- データベースごとにヒストリファイルを作る
 \set HISTFILE ~/.psql_history- :DBNAME
+\set HISTSIZE 2000
 -- エディタ
 \set PSQL_EDITOR /usr/bin/vim
 \setenv EDITOR /usr/bin/vim
@@ -22,3 +23,5 @@
 \set ON_ERROR_ROLLBACK interactive
 -- ページャ
 \setenv PAGER less
+--
+\set ECHO all

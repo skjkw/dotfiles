@@ -185,39 +185,39 @@ zstyle ':zle:*' word-style unspecified
 # setopt noflowcontrol
 # bindkey '^Q' show_buffer_stack
 
-local p_buffer_stack=""
-local -a buffer_stack_arr
-
-function make_p_buffer_stack()
-{
-    if [[ ! $#buffer_stack_arr > 0 ]]; then
-        p_buffer_stack=""
-        return
-    fi
-    p_buffer_stack="%F{cyan}<stack:$buffer_stack_arr>%f"
-}
-
-function show_buffer_stack()
-{
-    local cmd_str_len=$#LBUFFER
-    [[ cmd_str_len > 10 ]] && cmd_str_len=10
-    buffer_stack_arr=("[$LBUFFER[1,${cmd_str_len}]]" $buffer_stack_arr)
-    make_p_buffer_stack
-    zle push-line-or-edit
-    zle reset-prompt
-}
-
-function check_buffer_stack()
-{
-    [[ $#buffer_stack_arr > 0 ]] && shift buffer_stack_arr
-    make_p_buffer_stack
-}
-
-zle -N show_buffer_stack
-bindkey "^Q" show_buffer_stack
-add-zsh-hook precmd check_buffer_stack
-
-RPROMPT='${p_buffer_stack}'RPROMPT
+# local p_buffer_stack=""
+# local -a buffer_stack_arr
+#
+# function make_p_buffer_stack()
+# {
+#     if [[ ! $#buffer_stack_arr > 0 ]]; then
+#         p_buffer_stack=""
+#         return
+#     fi
+#     p_buffer_stack="%F{cyan}<stack:$buffer_stack_arr>%f"
+# }
+#
+# function show_buffer_stack()
+# {
+#     local cmd_str_len=$#LBUFFER
+#     [[ cmd_str_len > 10 ]] && cmd_str_len=10
+#     buffer_stack_arr=("[$LBUFFER[1,${cmd_str_len}]]" $buffer_stack_arr)
+#     make_p_buffer_stack
+#     zle push-line-or-edit
+#     zle reset-prompt
+# }
+#
+# function check_buffer_stack()
+# {
+#     [[ $#buffer_stack_arr > 0 ]] && shift buffer_stack_arr
+#     make_p_buffer_stack
+# }
+#
+# zle -N show_buffer_stack
+# bindkey "^Q" show_buffer_stack
+# add-zsh-hook precmd check_buffer_stack
+#
+# RPROMPT='${p_buffer_stack}'RPROMPT
 
 ########################################
 # 補完
@@ -241,17 +241,17 @@ zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
 
 ########################################
 # vcs_info
-autoload -Uz vcs_info
-autoload -Uz add-zsh-hook
-
-zstyle ':vcs_info:*' formats '%F{green}(%s)-[%b]%f'
-zstyle ':vcs_info:*' actionformats '%F{red}(%s)-[%b|%a]%f'
-
-function _update_vcs_info_msg() {
-    LANG=en_US.UTF-8 vcs_info
-    RPROMPT="${vcs_info_msg_0_}"
-}
-add-zsh-hook precmd _update_vcs_info_msg
+# autoload -Uz vcs_info
+# autoload -Uz add-zsh-hook
+#
+# zstyle ':vcs_info:*' formats '%F{green}(%s)-[%b]%f'
+# zstyle ':vcs_info:*' actionformats '%F{red}(%s)-[%b|%a]%f'
+#
+# function _update_vcs_info_msg() {
+#     LANG=en_US.UTF-8 vcs_info
+#     RPROMPT="${vcs_info_msg_0_}"
+# }
+# add-zsh-hook precmd _update_vcs_info_msg
 
 
 ########################################
@@ -325,8 +325,8 @@ alias mv='mv -i'
 
 alias mkdir='mkdir -p'
 
-alias -g J='|jq . L'
-alias -g Q='|jq .'
+alias -g J='|jq --color-output . L'
+alias -g Q='|jq --color-output .'
 
 alias gd='git diff HEAD'
 
@@ -386,6 +386,7 @@ alias gco='git checkout'
 alias gcob='git checkout -b'
 alias gcom='git checkout master'
 alias gd='git diff'
+alias gdc='git diff --cached'
 alias gda='git diff HEAD'
 alias gdh='git diff H'
 alias gdb='git diff B'
