@@ -336,6 +336,10 @@ NeoBundle 'AndrewRadev/linediff.vim', {
             \ }}
 
 NeoBundle 'itchyny/vim-parenmatch'
+NeoBundleLazy 'fatih/vim-go', {
+            \ 'autoload': {
+            \    'filetypes': ['go'],
+            \ }}
 
 call neobundle#end()
 
