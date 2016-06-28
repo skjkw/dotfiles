@@ -8,12 +8,10 @@ set fileencodings=utf-8,iso-2022-jp,cp932,euc-jp,default,latin
 " --------------------------------------------------------------------------------
 " --------------------------------------------------------------------------------
 " neobundle
-set nocompatible               " Be iMproved
-filetype off                   " Required!
-
 if has('vim_starting')
   if &compatible
     set nocompatible               " Be iMproved
+    filetype off
   endif
 
   set runtimepath+=~/.vim/bundle/neobundle.vim/
@@ -249,26 +247,26 @@ NeoBundle 'akiyan/vim-textobj-xml-attribute'
 
 NeoBundle 'tpope/vim-repeat'
 
-NeoBundle 'tobyS/vmustache'
-NeoBundle 'tobyS/pdv', {
-    \   'depends' : ["tobyS/vmustache"],
-    \ }
-NeoBundle 'SirVer/ultisnips'
+" NeoBundle 'tobyS/vmustache'
+" NeoBundle 'tobyS/pdv', {
+"     \   'depends' : ["tobyS/vmustache"],
+"     \ }
+" NeoBundle 'SirVer/ultisnips'
 
 NeoBundle 'tmhedberg/matchit'
 NeoBundle 'tpope/vim-abolish'
 NeoBundle 'haya14busa/incsearch.vim'
 
-NeoBundleLazy 'marcus/rsense', {
-      \ 'autoload': {
-      \   'filetypes': 'ruby',
-      \ },
-      \ }
+" NeoBundleLazy 'marcus/rsense', {
+"       \ 'autoload': {
+"       \   'filetypes': 'ruby',
+"       \ },
+"       \ }
 
-NeoBundleLazy 'supermomonga/neocomplete-rsense.vim', { 'autoload' : {
-  \ 'insert' : 1,
-  \ 'filetypes': 'ruby',
-  \ }}
+" NeoBundleLazy 'supermomonga/neocomplete-rsense.vim', { 'autoload' : {
+"   \ 'insert' : 1,
+"   \ 'filetypes': 'ruby',
+"   \ }}
 
 NeoBundle 'tpope/vim-endwise', { 'autoloard' : {
             \ 'insert' : 1,
@@ -313,6 +311,10 @@ NeoBundleLazy 'aquach/vim-http-client', {
             \ 'autoload': {
             \    'commands': ['HTTPClientDoRequest'],
             \ }}
+NeoBundleLazy 'hdima/python-syntax', {
+            \ 'autoload': {
+            \    'filetypes': ['py']
+            \ }}
 
 NeoBundle 'mtth/scratch.vim'
 NeoBundle 'osyo-manga/vim-brightest'
@@ -350,4 +352,4 @@ NeoBundleCheck
 set runtimepath+=~/.vim/
 runtime! conf.d/*.vim
 
-let $PATH = "c:/cygwin/bin;" . $PATH
+" let $PATH = "c:/cygwin/bin;" . $PATH
