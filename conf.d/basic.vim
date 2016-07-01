@@ -85,7 +85,7 @@ set guioptions=c
 " タブ文字、行末など不可視文字を表示する
 set list
 " listで表示される文字のフォーマットを指定する
-set listchars=tab:>\ ,trail:_
+set listchars=tab:>-,trail:_
 " OSのクリップボードをレジスタ指定無しで Yank, Put 出来るようにする
 set clipboard=unnamed,unnamedplus
 " Windows でもパスの区切り文字を / にする
@@ -114,7 +114,7 @@ set display=lastline
 " 補完メニューの高さ
 set pumheight=10
 " ステータスライン表示
-set statusline=%{g:Date()}\%<%f%{exists('g:loaded_fugitive')?fugitive#statusline():''}%=%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%y%{tagbar#currenttag('[%s]','')}[%l/%L][%c%V]%3p%%
+set statusline=%{g:Date()}\%<%f%{exists('g:loaded_fugitive')?fugitive#statusline():''}%=[0x%B]%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%y%{tagbar#currenttag('[%s]','')}[%l/%L][%c%V]%3p%%
 " インデントを丸める
 set shiftround
 "

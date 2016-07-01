@@ -225,12 +225,6 @@ nmap ,d <Plug>(textmanip-duplicate-down)
 xmap ,D <Plug>(textmanip-duplicate-up)
 nmap ,D <Plug>(textmanip-duplicate-up)
 
-" xmap <C-j> <Plug>(textmanip-move-down)
-" xmap <C-k> <Plug>(textmanip-move-up)
-" xmap <C-h> <Plug>(textmanip-move-left)
-" xmap <C-l> <Plug>(textmanip-move-right)
-
-" toggle insert/replace with <F10>
 nmap <F10> <Plug>(textmanip-toggle-mode)
 xmap <F10> <Plug>(textmanip-toggle-mode)
 
@@ -491,17 +485,8 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_funky_matchtype = 'path'
 let g:ctrlp_funky_syntax_highlight = 1
 
-" let g:unite_source_gtags_project_config = {
-" \   '_': {
-" \     'gtags_libpath':
-" \       [ '/home/kajikawa/projects/cyo/' ]
-" \   }
-" \ }
-
 let dbext_default_profile="PG_local"
 let dbext_default_buffer_lines=20
-
-let g:dbext_default_profile_PG_local = 'type=PGSQL:user=sw_user:passwd=sw2_pwd:dbname=sw2_kajikawa:host=192.168.24.130'
 
 let g:ftplugin_sql_omni_key = '<c-k>'
 let g:ftplugin_sql_omni_key_right = '<c-n>'
@@ -561,16 +546,6 @@ unlet s:bundle
 
 nnoremap <silent> <Leader>vf :VimFiler<CR>
 
-" 入力モード中に素早くJJと入力した場合はESCとみなす
-" inoremap jj <Esc>
-
-"  " n や N の代わりに使用します。
-" nnoremap n nzz
-" nnoremap N Nzz
-" nnoremap * *zz
-" nnoremap # #zz
-" nnoremap <Esc><Esc> :noh<CR>
-
 if !exists('g:neocomplete#text_mode_filetypes')
     let g:neocomplete#text_mode_filetypes = {}
 endif
@@ -586,19 +561,19 @@ let g:neocomplete#text_mode_filetypes = {
             \ 'tex': 1,
             \ }
 
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
+map /  <Plug>(incsearch-forward)\v
+map ?  <Plug>(incsearch-backward)\v
+map g/ <Plug>(incsearch-stay)\v
 
 nnoremap <Esc><Esc> :<C-u>nohlsearch<CR>
 
 let g:incsearch#auto_nohlsearch = 1
-map n  <Plug>(incsearch-nohl-n)
-map N  <Plug>(incsearch-nohl-N)
-map *  <Plug>(incsearch-nohl-*)
-map #  <Plug>(incsearch-nohl-#)
-map g* <Plug>(incsearch-nohl-g*)
-map g# <Plug>(incsearch-nohl-g#)
+map n  <Plug>(incsearch-nohl-n)zz
+map N  <Plug>(incsearch-nohl-N)zz
+map *  <Plug>(incsearch-nohl-*)zz
+map #  <Plug>(incsearch-nohl-#)zz
+map g* <Plug>(incsearch-nohl-g*)zz
+map g# <Plug>(incsearch-nohl-g#)zz
 
 let g:rsenseHome = expand("~/opt/rsense-0.3")
 let g:rsenseUseOmniFunc = 1
@@ -638,19 +613,6 @@ let QFixHowm_Key = 'g'
 let QFixHowm_KeyB = ','
 
 let QFixHowm_FileType = 'qfix_memo'
-
-" -------------------------------
-" Gmail
-" -------------------------------
-let g:gmail_imap = 'imap.gmail.com:993'
-let g:gmail_smtp = 'smtp.gmail.com:465'
-let g:gmail_user_name = 'nc.s.kajikawa@gmail.com'
-
-" -------------------------------
-" Redmine
-" -------------------------------
-let g:rmine_server_url = 'http://192.168.24.229/redmine/'
-let g:rmine_access_key = 'ab67c3f439099729d5bdd75958cbe473308293b6'
 
 
 " -------------------------------
