@@ -104,7 +104,8 @@ set t_Co=256
 set ambiwidth=double
 " 他でファイルが編集された時に自動で読み込む
 set autoread
-set noshowmode
+" 現在モードを表示する
+set showmode
 " バッファ切り替え
 set hidden
 " タイトルを表示
@@ -114,7 +115,7 @@ set display=lastline
 " 補完メニューの高さ
 set pumheight=10
 " ステータスライン表示
-set statusline=%{g:Date()}\%<%f%{exists('g:loaded_fugitive')?fugitive#statusline():''}%=[0x%B]%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%y%{tagbar#currenttag('[%s]','')}[%l/%L][%c%V]%3p%%
+set statusline=%{g:Date()}\%<%f%{exists('g:loaded_fugitive')?fugitive#statusline():''}%=%{g:SkkInputMode()}[%{g:GetNowMode()}][0x%B]%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%y%{tagbar#currenttag('[%s]','')}[%l/%L][%c%V]%3p%%
 " インデントを丸める
 set shiftround
 "

@@ -16,7 +16,7 @@ nnoremap gk k
 
 nnoremap ; :
 nnoremap : ;
-nnoremap Q gq
+nnoremap Q gQ
 noremap sh  ^
 noremap sl  $
 nnoremap s/  *

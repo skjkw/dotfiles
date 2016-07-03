@@ -29,16 +29,45 @@ function! g:Date()
     return strftime("%Y/%m/%d %H:%M ")
 endfunction
 
-" ステータスラインにモードを表示する
+" ステータスラインにeskkのモードを表示する
 function! g:SkkInputMode()
-    return eskk#statusline()
+    return g:eskk#statusline()
 endfunction
 
-augroup InsertHook
-    autocmd!
-    autocmd InsertEnter * highlight StatusLine guifg=#ccdc90 guibg=#2E4340 ctermfg=gray
-    autocmd InsertLeave * highlight StatusLine guifg=#2E4340 guibg=#ccdc90 ctermfg=white
-augroup END
+" ステータスラインにモードを表示する
+" ステータスラインの色も変更する
+function! g:GetNowMode()
+    let nowMode = mode()
+    if nowMode == 'n' || nowMode == 'no'
+        highlight StatusLine guifg=#2E4340 guibg=#ccdc90 ctermfg=white
+        return 'Normal'
+    elseif nowMode == 'i'
+        highlight StatusLine guifg=#ccdc90 guibg=#2E4340 ctermfg=gray
+        return 'Insert'
+    elseif nowMode == '' || nowMode ==? 'v'
+        highlight StatusLine guifg=#8f9bdc guibg=#ffc50d ctermfg=blue
+        return 'Visual'
+    elseif nowMode == '' || nowMode ==? 's'
+        return 'Select'
+    elseif nowMode == 'R'
+        return 'Replace'
+    elseif nowMode == 'Rv'
+        return 'VisualReplace'
+    elseif nowMode == 'c'
+        highlight StatusLine guifg=#dc6464 guibg=#0dff51 ctermfg=red
+        return 'Command'
+    elseif nowMode == 'cv'
+        return 'VimEx'
+    elseif nowMode == 'r'
+        return 'HitEnter'
+    elseif nowMode == 'rm'
+        return 'More'
+    elseif nowMode == 'r?'
+        return 'Confirm'
+    elseif nowMode == '!'
+        return 'Shell'
+    endif
+endfunction
 
 """"""""""""""""""""""""""""""
 " 最後のカーソル位置を復元する
