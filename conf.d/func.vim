@@ -31,45 +31,43 @@ endfunction
 
 " ステータスラインにeskkのモードを表示する
 function! g:SkkInputMode()
-    " if eskk#is_enabled()
-    "     return eskk#statusline()
-    " endif
-    return ''
+    " return g:eskk#statusline()
 endfunction
 
 " ステータスラインにモードを表示する
 " ステータスラインの色も変更する
 function! g:GetNowMode()
-    let nowMode = mode()
-    if nowMode == 'n' || nowMode == 'no'
-        highlight StatusLine guifg=#2E4340 guibg=#ccdc90 ctermfg=white
-        return 'Normal'
-    elseif nowMode == 'i'
-        highlight StatusLine guifg=#ccdc90 guibg=#2E4340 ctermfg=gray
-        return 'Insert'
-    elseif nowMode == '' || nowMode ==? 'v'
-        highlight StatusLine guifg=#8f9bdc guibg=#ffc50d ctermfg=blue
-        return 'Visual'
-    elseif nowMode == '' || nowMode ==? 's'
-        return 'Select'
-    elseif nowMode == 'R'
-        return 'Replace'
-    elseif nowMode == 'Rv'
-        return 'VisualReplace'
-    elseif nowMode == 'c'
-        highlight StatusLine guifg=#dc6464 guibg=#0dff51 ctermfg=red
-        return 'Command'
-    elseif nowMode == 'cv'
-        return 'VimEx'
-    elseif nowMode == 'r'
-        return 'HitEnter'
-    elseif nowMode == 'rm'
-        return 'More'
-    elseif nowMode == 'r?'
-        return 'Confirm'
-    elseif nowMode == '!'
-        return 'Shell'
-    endif
+    " let nowMode = mode()
+    " if nowMode == 'n' || nowMode == 'no'
+    "     highlight StatusLine guifg=#2E4340 guibg=#ccdc90 ctermfg=white ctermbg=black
+    "     return 'Normal'
+    " elseif nowMode == 'i'
+    "     highlight StatusLine guifg=#ccdc90 guibg=#2E4340 ctermfg=black ctermbg=white
+    "     return 'Insert'
+    " elseif nowMode == '' || nowMode ==? 'v'
+    "     highlight StatusLine guifg=#8f9bdc guibg=#ffc50d ctermfg=blue ctermbg=black
+    "     return 'Visual'
+    " elseif nowMode == '' || nowMode ==? 's'
+    "     return 'Select'
+    " elseif nowMode == 'R'
+    "     highlight StatusLine ctermfg=yellow ctermbg=black
+    "     return 'Replace'
+    " elseif nowMode == 'Rv'
+    "     return 'VisualReplace'
+    " elseif nowMode == 'c'
+    "     highlight StatusLine guifg=#dc6464 guibg=#0dff51 ctermfg=red ctermbg=black
+    "     return 'Command'
+    " elseif nowMode == 'cv'
+    "     return 'VimEx'
+    " elseif nowMode == 'r'
+    "     return 'HitEnter'
+    " elseif nowMode == 'rm'
+    "     return 'More'
+    " elseif nowMode == 'r?'
+    "     return 'Confirm'
+    " elseif nowMode == '!'
+    "     return 'Shell'
+    " endif
 endfunction
 
 """"""""""""""""""""""""""""""
