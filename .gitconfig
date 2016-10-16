@@ -39,6 +39,7 @@
     slist = stash list
     sshow = stash show -p
     c = commit -v
+    sb = show-branch --sha1-name
 [ghq]
 	root = /home/kajikawa/src
 [diff]
