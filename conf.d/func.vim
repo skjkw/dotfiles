@@ -31,7 +31,10 @@ endfunction
 
 " ステータスラインにeskkのモードを表示する
 function! g:SkkInputMode()
-    return g:eskk#statusline()
+    " if eskk#is_enabled()
+    "     return eskk#statusline()
+    " endif
+    return ''
 endfunction
 
 " ステータスラインにモードを表示する
