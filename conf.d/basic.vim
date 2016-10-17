@@ -120,3 +120,7 @@ set statusline=%{g:Date()}\%<%f%{exists('g:loaded_fugitive')?fugitive#statusline
 set shiftround
 "
 set synmaxcol=300
+
+let g:did_install_default_menus = 1
+
+let g:did_menu_trans = 1

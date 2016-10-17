@@ -389,8 +389,8 @@ let g:eskk#large_dictionary = {
     \   'sorted': 1,
     \   'encoding': 'euc-jp',
     \}
-let g:eskk#marker_henkan='->'
-let g:eskk#marker_henkan_select='=>'
+" let g:eskk#marker_henkan='->'
+" let g:eskk#marker_henkan_select='=>'
 
 
 " --------------------------------------------------------------------------------
