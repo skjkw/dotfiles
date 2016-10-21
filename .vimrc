@@ -188,11 +188,11 @@ NeoBundleLazy 'yuratomo/gmail.vim', {
       \ }
 
 " redmine
-NeoBundle 'basyura/rmine.vim'
+" NeoBundle 'basyura/rmine.vim'
 
 " debug
 NeoBundleLazy 'joonty/vdebug.git', {
-            \    'autoload':{'filetypes':["php"]}
+            \    'autoload':{'commands':["VdebugStart"]}
             \ }
 
 " library
@@ -208,7 +208,11 @@ NeoBundle 'sgur/ctrlp-extensions.vim'
 NeoBundle 'haya14busa/vim-migemo'
 NeoBundle 'thinca/vim-unite-history'
 
-NeoBundle 'vim-scripts/dbext.vim'
+NeoBundleLazy   'vim-scripts/dbext.vim', {
+      \ 'autoload' : {
+      \   'filetypes' : ['sql'],
+      \   },
+      \ }
 
 NeoBundle 'thinca/vim-unite-history'
 
@@ -220,7 +224,9 @@ NeoBundle 'kana/vim-smartchr'
 NeoBundle 'marijnh/tern_for_vim'
 NeoBundle 'idanarye/vim-merginal'
 
-NeoBundle 'cohama/agit.vim'
+NeoBundleLazy 'cohama/agit.vim', {
+            \    'autoload':{'commands':["AgitFile"]}
+            \ }
 
 NeoBundleLazy   'ujihisa/neco-look', {
       \ 'depends'  : 'Shougo/neocomplete',
