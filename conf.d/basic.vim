@@ -124,3 +124,5 @@ set synmaxcol=300
 let g:did_install_default_menus = 1
 
 let g:did_menu_trans = 1
+" 相対行で表示する
+set relativenumber
