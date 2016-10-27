@@ -220,13 +220,13 @@ vnoremap <silent> <C-p> "0p<CR>
 " --------------------------------------------------------------------------------
 " --------------------------------------------------------------------------------
 " let g:textmanip_enable_mappings = 1
-nmap ,d <Plug>(textmanip-duplicate-down)
-nmap ,d <Plug>(textmanip-duplicate-down)
-xmap ,D <Plug>(textmanip-duplicate-up)
-nmap ,D <Plug>(textmanip-duplicate-up)
-
-nmap <F10> <Plug>(textmanip-toggle-mode)
-xmap <F10> <Plug>(textmanip-toggle-mode)
+" nmap ,d <Plug>(textmanip-duplicate-down)
+" nmap ,d <Plug>(textmanip-duplicate-down)
+" xmap ,D <Plug>(textmanip-duplicate-up)
+" nmap ,D <Plug>(textmanip-duplicate-up)
+"
+" nmap <F10> <Plug>(textmanip-toggle-mode)
+" xmap <F10> <Plug>(textmanip-toggle-mode)
 
 
 " --------------------------------------------------------------------------------
@@ -302,9 +302,11 @@ let g:ctrlp_open_new_file       = 1   " 新規ファイル作成時にタブで�
 
 " --------------------------------------------------------------------------------
 " --------------------------------------------------------------------------------
-let g:indentLine_color_term = 111
-let g:indentLine_color_gui = '#708090'
-let g:indentLine_char = '¦'
+" let g:indentLine_color_term = 111
+" let g:indentLine_color_gui = '#708090'
+" let g:indentLine_char = '¦'
+
+let g:indent_guides_enable_on_vim_startup = 1
 
 " --------------------------------------------------------------------------------
 " --------------------------------------------------------------------------------
@@ -337,16 +339,16 @@ autocmd FileType git :setlocal foldlevel=99
 
 " --------------------------------------------------------------------------------
 " --------------------------------------------------------------------------------
-nnoremap <silent> <Leader>gg :Git<Space>
-nnoremap <silent> <Leader>gs :Gstatus<CR>
-nnoremap <silent> <Leader>gw :Gwrite<CR>
-nnoremap <silent> <Leader>gc :Gcommit<CR>
-nnoremap <silent> <Leader>gb :Gblame<CR>
-nnoremap <silent> <Leader>gd :Gdiff<CR>
-nnoremap <silent> <Leader>gl :Glog<CR>
-nnoremap <silent> <Leader>gf :Git fetch --all<CR>
-
-nnoremap <silent> <Leader>gm :MerginalToggle<CR>
+" nnoremap <silent> <Leader>gg :Git<Space>
+" nnoremap <silent> <Leader>gs :Gstatus<CR>
+" nnoremap <silent> <Leader>gw :Gwrite<CR>
+" nnoremap <silent> <Leader>gc :Gcommit<CR>
+" nnoremap <silent> <Leader>gb :Gblame<CR>
+" nnoremap <silent> <Leader>gd :Gdiff<CR>
+" nnoremap <silent> <Leader>gl :Glog<CR>
+" nnoremap <silent> <Leader>gf :Git fetch --all<CR>
+"
+" nnoremap <silent> <Leader>gm :MerginalToggle<CR>
 
 " --------------------------------------------------------------------------------
 " --------------------------------------------------------------------------------
@@ -362,20 +364,20 @@ nnoremap <silent> <C-a><C-p> :<C-u>Ref phpmanual<Space>
 " --------------------------------------------------------------------------------
 " --------------------------------------------------------------------------------
 " tcommentで使用する形式を追加
-if !exists('g:tcomment_types')
-      let g:tcomment_types = {}
-  endif
-let g:tcomment_types = {
-      \'php_surround' : "<?php %s ?>",
-      \'eruby_surround' : "<%% %s %%>",
-      \'eruby_surround_minus' : "<%% %s -%%>",
-      \'eruby_surround_equality' : "<%%= %s %%>",
-\}
-
-au FileType php nmap <buffer><C-_>c :TCommentAs php_surround<CR>
-au FileType php vmap <buffer><C-_>c :TCommentAs php_surround<CR>
-au FileType ctp nmap <buffer><C-_>c :TCommentAs php_surround<CR>
-au FileType ctp vmap <buffer><C-_>c :TCommentAs php_surround<CR>
+" if !exists('g:tcomment_types')
+"       let g:tcomment_types = {}
+"   endif
+" let g:tcomment_types = {
+"       \'php_surround' : "<?php %s ?>",
+"       \'eruby_surround' : "<%% %s %%>",
+"       \'eruby_surround_minus' : "<%% %s -%%>",
+"       \'eruby_surround_equality' : "<%%= %s %%>",
+" \}
+"
+" au FileType php nmap <buffer><C-_>c :TCommentAs php_surround<CR>
+" au FileType php vmap <buffer><C-_>c :TCommentAs php_surround<CR>
+" au FileType ctp nmap <buffer><C-_>c :TCommentAs php_surround<CR>
+" au FileType ctp vmap <buffer><C-_>c :TCommentAs php_surround<CR>
 
 " --------------------------------------------------------------------------------
 " --------------------------------------------------------------------------------
@@ -405,14 +407,14 @@ endif
 " http://d.hatena.ne.jp/thinca/20130131/1359567419
 " ウィンドウサイズの変更キーを簡易化する
 " [C-w],[+]または、[C-w],[-]
-call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
-call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
-call submode#enter_with('winsize', 'n', '', '<C-w>+', '<C-w>-')
-call submode#enter_with('winsize', 'n', '', '<C-w>-', '<C-w>+')
-call submode#map('winsize', 'n', '', '>', '<C-w>>')
-call submode#map('winsize', 'n', '', '<', '<C-w><')
-call submode#map('winsize', 'n', '', '+', '<C-w>-')
-call submode#map('winsize', 'n', '', '-', '<C-w>+')
+" call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
+" call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
+" call submode#enter_with('winsize', 'n', '', '<C-w>+', '<C-w>-')
+" call submode#enter_with('winsize', 'n', '', '<C-w>-', '<C-w>+')
+" call submode#map('winsize', 'n', '', '>', '<C-w>>')
+" call submode#map('winsize', 'n', '', '<', '<C-w><')
+" call submode#map('winsize', 'n', '', '+', '<C-w>-')
+" call submode#map('winsize', 'n', '', '-', '<C-w>+')
 
 " --------------------------------------------------------------------------------
 " --------------------------------------------------------------------------------
@@ -426,7 +428,7 @@ let g:tagbar_sort = 0
 " --------------------------------------------------------------------------------
 " --------------------------------------------------------------------------------
 " gundo
-nnoremap U :<C-U>GundoToggle<CR>
+" nnoremap U :<C-U>GundoToggle<CR>
 
 " --------------------------------------------------------------------------------
 " --------------------------------------------------------------------------------
@@ -525,24 +527,24 @@ endfunction
 " -----------------------------------------------------------------------------
 "  vdebug
 " -----------------------------------------------------------------------------
-let s:bundle = neobundle#get("vdebug")
-function! s:bundle.hooks.on_source(bundle)
-    let g:vdebug_force_ascii = 1
-    let g:vdebug_options = {
-    \    "port" : 9000,
-    \    "server" : 'localhost',
-    \    "timeout" : 20,
-    \    "on_close" : 'detach',
-    \    "break_on_open" : 1,
-    \    "ide_key" : 'xdebug',
-    \    "remote_path" : "",
-    \    "local_path" : "",
-    \    "debug_window_level" : 0,
-    \    "debug_file_level" : 0,
-    \    "debug_file" : "",
-    \ }
-endfunction
-unlet s:bundle
+" let s:bundle = neobundle#get("vdebug")
+" function! s:bundle.hooks.on_source(bundle)
+"     let g:vdebug_force_ascii = 1
+"     let g:vdebug_options = {
+"     \    "port" : 9000,
+"     \    "server" : 'localhost',
+"     \    "timeout" : 20,
+"     \    "on_close" : 'detach',
+"     \    "break_on_open" : 1,
+"     \    "ide_key" : 'xdebug',
+"     \    "remote_path" : "",
+"     \    "local_path" : "",
+"     \    "debug_window_level" : 0,
+"     \    "debug_file_level" : 0,
+"     \    "debug_file" : "",
+"     \ }
+" endfunction
+" unlet s:bundle
 
 nnoremap <silent> <Leader>vf :VimFiler<CR>
 
@@ -575,8 +577,8 @@ map #  <Plug>(incsearch-nohl-#)zz
 map g* <Plug>(incsearch-nohl-g*)zz
 map g# <Plug>(incsearch-nohl-g#)zz
 
-let g:rsenseHome = expand("~/opt/rsense-0.3")
-let g:rsenseUseOmniFunc = 1
+" let g:rsenseHome = expand("~/opt/rsense-0.3")
+" let g:rsenseUseOmniFunc = 1
 
 if !exists('g:neocomplete#force_omni_input_patterns')
   let g:neocomplete#force_omni_input_patterns = {}
@@ -654,16 +656,16 @@ let g:brightest#enable_on_CursorHold = 1
 " -------------------------------
 " markdown
 " -------------------------------
-au BufRead,BufNewFile *.md set filetype=markdown
+" au BufRead,BufNewFile *.md set filetype=markdown
 
 
 " -------------------------------
 " vimagit
 " -------------------------------
-let g:magit_show_help = 1
-let g:magit_default_show_all_files = 2
-let g:magit_default_fold_level = 2
-let g:magit_default_sections = ['global_help', 'info', 'unstaged', 'staged', 'commit']
+" let g:magit_show_help = 1
+" let g:magit_default_show_all_files = 2
+" let g:magit_default_fold_level = 2
+" let g:magit_default_sections = ['global_help', 'info', 'unstaged', 'staged', 'commit']
 
 
 " -------------------------------
@@ -679,20 +681,22 @@ let g:loaded_matchparen = 1
 " -------------------------------
 " golang
 " -------------------------------
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_interfaces = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
+" let g:go_highlight_functions = 1
+" let g:go_highlight_methods = 1
+" let g:go_highlight_fields = 1
+" let g:go_highlight_structs = 1
+" let g:go_highlight_interfaces = 1
+" let g:go_highlight_operators = 1
+" let g:go_highlight_build_constraints = 1
 
 " -------------------------------
 " jedi-vim
 " -------------------------------
-autocmd FileType python setlocal omnifunc=jedi#completions
+" autocmd FileType python setlocal omnifunc=jedi#completions
 
 " -------------------------------
 " python-syntax
 " -------------------------------
-let python_highlight_all = 1
+" let python_highlight_all = 1
+
+let g:indent_guides_guide_size = 1
