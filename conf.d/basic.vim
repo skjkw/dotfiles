@@ -125,7 +125,7 @@ let g:did_install_default_menus = 1
 
 let g:did_menu_trans = 1
 " 相対行で表示する
-set relativenumber
+" set relativenumber
 " 画面をスクロールする行数の最大値
 set ttyscroll=3
 " 高速ターミナル接続を行う

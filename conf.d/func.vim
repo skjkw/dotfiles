@@ -80,7 +80,3 @@ if has("autocmd")
     \ endif
 endif
 """"""""""""""""""""""""""""""
-augroup vimrc-highlight
-  autocmd!
-  autocmd Syntax * if 1000 < line('$') | syntax sync minlines=100 | endif
-augroup END

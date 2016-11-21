@@ -84,52 +84,6 @@ autocmd BufReadPost,BufEnter,BufWritePost :neocompleteCachingBuffer <buffer>
 
 " --------------------------------------------------------------------------------
 " --------------------------------------------------------------------------------
-" Anywhere SID.
-function! s:SID_PREFIX()
-  return matchstr(expand('<sfile>'), '<SNR>\d\+_\zeSID_PREFIX$')
-endfunction
-
-" Set tabline.
-function! s:my_tabline()  "{{{
-  let s = ''
-  for i in range(1, tabpagenr('$'))
-    let bufnrs = tabpagebuflist(i)
-    let bufnr = bufnrs[tabpagewinnr(i) - 1]  " first window, first appears
-    let no = i  " display 0-origin tabpagenr.
-    let mod = getbufvar(bufnr, '&modified') ? '!' : ' '
-    let title = fnamemodify(bufname(bufnr), ':t')
-    let title = '[' . title . ']'
-    let s .= '%'.i.'T'
-    let s .= '%#' . (i == tabpagenr() ? 'TabLineSel' : 'TabLine') . '#'
-    let s .= no . ':' . title
-    let s .= mod
-    let s .= '%#TabLineFill# '
-  endfor
-  let s .= '%#TabLineFill#%T%=%#TabLine#'
-  return s
-endfunction "}}}
-let &tabline = '%!'. s:SID_PREFIX() . 'my_tabline()'
-
-" The prefix key.
-nnoremap    [Tag]   <Nop>
-nmap    t [Tag]
-" Tab jump
-for n in range(1, 9)
-  execute 'nnoremap <silent> [Tag]'.n  ':<C-u>tabnext'.n.'<CR>'
-endfor
-" t1 で1番左のタブ、t2 で1番左から2番目のタブにジャンプ
-
-nnoremap <silent> [Tag]c :tablast <bar> tabnew<CR>
-" tc 新しいタブを一番右に作る
-nnoremap <silent> [Tag]x :tabclose<CR>
-" tx タブを閉じる
-nnoremap <silent> [Tag]n :tabnext<CR>
-" tn 次のタブ
-nnoremap <silent> [Tag]p :tabprevious<CR>
-" tp 前のタブ
-
-" --------------------------------------------------------------------------------
-" --------------------------------------------------------------------------------
 "prefix keyの設定
 " vinarise
 let g:vinarise_enable_auto_detect = 1
@@ -212,6 +166,34 @@ let g:unite_source_mark_marks = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTU
 " --------------------------------------------------------------------------------
 let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_enable_auto_cd = 1
+
+" --------------------------------------------------------------------------------
+" --------------------------------------------------------------------------------
+" Anywhere SID.
+function! s:SID_PREFIX()
+  return matchstr(expand('<sfile>'), '<SNR>\d\+_\zeSID_PREFIX$')
+endfunction
+
+" Set tabline.
+function! s:my_tabline()  "{{{
+  let s = ''
+  for i in range(1, tabpagenr('$'))
+    let bufnrs = tabpagebuflist(i)
+    let bufnr = bufnrs[tabpagewinnr(i) - 1]  " first window, first appears
+    let no = i  " display 0-origin tabpagenr.
+    let mod = getbufvar(bufnr, '&modified') ? '!' : ' '
+    let title = fnamemodify(bufname(bufnr), ':t')
+    let title = '[' . title . ']'
+    let s .= '%'.i.'T'
+    let s .= '%#' . (i == tabpagenr() ? 'TabLineSel' : 'TabLine') . '#'
+    let s .= no . ':' . title
+    let s .= mod
+    let s .= '%#TabLineFill# '
+  endfor
+  let s .= '%#TabLineFill#%T%=%#TabLine#'
+  return s
+endfunction "}}}
+let &tabline = '%!'. s:SID_PREFIX() . 'my_tabline()'
 
 " --------------------------------------------------------------------------------
 " --------------------------------------------------------------------------------
@@ -307,6 +289,7 @@ let g:ctrlp_open_new_file       = 1   " 新規ファイル作成時にタブで�
 " let g:indentLine_char = '¦'
 
 let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_guide_size = 1
 
 " --------------------------------------------------------------------------------
 " --------------------------------------------------------------------------------
@@ -364,20 +347,20 @@ nnoremap <silent> <C-a><C-p> :<C-u>Ref phpmanual<Space>
 " --------------------------------------------------------------------------------
 " --------------------------------------------------------------------------------
 " tcommentで使用する形式を追加
-" if !exists('g:tcomment_types')
-"       let g:tcomment_types = {}
-"   endif
-" let g:tcomment_types = {
-"       \'php_surround' : "<?php %s ?>",
-"       \'eruby_surround' : "<%% %s %%>",
-"       \'eruby_surround_minus' : "<%% %s -%%>",
-"       \'eruby_surround_equality' : "<%%= %s %%>",
-" \}
-"
-" au FileType php nmap <buffer><C-_>c :TCommentAs php_surround<CR>
-" au FileType php vmap <buffer><C-_>c :TCommentAs php_surround<CR>
-" au FileType ctp nmap <buffer><C-_>c :TCommentAs php_surround<CR>
-" au FileType ctp vmap <buffer><C-_>c :TCommentAs php_surround<CR>
+if !exists('g:tcomment_types')
+      let g:tcomment_types = {}
+  endif
+let g:tcomment_types = {
+      \'php_surround' : "<?php %s ?>",
+      \'eruby_surround' : "<%% %s %%>",
+      \'eruby_surround_minus' : "<%% %s -%%>",
+      \'eruby_surround_equality' : "<%%= %s %%>",
+\}
+
+au FileType php nmap <buffer><C-_>c :TCommentAs php_surround<CR>
+au FileType php vmap <buffer><C-_>c :TCommentAs php_surround<CR>
+au FileType ctp nmap <buffer><C-_>c :TCommentAs php_surround<CR>
+au FileType ctp vmap <buffer><C-_>c :TCommentAs php_surround<CR>
 
 " --------------------------------------------------------------------------------
 " --------------------------------------------------------------------------------
@@ -699,4 +682,3 @@ let g:loaded_matchparen = 1
 " -------------------------------
 " let python_highlight_all = 1
 
-let g:indent_guides_guide_size = 1
