@@ -344,10 +344,10 @@ NeoBundle 'tacroe/unite-mark'
 "             \ }}
 
 NeoBundle 'itchyny/vim-parenmatch'
-" NeoBundleLazy 'fatih/vim-go', {
-"             \ 'autoload': {
-"             \    'filetypes': ['go'],
-"             \ }}
+NeoBundleLazy 'fatih/vim-go', {
+            \ 'autoload': {
+            \    'filetypes': ['go'],
+            \ }}
 
 
 call neobundle#end()

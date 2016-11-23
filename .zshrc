@@ -1,9 +1,11 @@
 source ~/.zshrc.antigen
 export PATH="/home/kajikawa/.cask/bin:$PATH"
 export GOPATH=~/go
+export GOROOT=$( go env GOROOT )
 export PATH=$PATH:~/go/bin
 export PATH=$PATH:~/bin
 export LANG=C
+export XDG_CONFIG_HOME=~/.config
 
 alias ekill='emacsclient -e "(kill-emacs)"'
 alias en='emacsclient -nw -a ""'
