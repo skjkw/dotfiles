@@ -1,4 +1,0 @@
-edit /etc/rc.local
-
-mount -t vboxsf share /mnt/share
-

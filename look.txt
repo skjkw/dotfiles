@@ -1,7 +1,0 @@
-http://www.namazu.org/~tsuchiya/sdic/data/gene.html
-
-nkf -w gene.txt | \
-perl -ne 'chop;chop; $_=" $_\n" if ($.%2 == 0);print;' | \
-perl -pe 'chop;@a = split(/s+/, $_); $_="$_\n$a[0]\n";' > words
-
-sudo mv words /usr/share/dict/words
