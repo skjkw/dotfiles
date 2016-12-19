@@ -919,3 +919,8 @@ autocmd FileType python setlocal omnifunc=jedi#completions
 " -------------------------------
 let python_highlight_all = 1
 
+" -------------------------------
+" php_localvarcheck
+" -------------------------------
+let g:php_localvarcheck_enable = 1
+let g:php_localvarcheck_global = 0

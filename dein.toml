@@ -7,24 +7,30 @@ depends = ['unite.vim']
 
 [[plugins]]
 repo = 'Shougo/neoyank.vim'
+depends = ['unite.vim']
 
 [[plugins]]
 repo = 'Shougo/unite-outline'
+depends = ['unite.vim']
 
 [[plugins]]
 repo = 'ujihisa/unite-colorscheme'
+depends = ['unite.vim']
 
 [[plugins]]
 repo = 'tsukkee/unite-tag'
+depends = ['unite.vim']
 
 [[plugins]]
 repo = 'hewes/unite-gtags'
+depends = ['unite.vim']
 
 [[plugins]]
 repo = 'honza/vim-snippets'
 
 [[plugins]]
 repo = 'tsukkee/unite-help'
+depends = ['unite.vim']
 
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'
@@ -194,21 +200,22 @@ repo =  'yuku-t/vim-ref-ri'
 
 [[plugins]]
 repo =  'mattn/ctrlp-filer'
+depends = ['ctrlp.vim']
 
 [[plugins]]
 repo =  'vim-scripts/ctrlp-funky'
+depends = ['ctrlp.vim']
 
 [[plugins]]
 repo =  'sgur/ctrlp-extensions.vim'
+depends = ['ctrlp.vim']
 
 [[plugins]]
 repo =  'haya14busa/vim-migemo'
 
 [[plugins]]
 repo =  'thinca/vim-unite-history'
-
-[[plugins]]
-repo =  'thinca/vim-unite-history'
+depends = ['unite.vim']
 
 [[plugins]]
 repo =  'shawncplus/phpcomplete.vim'
@@ -236,6 +243,7 @@ repo =  'osyo-manga/vim-brightest'
 
 [[plugins]]
 repo =  'tacroe/unite-mark'
+depends = ['unite.vim']
 
 [[plugins]]
 repo =  'itchyny/vim-parenmatch'
