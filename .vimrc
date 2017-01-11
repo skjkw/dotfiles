@@ -804,6 +804,10 @@ map /  <Plug>(incsearch-forward)\v
 map ?  <Plug>(incsearch-backward)\v
 map g/ <Plug>(incsearch-stay)\v
 
+map m/ <Plug>(incsearch-migemo-/)
+map m? <Plug>(incsearch-migemo-?)
+map mg/ <Plug>(incsearch-migemo-stay)
+
 nnoremap <Esc><Esc> :<C-u>nohlsearch<CR>
 
 let g:incsearch#auto_nohlsearch = 1
@@ -922,5 +926,5 @@ let python_highlight_all = 1
 " -------------------------------
 " php_localvarcheck
 " -------------------------------
-let g:php_localvarcheck_enable = 1
+let g:php_localvarcheck_enable = 0
 let g:php_localvarcheck_global = 0

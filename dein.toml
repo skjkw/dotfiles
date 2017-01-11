@@ -260,3 +260,6 @@ repo =  'scrooloose/Syntastic'
 [[plugins]]
 repo =  'claco/jasmine.vim'
 
+[[plugins]]
+repo = 'haya14busa/incsearch-migemo.vim'
+depends = ['incsearch.vim']
