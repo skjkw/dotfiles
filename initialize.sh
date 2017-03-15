@@ -30,17 +30,11 @@ config_dir=$HOME"/.config"
 mkdir -p $bin_dir 2>/dev/null
 mkdir -p $src_dir 2>/dev/null
 mkdir -p $repo_dir 2>/dev/null
-# mkdir -p $HOME"/antigen" 2>/dev/null
 mkdir -p $config_dir 2>/dev/null
-
-if [ ! -d $HOME"/.zplug" ]; then
-    mkdir -p $HOME"/.zplug" 2>/dev/null
-    curl -fLo ~/.zplug/zplug --create-dirs git.io/zplug
-fi
 
 if [ ! -f $HOME"/bin/peco" ]; then
     curl -sL -o $src_dir"peco_linux_amd64.tar.gz" https://github.com/peco/peco/releases/download/v0.5.0/peco_linux_amd64.tar.gz
-    tar zxvf $src_dir"peco_linux_amd64.tar.gz"
+    tar zxvf $src_dir"peco_linux_amd64.tar.gz" -C $src_dir
     mv $src_dir"peco_linux_amd64/peco" $bin_dir
 fi
 
@@ -69,8 +63,10 @@ ln -snfv $repo_dir"dotfiles/dein.toml" $HOME"/dein.toml"
 ln -snfv $repo_dir"dotfiles/dein_lazy.toml" $HOME"/dein_lazy.toml"
 ln -snfv $repo_dir"dotfiles/.emacs.d.elget" $HOME"/.emacs.d"
 
-if [ ! -f $HOME"/antigen/antigen.zsh" ]; then
-    curl -sL https://cdn.rawgit.com/zsh-users/antigen/v1.4.1/bin/antigen.zsh > $HOME"/antigen/antigen.zsh"
+if [ ! -d $HOME"/.zplug" ]; then
+    mkdir -p $HOME"/.zplug" 2>/dev/null
+    git clone https://github.com/b4b4r07/zplug ~/.zplug
+    source $HOME"/.zshrc"
 fi
 
 if [ ! -d $HOME"/.anyenv" ]; then
