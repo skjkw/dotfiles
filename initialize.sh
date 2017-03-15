@@ -70,10 +70,14 @@ fi
 if [ ! -d $HOME"/.zplug" ]; then
     mkdir -p $HOME"/.zplug" 2>/dev/null
     curl -sL zplug.sh/installer | zsh
-    zplug install
+    if [ -f $HOME"/.zplug/init.zsh" ]; then
+        chmod u+x $HOME"/.zplug/init.zsh"
+        zsh $HOME"/.zplug/init.zsh"
+        if type zplug > /dev/null 2>&1; then
+                zplug install
+        fi
+    fi
 fi
-
-exec $SHELL -l
 
 cat << END
 
@@ -88,3 +92,5 @@ cat << END
 ******************************************************************************************************************************
 
 END
+
+exec $SHELL -l
