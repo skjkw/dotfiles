@@ -1,5 +1,4 @@
-source ~/.zshrc.antigen
-export PATH="/home/kajikawa/.cask/bin:$PATH"
+source ~/.zshrc.zplug
 export GOPATH=~/go
 export GOROOT=$( go env GOROOT )
 export PATH=$PATH:~/go/bin
@@ -33,6 +32,23 @@ export LESSOPEN='| lessfilter %s'
 eval $(dircolors -b)
 export PATH="$HOME/.anyenv/bin:$PATH"
 eval "$(anyenv init -)"
+
+bindkey '^xb' anyframe-widget-cdr
+
+bindkey '^xr' anyframe-widget-execute-history
+bindkey '^x^r' anyframe-widget-execute-history
+
+bindkey '^xp' anyframe-widget-put-history
+bindkey '^x^p' anyframe-widget-put-history
+
+bindkey '^xk' anyframe-widget-kill
+bindkey '^x^k' anyframe-widget-kill
+
+bindkey '^xi' anyframe-widget-insert-git-branch
+bindkey '^x^i' anyframe-widget-insert-git-branch
+
+bindkey '^xf' anyframe-widget-insert-filename
+bindkey '^x^f' anyframe-widget-insert-filename
 
 function insert-file-by-percol(){
     LBUFFER=$LBUFFER$(ls -A | peco | tr '\n' ' ' | \
