@@ -29,7 +29,6 @@ alias cl=cl
 export LESS='-iMR'
 export LESSOPEN='| lessfilter %s'
 
-eval $(dircolors -b)
 export PATH="$HOME/.anyenv/bin:$PATH"
 eval "$(anyenv init -)"
 
