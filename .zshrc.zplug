@@ -1,4 +1,4 @@
-source ~/.zplug/zplug/init.zsh
+source ~/.zplug/init.zsh
 
 zplug "plugins/git", from:oh-my-zsh
 zplug "themes/ys.zsh-theme", from:oh-my-zsh
