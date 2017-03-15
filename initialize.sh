@@ -69,12 +69,13 @@ fi
 
 if [ ! -d $HOME"/.zplug" ]; then
     mkdir -p $HOME"/.zplug" 2>/dev/null
-    git clone https://github.com/b4b4r07/zplug ~/.zplug
-    source $HOME"/.zshrc"
-    zplug install
+    git clone https://github.com/b4b4r07/zplug $HOME/.zplug
 fi
 
 exec $SHELL -l
+
+. $HOME/.zplug/init.zsh
+zplug install
 
 cat << END
 
