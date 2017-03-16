@@ -13,9 +13,9 @@ PURE_GIT_DOWN_ARROW="↓"
 PURE_GIT_UP_ARROW="↑"
 
 source ~/.zshrc.zplug
-export GOPATH=~/go
+export GOPATH=~/.go
 export GOROOT=$( go env GOROOT )
-export PATH=$PATH:~/go/bin
+export PATH=$PATH:~/.go/bin
 export PATH=$PATH:~/bin
 export LANG=C
 export XDG_CONFIG_HOME=~/.config

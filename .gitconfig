@@ -1,18 +1,18 @@
 [color]
-	ui = auto
+    ui = auto
 [user]
-	email = kajikawa@nanoconnect.co.jp
-	name = Shun Kajikawa
+    email = kajikawa@nanoconnect.co.jp
+    name = Shun Kajikawa
 [core]
     editor = vim
-	quotepath = false
-	autocrlf = false
+    quotepath = false
+    autocrlf = false
     excludesfile = /home/kajikawa/.cyo.gitignore
-	attributesfile = /home/kajikawa/.gitattributes
+    attributesfile = /home/kajikawa/.gitattributes
 [push]
-	default = simple
+    default = simple
 [alias]
-	permission-reset = "!git diff -p | grep -E \"^(diff|old mode|new mode)\" | sed -e \"s/^old/NEW/;s/^new/old/;s/^NEW/new/\" | git apply"
+    permission-reset = "!git diff -p | grep -E \"^(diff|old mode|new mode)\" | sed -e \"s/^old/NEW/;s/^new/old/;s/^NEW/new/\" | git apply"
     # ファイル名のみの差分を表示する
     difff = diff --name-only
     diffsf = diff --stat --name-only
@@ -41,15 +41,16 @@
     c = commit -v
     sb = show-branch --sha1-name
 [ghq]
-	root = /home/kajikawa/src
+    root = ~/.ghq
+    root = ~/.go/src
 [diff]
-	tool = vimdiff
+    tool = vimdiff
 [difftool]
-	prompt = false
+    prompt = false
 [merge]
-	tool = vimdiff
+    tool = vimdiff
 [mergetool]
-	prompt = false
+    prompt = false
 [color]
     ui = auto
     diff = auto
