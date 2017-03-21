@@ -928,3 +928,8 @@ let python_highlight_all = 1
 " -------------------------------
 let g:php_localvarcheck_enable = 0
 let g:php_localvarcheck_global = 0
+
+
+if filereadable(expand($HOME."/.vimrc.local"))
+    source ~/.vimrc.local
+endif
