@@ -59,8 +59,8 @@ if type git > /dev/null 2>&1; then
     done
 fi
 
-ln -snfv $repo_dir"dotfiles/dein.toml" $HOME"/dein.toml"
-ln -snfv $repo_dir"dotfiles/dein_lazy.toml" $HOME"/dein_lazy.toml"
+ln -snfv $repo_dir"dotfiles/dein.toml" $HOME"/.config/dein.toml"
+ln -snfv $repo_dir"dotfiles/dein_lazy.toml" $HOME"/.config/dein_lazy.toml"
 ln -snfv $repo_dir"dotfiles/.emacs.d.elget" $HOME"/.emacs.d"
 
 if [ ! -d $HOME"/.anyenv" ]; then
@@ -69,13 +69,11 @@ fi
 
 if [ ! -d $HOME"/.zplug" ]; then
     mkdir -p $HOME"/.zplug" 2>/dev/null
-    git clone https://github.com/b4b4r07/zplug $HOME/.zplug
+    curl -sL zplug.sh/installer | zsh
+    zplug install
 fi
 
 exec $SHELL -l
-
-. $HOME/.zplug/init.zsh
-zplug install
 
 cat << END
 
