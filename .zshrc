@@ -1,3 +1,17 @@
+# cdr, add-zsh-hook を有効にする
+autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+add-zsh-hook chpwd chpwd_recent_dirs
+
+# cdr の設定
+zstyle ':chpwd:*' recent-dirs-max 5000
+zstyle ':chpwd:*' recent-dirs-default yes
+zstyle ':completion:*' recent-dirs-insert both
+zstyle ':completion:*' recent-dirs-insert both
+
+PURE_PROMPT_SYMBOL="$"
+PURE_GIT_DOWN_ARROW="↓"
+PURE_GIT_UP_ARROW="↑"
+
 source ~/.zshrc.zplug
 export GOPATH=~/go
 export GOROOT=$( go env GOROOT )
