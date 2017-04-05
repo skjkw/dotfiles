@@ -17,31 +17,14 @@ export GOPATH=~/.go
 export GOROOT=$( go env GOROOT )
 export PATH=$PATH:~/.go/bin
 export PATH=$PATH:~/bin
-export LANG=C
+export LANG=en_US.UTF-8
 export XDG_CONFIG_HOME=~/.config
 
 alias ekill='emacsclient -e "(kill-emacs)"'
 alias en='emacsclient -nw -a ""'
 alias e='emacsclient -c -a ""'
 
-man() {
-    env LESS_TERMCAP_mb=$'\E[01;31m' \
-        LESS_TERMCAP_md=$'\E[01;38;5;74m' \
-        LESS_TERMCAP_me=$'\E[0m' \
-        LESS_TERMCAP_se=$'\E[0m' \
-        LESS_TERMCAP_so=$'\E[38;5;246m' \
-        LESS_TERMCAP_ue=$'\E[0m' \
-        LESS_TERMCAP_us=$'\E[04;38;5;146m' \
-        man "$@"
-}
-
-alias c='pygmentize -O style=monokai -f console256 -g -O encoding=utf-8'
-function cl() {
-    c $1 | nl -n ln -b a
-}
-alias cl=cl
 export LESS='-iMR'
-export LESSOPEN='| lessfilter %s'
 
 export PATH="$HOME/.anyenv/bin:$PATH"
 eval "$(anyenv init -)"

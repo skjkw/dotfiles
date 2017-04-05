@@ -90,7 +90,3 @@ on_ft = ['py']
 [[plugins]]
 repo = 'flyinshadow/php_localvarcheck.vim'
 on_ft = ['php']
-
-[[plugins]]
-repo = 'beanworks/vim-phpfmt'
-on_ft = ['php']
