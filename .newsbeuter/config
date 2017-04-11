@@ -1,0 +1,23 @@
+browser "w3m %u"
+refresh-on-startup yes
+auto-reload yes
+
+bind-key k prev
+bind-key j next
+bind-key K up
+bind-key J down
+bind-key ^P pageup
+bind-key ^N pagedown
+
+articlelist-format "%4i %f %D [%10a][%6L]  %?T?|%-17T| ?%t"
+highlight feedlist    "^  *[0-9]+  *N  "                    color156 default
+highlight articlelist "^  *[0-9]+  *N  "                    color156 default
+highlight article     "^Title:.*"                           color156  default
+highlight article     "(^Feed:.*|^Author:.*)"               color75  default
+highlight article     "(^Link:.*|^Date:.*)"                 color75  default
+highlight article     "^Links:"                             white    color240
+highlight article     "\\[[0-9][0-9]*\\]"                   color72  default  bold
+highlight article     "\\[image [0-9][0-9]*\\]"             color72  default  bold
+color listnormal                                            white    default
+color listfocus                                             default  color240
+color info                                                  default  color240
