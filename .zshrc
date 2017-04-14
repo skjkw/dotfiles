@@ -375,7 +375,7 @@ alias look='less $(find . -type f -maxdepth 1 | peco)'
 function _jump(){
     __path="$(ag $* | peco | awk -F: '{printf "-c "$2" "$1}')"
     if [ -n "$__path" ]; then
-        vim $__path
+        vim `echo ${__path}`
     fi
 }
 
@@ -428,5 +428,60 @@ alias gph='git push origin HEAD'
 # ----------------------
 # Git log find by commit message
 function glf() { git log --all --grep="$1"; }
+
+
+local p_buffer_stack=""
+local -a buffer_stack_arr
+
+function make_p_buffer_stack()
+{
+    if [[ ! $#buffer_stack_arr > 0 ]]; then
+        p_buffer_stack=""
+        return
+    fi
+    p_buffer_stack="%F{cyan}<stack:$buffer_stack_arr>%f"
+}
+
+function show_buffer_stack()
+{
+    local cmd_str_len=$#LBUFFER
+    [[ cmd_str_len > 10 ]] && cmd_str_len=10
+    buffer_stack_arr=("[$LBUFFER[1,${cmd_str_len}]]" $buffer_stack_arr)
+    make_p_buffer_stack
+    zle push-line-or-edit
+    zle reset-prompt
+}
+
+function check_buffer_stack()
+{
+    [[ $#buffer_stack_arr > 0 ]] && shift buffer_stack_arr
+    make_p_buffer_stack
+}
+
+zle -N show_buffer_stack
+bindkey "^Q" show_buffer_stack
+add-zsh-hook precmd check_buffer_stack
+
+RPROMPT='${p_buffer_stack}'
+
+alias man='LANG="ja_JP.UTF-8" man'
+
+alias -g '...'='../..'
+alias -g '....'='../../..'
+#alias -g BG='& exit'
+#alias -g C='|wc -l'
+alias -g G='|grep'
+#alias -g H='|head'
+alias -g Hl=' --help |& less -r'
+#alias -g K='|keep'
+alias -g L='|less'
+alias -g LL='|& less -r'
+#alias -g M='|most'
+#alias -g N='&>/dev/null'
+#alias -g R='| tr A-z N-za-m'
+#alias -g SL='| sort | less'
+#alias -g S='| sort'
+#alias -g T='|tail'
+alias -g V='| vim -'
 
 # vim:set ft=zsh:
