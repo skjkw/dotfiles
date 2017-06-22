@@ -932,3 +932,5 @@ let g:php_localvarcheck_global = 0
 if filereadable(expand($HOME."/.vimrc.local"))
     source ~/.vimrc.local
 endif
+
+filetype plugin on
