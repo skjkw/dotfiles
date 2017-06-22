@@ -7,9 +7,10 @@ if has('win32')
     set guifont=Ricty:h13.5
     set guifontwide=Ricty:h13.5
 elseif has('mac')
-    set guioptions-=e
-    set guifont=Ricty:h13.5
-    set guifontwide=Ricty:h13.5
+    " set guioptions-=e
+    " set guifont=Ricty:h13.5
+    " set guifontwide=Ricty:h13.5
+    autocmd GUIEnter * set transparency=10
 else
     set guioptions-=e
     set guifont=Ricty:h13.5

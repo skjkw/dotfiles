@@ -42,7 +42,6 @@ endif
 " --------------------------------------------------------------------------------
 " --------------------------------------------------------------------------------
 " ファイルエンコード
-language mes en_US.utf8
 set encoding=utf-8
 set fileencodings=utf-8,iso-2022-jp,cp932,euc-jp,default,latin
 
@@ -104,13 +103,13 @@ set showtabline=4
 " フォント設定
 if has('win32')
     set guifont=Ricty:h13.5
-    set guifontwide=Ricty:h13.5
+    " set guifontwide=Ricty:h13.5
 elseif has('mac')
-    set guifont=Myrica\ M:h10
-    set guifontwide=Myrica\ M:h10
+    set guifont=Ricty\ Diminished\ Discord\ Regular:h15
+    " set guifontwide=Ricty\ Diminished\ Discord\ Regular:h15
 else
-    set guifont=Ricty\ 10.5
-    set guifontwide=Ricty\ 10.5
+    set guifont=Ricty:h15
+    " set guifontwide=Ricty:h15
 endif
 set iminsert=0
 set imsearch=0

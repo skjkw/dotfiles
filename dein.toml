@@ -106,7 +106,7 @@ repo =  'vim-scripts/AnsiEsc.vim'
 repo =  'nathanaelkane/vim-indent-guides'
 
 [[plugins]]
-repo =  'jQuery'
+repo =  'vim-scripts/jQuery'
 
 [[plugins]]
 repo =  'pbrisbin/html-template-syntax'
@@ -263,3 +263,6 @@ repo =  'claco/jasmine.vim'
 [[plugins]]
 repo = 'haya14busa/incsearch-migemo.vim'
 depends = ['incsearch.vim']
+
+[[plugins]]
+repo = 'pearofducks/ansible-vim'

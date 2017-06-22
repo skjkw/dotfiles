@@ -90,3 +90,6 @@ on_ft = ['py']
 [[plugins]]
 repo = 'flyinshadow/php_localvarcheck.vim'
 on_ft = ['php']
+
+[[plugins]]
+repo = 'vim-scripts/nginx.vim'

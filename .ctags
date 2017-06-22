@@ -1,4 +1,2 @@
---append=yes
 --recurse=yes
---langmap=PHP:+.ctp
---php-kinds=cfd
+--langmap=PHP:+.php.inc.tpl

@@ -1,14 +1,14 @@
 [color]
     ui = auto
 [user]
-    email = kajikawa@nanoconnect.co.jp
+    email = kajikawa@reas.jp
     name = Shun Kajikawa
 [core]
     editor = vim
     quotepath = false
     autocrlf = false
-    excludesfile = /home/kajikawa/.cyo.gitignore
-    attributesfile = /home/kajikawa/.gitattributes
+    excludesfile = /Users/kajikawa/.clipho.gitignore
+    attributesfile = /Users/kajikawa/.gitattributes
 [push]
     default = simple
 [alias]
@@ -43,6 +43,7 @@
 [ghq]
     root = ~/.ghq
     root = ~/.go/src
+    root = ~/repo
 [diff]
     tool = vimdiff
 [difftool]
