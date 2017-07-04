@@ -94,3 +94,11 @@ on_ft = ['php']
 
 [[plugins]]
 repo = 'vim-scripts/nginx.vim'
+
+[[plugins]]
+repo = 'othree/es.next.syntax.vim'
+on_ft = ['javascript']
+
+[[plugins]]
+repo = 'MaxMEllon/vim-jsx-pretty'
+on_ft = ['javascript']
