@@ -102,3 +102,7 @@ on_ft = ['javascript']
 [[plugins]]
 repo = 'MaxMEllon/vim-jsx-pretty'
 on_ft = ['javascript']
+
+[[plugins]]
+repo = 'Shougo/vimshell.vim'
+on_cmd = ['VimShell', 'VimShellTab']
