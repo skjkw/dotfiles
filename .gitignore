@@ -26,6 +26,14 @@
 .emacs.d/history
 .emacs.d/server/server
 .emacs.d/smex-items
+.emacs.d.elget/.emacs.desktop
+.emacs.d.elget/25.2.1/
+.emacs.d.elget/ac-comphist.dat
+.emacs.d.elget/history
+.emacs.d.elget/network-security.data
+.emacs.d.elget/projectile-bookmarks.eld
+.emacs.d.elget/recentf
+.emacs.d.elget/undohist/
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
