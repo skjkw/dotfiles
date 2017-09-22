@@ -1,5 +1,0 @@
-(require 'smex)
-(smex-initialize)
-(global-set-key (kbd "M-s") 'smex)
-(global-set-key (kbd "M-S") 'smex-major-mode-commands)
-(global-set-key (kbd "C-c C-c M-s") 'execute-extended-command)

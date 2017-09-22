@@ -14,6 +14,10 @@
 .emacs.d/projectile-bookmarks.eld
 .emacs.d/elpa/*
 .emacs.d/el-get/*
+.emacs.d/25.2.1
+.emacs.d/inits/*.elc
+.emacs.d/#*
+.emacs.d/*.data
 999-local-definition.el
 999-local-definition.elc
 .emacs.d/.emacs.desktop
