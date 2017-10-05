@@ -166,7 +166,7 @@ set statusline=%{g:Date()}\%<%f%{exists('g:loaded_fugitive')?fugitive#statusline
 " インデントを丸める
 set shiftround
 "
-set synmaxcol=300
+" set synmaxcol=300
 
 let g:did_install_default_menus = 1
 
@@ -263,8 +263,11 @@ augroup filetypedetect
     au! BufRead,BufNewFile *.less         setfiletype css
 augroup END
 
+filetype indent on
 " YAMLファイル用タブストップ設定
-au FileType yaml setlocal expandtab ts=2 sw=2 fenc=utf-8
+au FileType yaml setlocal expandtab ts=2 sts=2 sw=2 fenc=utf-8
+au FileType javascript setlocal expandtab ts=2 sts=2 sw=2
+au FileType javascript.jsx setlocal expandtab ts=2 sts=2 sw=2
 
 " --------------------------------------------------------------------------------
 " --------------------------------------------------------------------------------
@@ -657,9 +660,9 @@ let g:eskk#large_dictionary = {
 
 " --------------------------------------------------------------------------------
 " --------------------------------------------------------------------------------
-if executable('cmigemo')
+" if executable('cmigemo')
     " cnoremap <expr><CR> migemosearch#replace_search_word()."\<CR>"
-endif
+" endif
 
 " --------------------------------------------------------------------------------
 " --------------------------------------------------------------------------------
@@ -731,12 +734,12 @@ let g:ftplugin_sql_omni_key_right = '<c-n>'
 let g:ftplugin_sql_omni_key_left  = '<c-s>'
 let g:omni_sql_include_owner = 0
 
-" exec 'inoremap <silent> '.g:ftplugin_sql_omni_key_right.' <C-R>=sqlcomplete#DrillIntoTable()<CR>'
-" exec 'inoremap <silent> '.g:ftplugin_sql_omni_key_left.'  <C-R>=sqlcomplete#DrillOutOfColumns()<CR>'
-" exec 'inoremap <buffer> '.g:ftplugin_sql_omni_key.'t <C-\><C-O>:call sqlcomplete#Map("table")<CR><C-X><C-O>'
-" exec 'inoremap <buffer> '.g:ftplugin_sql_omni_key.'c <C-\><C-O>:call sqlcomplete#Map("column")<CR><C-X><C-O>'
-" exec 'inoremap <buffer> '.g:ftplugin_sql_omni_key.'l <C-\><C-O>:call sqlcomplete#Map("column-csv")<CR><C-X><C-O>'
-" exec 'inoremap <buffer> '.g:ftplugin_sql_omni_key.'R <C-\><C-O>:call sqlcomplete#Map("resetCache")<CR><C-X><C-O>'
+exec 'inoremap <silent> '.g:ftplugin_sql_omni_key_right.' <C-R>=sqlcomplete#DrillIntoTable()<CR>'
+exec 'inoremap <silent> '.g:ftplugin_sql_omni_key_left.'  <C-R>=sqlcomplete#DrillOutOfColumns()<CR>'
+exec 'inoremap <buffer> '.g:ftplugin_sql_omni_key.'t <C-\><C-O>:call sqlcomplete#Map("table")<CR><C-X><C-O>'
+exec 'inoremap <buffer> '.g:ftplugin_sql_omni_key.'c <C-\><C-O>:call sqlcomplete#Map("column")<CR><C-X><C-O>'
+exec 'inoremap <buffer> '.g:ftplugin_sql_omni_key.'l <C-\><C-O>:call sqlcomplete#Map("column-csv")<CR><C-X><C-O>'
+exec 'inoremap <buffer> '.g:ftplugin_sql_omni_key.'R <C-\><C-O>:call sqlcomplete#Map("resetCache")<CR><C-X><C-O>'
 
 " -----------------------------------------------------------------------------
 "  MultipleSearch
@@ -854,17 +857,17 @@ let g:syntastic_php_phpmd_post_args='design,unusedcode'
 " -------------------------------
 " QfixGrep
 " -------------------------------
-let MyGrep_ExcludeReg = '[~#]$\|\.bak$\|\.o$\|\.obj$\|\.exe$\|[/\\]tags$\|^tags$|[/\\]svn[/\\]|[/\\].git[/\\]|[/\\]logs[/\\]'
+" let MyGrep_ExcludeReg = '[~#]$\|\.bak$\|\.o$\|\.obj$\|\.exe$\|[/\\]tags$\|^tags$|[/\\]svn[/\\]|[/\\].git[/\\]|[/\\]logs[/\\]'
 
 " -------------------------------
 " QfixHowm
 " -------------------------------
-"Howmコマンドキーマップ
-let QFixHowm_Key = 'g'
-"Howmコマンドの2ストローク目キーマップ
-let QFixHowm_KeyB = ','
-
-let QFixHowm_FileType = 'qfix_memo'
+" "Howmコマンドキーマップ
+" let QFixHowm_Key = 'g'
+" "Howmコマンドの2ストローク目キーマップ
+" let QFixHowm_KeyB = ','
+"
+" let QFixHowm_FileType = 'qfix_memo'
 
 
 " -------------------------------

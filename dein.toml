@@ -71,8 +71,8 @@ hook_post_update = '''
 repo = 'StanAngeloff/php.vim'
 on_ft = ['php']
 
-[[plugins]]
-repo = 'Lokaltog/vim-easymotion'
+# [[plugins]]
+# repo = 'Lokaltog/vim-easymotion'
 
 [[plugins]]
 repo = 'tomtom/tcomment_vim'
@@ -113,12 +113,6 @@ repo =  'pbrisbin/html-template-syntax'
 
 [[plugins]]
 repo =  'exu/pgsql.vim'
-
-[[plugins]]
-repo =  'othree/yajs.vim'
-
-[[plugins]]
-repo =  'othree/javascript-libraries-syntax.vim'
 
 [[plugins]]
 repo =  'vim-scripts/AutoComplPop'
@@ -229,11 +223,11 @@ repo =  'tmhedberg/matchit'
 [[plugins]]
 repo =  'tpope/vim-abolish'
 
-[[plugins]]
-repo =  'fuenor/qfixgrep'
-
-[[plugins]]
-repo =  'fuenor/qfixhowm'
+# [[plugins]]
+# repo =  'fuenor/qfixgrep'
+#
+# [[plugins]]
+# repo =  'fuenor/qfixhowm'
 
 [[plugins]]
 repo =  'kana/vim-smartinput'

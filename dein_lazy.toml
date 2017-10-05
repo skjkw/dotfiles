@@ -96,17 +96,41 @@ on_ft = ['php']
 repo = 'vim-scripts/nginx.vim'
 
 [[plugins]]
-repo = 'othree/es.next.syntax.vim'
-on_ft = ['javascript']
-
-[[plugins]]
-repo = 'MaxMEllon/vim-jsx-pretty'
-on_ft = ['javascript']
-
-[[plugins]]
 repo = 'Shougo/vimshell.vim'
 on_cmd = ['VimShell', 'VimShellTab']
 
 [[plugins]]
 repo = 'rizzatti/dash.vim'
 on_cmd = ['Dash','Dash!']
+
+# [[plugins]]
+# repo = 'ternjs/tern_for_vim'
+# on_ft = ['javascript']
+
+[[plugins]]
+repo =  'othree/yajs.vim'
+on_ft = ['javascript']
+
+# [[plugins]]
+# repo = 'pangloss/vim-javascript'
+# on_ft = ['javascript']
+
+# [[plugins]]
+# repo = 'MaxMEllon/vim-jsx-pretty'
+# on_ft = ['javascript']
+
+[[plugins]]
+repo =  'othree/javascript-libraries-syntax.vim'
+on_ft = ['javascript']
+
+[[plugins]]
+repo = 'othree/es.next.syntax.vim'
+on_ft = ['javascript']
+
+[[plugins]]
+repo = 'mxw/vim-jsx'
+on_ft = ['javascript']
+
+# [[plugins]]
+# repo = 'neoclide/vim-jsx-improve'
+# on_ft = ['javascript']
