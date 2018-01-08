@@ -1,0 +1,124 @@
+# インサートモードに入ったら読み込む
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+on_i = 1
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+on_i = 1
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = ['toml']
+
+[[plugins]]
+repo =  'cakebaker/scss-syntax.vim'
+on_ft = ['scss','sass']
+
+[[plugins]]
+repo =  'digitaltoad/vim-jade'
+on_ft = ['jade']
+
+[[plugins]]
+repo =  'kchmck/vim-coffee-script'
+on_ft = ['coffee']
+
+[[plugins]]
+repo =  'vim-ruby/vim-ruby'
+on_ft = ['rb']
+
+[[plugins]]
+repo =  'tpope/vim-rails'
+on_ft = ['rb']
+
+[[plugins]]
+repo =  'tpope/vim-haml'
+on_ft = ['haml']
+
+[[plugins]]
+repo =  'osyo-manga/vim-over'
+on_cmd = ['OverCommandLine']
+
+[[plugins]]
+repo =  'rking/ag.vim'
+on_cmd = ['Ag']
+
+[[plugins]]
+repo = 'fatih/vim-go'
+rev = 'v1.13'
+on_ft = ['go']
+
+[[plugins]]
+repo = 'vim-scripts/dbext.vim'
+on_ft = ['sql']
+
+[[plugins]]
+repo = 'vim-scripts/SQLUtilities'
+on_ft = ['sql']
+
+[[plugins]]
+repo = 'cohama/agit.vim'
+on_cmd = ['AgitFile']
+
+[[plugins]]
+repo = 'davidhalter/jedi-vim'
+on_ft = ['py']
+
+[[plugins]]
+repo = 'andviro/flake8-vim'
+on_ft = ['py']
+
+[[plugins]]
+repo = 'hynek/vim-python-pep8-indent'
+on_ft = ['py']
+
+[[plugins]]
+repo = 'jmcantrell/vim-virtualenv'
+on_ft = ['py']
+
+[[plugins]]
+repo = 'bps/vim-textobj-python'
+on_ft = ['py']
+
+[[plugins]]
+repo = 'aquach/vim-http-client'
+on_cmd = ['HTTPClientDoRequest']
+
+[[plugins]]
+repo = 'hdima/python-syntax'
+on_ft = ['py']
+
+[[plugins]]
+repo = 'flyinshadow/php_localvarcheck.vim'
+on_ft = ['php']
+
+[[plugins]]
+repo = 'vim-scripts/nginx.vim'
+
+[[plugins]]
+repo = 'Shougo/vimshell.vim'
+on_cmd = ['VimShell', 'VimShellTab']
+
+[[plugins]]
+repo = 'rizzatti/dash.vim'
+on_cmd = ['Dash','Dash!']
+
+[[plugins]]
+repo = 'ternjs/tern_for_vim'
+on_ft = ['javascript']
+
+[[plugins]]
+repo =  'othree/yajs.vim'
+on_ft = ['javascript']
+
+[[plugins]]
+repo =  'othree/javascript-libraries-syntax.vim'
+on_ft = ['javascript']
+
+[[plugins]]
+repo = 'othree/es.next.syntax.vim'
+on_ft = ['javascript']
+
+[[plugins]]
+repo = 'mxw/vim-jsx'
+on_ft = ['javascript']
