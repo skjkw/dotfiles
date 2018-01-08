@@ -359,7 +359,7 @@ let php_noShortTags = 1
 " カッコが閉じていない場合にハイライト
 let php_parent_error_close = 1
 
-let g:sql_type_default = 'pgsql'
+let g:sql_type_default = 'mysql'
 
 " -----------------------------------------------------------------------------
 "  Open junk file
@@ -440,6 +440,8 @@ let g:php_localvarcheck_global = 0
 noremap [denite] <Nop>
 nmap <C-x> [denite]
 
+"
+nnoremap <silent> [denite]<C-a> :<C-a>Denite DeniteBufferDir -highlight-mode-insert=Search<CR>
 " 最近開いたファイル
 nnoremap <silent> [denite]<C-f> :<C-u>Denite file_mru -highlight-mode-insert=Search<CR>
 " バッファに展開中のファイル検索
@@ -452,6 +454,27 @@ nnoremap <silent> [denite]<C-v> :<C-u>call denite#start([{'name': 'file_rec', 'a
 nnoremap <silent> [denite]<CR> :<C-u>Denite file_rec -highlight-mode-insert=Search<CR>
 " プロジェクトgrep
 nnoremap <silent> [denite]<C-g> :<C-u>Denite grep -highlight-mode-insert=Search<CR>
+" レジストリ表示
+nnoremap <silent> [denite]<C-r> :<C-a>Denite register -highlight-mode-insert=Search<CR>
+" アウトライン表示
+nnoremap <silent> [denite]<C-o> :<C-a>Denite outline -highlight-mode-insert=Search<CR>
+" バッファ表示
+nnoremap <silent> [denite]<C-b> :<C-a>Denite buffer -highlight-mode-insert=Search<CR>
+" ディレクトリ表示
+nnoremap <silent> [denite]<C-d> :<C-a>Denite directory_rec -highlight-mode-insert=Search<CR>
+" 行
+nnoremap <silent> [denite]<C-l> :<C-a>Denite line -highlight-mode-insert=Search<CR>
+" ヤンク履歴
+nnoremap <silent> [denite]<C-l> :<C-a>Denite neoyank -highlight-mode-insert=Search<CR>
+
+" Gnu global
+nnoremap <silent> <C-c>c :DeniteCursorWord -buffer-name=gtags_context gtags_context<CR>
+nnoremap <silent> <C-c>r :DeniteCursorWord -buffer-name=gtags_ref gtags_ref<CR>
+nnoremap <silent> <C-c>d :DeniteCursorWord -buffer-name=gtags_def gtags_def<CR>
+nnoremap <silent> <C-c>g :DeniteCursorWord -buffer-name=gtags_grep gtags_grep<CR>
+nnoremap <silent> <C-c>t :Denite -buffer-name=gtags_completion gtags_completion<CR>
+nnoremap <silent> <C-c>f :Denite -buffer-name=gtags_file gtags_file<CR>
+nnoremap <silent> <C-c>p :Denite -buffer-name=gtags_path gtags_path<CR>
 
 " 上下移動を<C-N>, <C-P>
 call denite#custom#map('normal', '<C-N>', '<denite:move_to_next_line>')
@@ -496,6 +519,40 @@ nnoremap <silent> vsc :VimShellCreate<CR>
 nnoremap <silent> vsp :VimShellPop<CR>
 
 let g:python3_host_prog = $PYENV_ROOT . '/shims/python3'
+
+" エラー行に表示するマーク
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
+" エラー行にカーソルをあわせた際に表示されるメッセージフォーマット
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+" エラー表示の列を常時表示
+let g:ale_sign_column_always = 1
+
+" ファイルを開いたときにlint実行
+let g:ale_lint_on_enter = 1
+" ファイルを保存したときにlint実行
+let g:ale_lint_on_save = 1
+" 編集中のlintはしない
+let g:ale_lint_on_text_changed = 'never'
+
+" lint結果をロケーションリストとQuickFixには表示しない
+" 出てると結構うざいしQuickFixを書き換えられるのは困る
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 0
+let g:ale_open_list = 0
+let g:ale_keep_list_window_open = 0
+
+" 有効にするlinter
+let g:ale_linters = {
+\   'php': ['php -l'],
+\}
+
+" ALE用プレフィックス
+nmap [ale] <Nop>
+map <C-k> [ale]
+" エラー行にジャンプ
+nmap <silent> [ale]<C-P> <Plug>(ale_previous)
+nmap <silent> [ale]<C-N> <Plug>(ale_next)
 
 if filereadable(expand($HOME."/.vimrc.local"))
     source ~/.vimrc.local
