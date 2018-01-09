@@ -466,10 +466,10 @@ nnoremap <silent> [denite]<C-l> :<C-u>Denite line -highlight-mode-insert=Search<
 nnoremap <silent> [denite]<C-y> :<C-u>Denite neoyank -highlight-mode-insert=Search<CR>
 
 " Gnu global
-nnoremap <silent> <C-c>c :DeniteCursorWord -buffer-name=gtags_context gtags_context<CR>
-nnoremap <silent> <C-c>r :DeniteCursorWord -buffer-name=gtags_ref gtags_ref<CR>
-nnoremap <silent> <C-c>d :DeniteCursorWord -buffer-name=gtags_def gtags_def<CR>
-nnoremap <silent> <C-c>g :DeniteCursorWord -buffer-name=gtags_grep gtags_grep<CR>
+nnoremap <silent> <C-c>c :DeniteCursorWord gtags_context -buffer-name=gtags_context<CR>
+nnoremap <silent> <C-c>r :DeniteCursorWord gtags_ref -buffer-name=gtags_ref<CR>
+nnoremap <silent> <C-c>d :DeniteCursorWord gtags_def -buffer-name=gtags_def<CR>
+nnoremap <silent> <C-c>g :DeniteCursorWord gtags_grep -buffer-name=gtags_grep<CR>
 nnoremap <silent> <C-c>t :Denite -buffer-name=gtags_completion gtags_completion<CR>
 nnoremap <silent> <C-c>f :Denite -buffer-name=gtags_file gtags_file<CR>
 nnoremap <silent> <C-c>p :Denite -buffer-name=gtags_path gtags_path<CR>
@@ -735,6 +735,11 @@ nnoremap <silent> <Leader>vf :VimFiler<CR>
 set background=dark
 hi IndentGuidesOdd  ctermbg=lightgray
 hi IndentGuidesEven ctermbg=darkgrey
+
+let g:loaded_gentags#ctags = 1
+let g:loaded_gentags#gtags = 1
+let g:gen_tags#ctags_auto_gen = 1
+let g:gen_tags#gtags_auto_gen = 1
 
 if filereadable(expand($HOME."/.vimrc.local"))
     source ~/.vimrc.local
