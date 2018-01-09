@@ -125,3 +125,6 @@ on_ft = ['javascript']
 
 [[plugins]]
 repo = 'lvht/phpcd.vim'
+
+[[plugins]]
+repo = 'kassio/neoterm'

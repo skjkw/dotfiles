@@ -799,6 +799,8 @@ noremap <silent><expr> zg? incsearch#go(<SID>config_fuzzyall({'is_stay': 1}))
 nnoremap tig :<C-u>w<CR>:te tig<CR>
 tnoremap <silent> <ESC> <C-\><C-n>
 
+let g:neoterm_repl_php = 'php'
+
 if filereadable(expand($HOME."/.vimrc.local"))
     source ~/.vimrc.local
 endif
