@@ -234,9 +234,6 @@ repo =  'rhysd/migemo-search.vim'
 repo =  'kien/ctrlp.vim.git'
 
 [[plugins]]
-repo =  'scrooloose/Syntastic'
-
-[[plugins]]
 repo =  'claco/jasmine.vim'
 
 [[plugins]]
@@ -245,3 +242,7 @@ depends = ['incsearch.vim']
 
 [[plugins]]
 repo = 'pearofducks/ansible-vim'
+
+[[plugins]]
+repo = 'ozelentok/denite-gtags'
+depends = ['denite.nvim']

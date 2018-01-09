@@ -122,3 +122,6 @@ on_ft = ['javascript']
 [[plugins]]
 repo = 'mxw/vim-jsx'
 on_ft = ['javascript']
+
+[[plugins]]
+repo = 'lvht/phpcd.vim'

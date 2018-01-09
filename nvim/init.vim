@@ -441,7 +441,7 @@ noremap [denite] <Nop>
 nmap <C-x> [denite]
 
 "
-nnoremap <silent> [denite]<C-a> :<C-a>Denite DeniteBufferDir -highlight-mode-insert=Search<CR>
+nnoremap <silent> [denite]<C-a> :<C-u>DeniteBufferDir file_rec -highlight-mode-insert=Search<CR>
 " 最近開いたファイル
 nnoremap <silent> [denite]<C-f> :<C-u>Denite file_mru -highlight-mode-insert=Search<CR>
 " バッファに展開中のファイル検索
@@ -455,17 +455,15 @@ nnoremap <silent> [denite]<CR> :<C-u>Denite file_rec -highlight-mode-insert=Sear
 " プロジェクトgrep
 nnoremap <silent> [denite]<C-g> :<C-u>Denite grep -highlight-mode-insert=Search<CR>
 " レジストリ表示
-nnoremap <silent> [denite]<C-r> :<C-a>Denite register -highlight-mode-insert=Search<CR>
-" アウトライン表示
-nnoremap <silent> [denite]<C-o> :<C-a>Denite outline -highlight-mode-insert=Search<CR>
+nnoremap <silent> [denite]<C-r> :<C-u>Denite register -highlight-mode-insert=Search<CR>
 " バッファ表示
-nnoremap <silent> [denite]<C-b> :<C-a>Denite buffer -highlight-mode-insert=Search<CR>
+nnoremap <silent> [denite]<C-b> :<C-u>Denite buffer -highlight-mode-insert=Search<CR>
 " ディレクトリ表示
-nnoremap <silent> [denite]<C-d> :<C-a>Denite directory_rec -highlight-mode-insert=Search<CR>
+nnoremap <silent> [denite]<C-d> :<C-u>Denite directory_rec -highlight-mode-insert=Search<CR>
 " 行
-nnoremap <silent> [denite]<C-l> :<C-a>Denite line -highlight-mode-insert=Search<CR>
+nnoremap <silent> [denite]<C-l> :<C-u>Denite line -highlight-mode-insert=Search<CR>
 " ヤンク履歴
-nnoremap <silent> [denite]<C-l> :<C-a>Denite neoyank -highlight-mode-insert=Search<CR>
+nnoremap <silent> [denite]<C-y> :<C-u>Denite neoyank -highlight-mode-insert=Search<CR>
 
 " Gnu global
 nnoremap <silent> <C-c>c :DeniteCursorWord -buffer-name=gtags_context gtags_context<CR>
@@ -476,6 +474,7 @@ nnoremap <silent> <C-c>t :Denite -buffer-name=gtags_completion gtags_completion<
 nnoremap <silent> <C-c>f :Denite -buffer-name=gtags_file gtags_file<CR>
 nnoremap <silent> <C-c>p :Denite -buffer-name=gtags_path gtags_path<CR>
 
+call denite#custom#map('normal', '<C-G>', '<denite:quit>')
 " 上下移動を<C-N>, <C-P>
 call denite#custom#map('normal', '<C-N>', '<denite:move_to_next_line>')
 call denite#custom#map('normal', '<C-P>', '<denite:move_to_previous_line>')
@@ -553,6 +552,189 @@ map <C-k> [ale]
 " エラー行にジャンプ
 nmap <silent> [ale]<C-P> <Plug>(ale_previous)
 nmap <silent> [ale]<C-N> <Plug>(ale_next)
+
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#auto_complete_delay = 0
+let g:deoplete#auto_complete_start_length = 1
+let g:deoplete#enable_camel_case = 0
+let g:deoplete#enable_ignore_case = 0
+let g:deoplete#enable_refresh_always = 0
+let g:deoplete#enable_smart_case = 1
+let g:deoplete#file#enable_buffer_path = 1
+let g:deoplete#max_list = 10000
+inoremap <expr><tab> pumvisible() ? "\<C-n>" :
+    \ neosnippet#expandable_or_jumpable() ?
+    \    "\<Plug>(neosnippet_expand_or_jump)" : "\<tab>"
+
+let g:deoplete#ignore_sources = get(g:, 'deoplete#ignore_sources', {})
+let g:deoplete#ignore_sources.php = ['phpcd', 'omni']
+
+let g:phpcd_autoload_path = '/Users/kajikawa/clipho/mocom/www/init/init.php'
+let g:phpcd_php_cli_executable = 'php7.0'
+
+" <TAB>: completion.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ deoplete#manual_complete()
+function! s:check_back_space() abort "{{{
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction"}}}
+
+" <S-TAB>: completion back.
+inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
+inoremap <expr><C-g> deoplete#undo_comcletion()
+inoremap <expr><C-y>  deoplete#close_popup()
+
+" <C-l>: redraw candidates
+inoremap <expr><C-l> deoplete#refresh()
+
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function() abort
+  return deoplete#cancel_popup() . "\<CR>"
+endfunction
+
+inoremap <expr><CR>  pumvisible() ? deoplete#close_popup() : "<CR>"
+
+inoremap <expr> '  pumvisible() ? deoplete#close_popup() : "'"
+
+" call deoplete#custom#set('ghc', 'sorters', ['sorter_word'])
+
+" " Use auto delimiter
+" call deoplete#custom#set('_', 'converters', [
+"       \ 'converter_remove_paren',
+"       \ 'converter_remove_overlap',
+"       \ 'converter_truncate_abbr',
+"       \ 'converter_truncate_menu',
+"       \ 'converter_auto_delimiter',
+"       \ ])
+
+" " Prams of deoplete
+" let g:deoplete#enable_at_startup = 1
+" let g:deoplete#auto_complete_delay = 0
+" let g:deoplete#keyword_patterns = {}
+" let g:deoplete#keyword_patterns._ = '[a-zA-Z_]\k*\(?'
+" let g:deoplete#keyword_patterns.tex = '[^\w|\s][a-zA-Z_]\w*'
+" let g:deoplete#omni#input_patterns = {}
+" let g:deoplete#omni#input_patterns.python = ''
+" let g:deoplete#omni#functions = {}
+" let g:deoplete#enable_camel_case = 1
+" let g:deoplete#skip_chars = ['(', ')']
+
+" " Hidden autocomplete preview
+" set completeopt-=preview
+"
+let g:neoyank#limit = 1000
+let g:neoyank#file = $HOME.'/.vim/yankring.txt'
+
+nnoremap <silent> <Leader><Leader> :NERDTreeToggle<CR>
+
+" yankround.vim {{{
+" キーマップ
+nmap p <Plug>(yankround-p)
+xmap p <Plug>(yankround-p)
+nmap P <Plug>(yankround-P)
+nmap gp <Plug>(yankround-gp)
+xmap gp <Plug>(yankround-gp)
+nmap gP <Plug>(yankround-gP)
+nmap <C-p> <Plug>(yankround-prev)
+nmap <C-n> <Plug>(yankround-next)
+" 履歴取得数
+xmap ,d <Plug>(textmanip-duplicate-down)
+let g:yankround_max_history = 100
+"履歴一覧(kien/ctrlp.vim)
+nnoremap <silent>g<C-p> :<C-u>CtrlPYankRound<CR>
+" }}}
+
+let g:ctrlp_use_migemo = 1
+let g:ctrlp_clear_cache_on_exit = 0   " 終了時キャッシュをクリアしない
+let g:ctrlp_mruf_max            = 500 " MRUの最大記録数
+let g:ctrlp_open_new_file       = 1   " 新規ファイル作成時にタブで開く
+
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_guide_size = 1
+let g:indent_guides_auto_colors = 1
+let g:indent_guides_color_change_percent = 10
+let g:indent_guides_start_level = 2
+let g:indent_guides_space_guides = 1
+
+let g:EasyMotion_do_mapping = 0
+" ホームポジションに近いキーを使う
+let g:EasyMotion_keys='hjklasdfgyuiopqwertnmzxcvbHJKLASDFGYUIOPQWERTNMZXCVB'
+
+" <Leader>f{char} to move to {char}
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+
+" s{char}{char} to move to {char}{char}
+nmap s <Plug>(easymotion-overwin-f2)
+vmap s <Plug>(easymotion-bd-f2)
+
+" Move to line
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
+
+nnoremap <silent> <C-a><C-t> :TagbarToggle<CR>
+let g:tagbar_left = 1
+let g:tagbar_width = 30
+let g:tagbar_updateonsave_maxlines = 10000
+let g:tagbar_sort = 0
+
+function! PhpSyntaxOverride()
+  hi! def link phpDocTags  phpDefine
+  hi! def link phpDocParam phpType
+endfunction
+
+augroup phpSyntaxOverride
+  autocmd!
+  autocmd FileType php call PhpSyntaxOverride()
+augroup END
+
+nnoremap <Leader>zp :<C-u>CtrlPMenu<CR>
+nnoremap <Leader>zb :<C-u>CtrlPBuffer<CR>
+nnoremap <Leader>zd :<C-u>CtrlPDir<CR>
+nnoremap <Leader>zf :<C-u>CtrlP<CR>
+nnoremap <Leader>zl :<C-u>CtrlPLine<CR>
+nnoremap <Leader>zm :<C-u>CtrlPMRUFiles<CR>
+nnoremap <Leader>zq :<C-u>CtrlPQuickfix<CR>
+nnoremap <Leader>zs :<C-u>CtrlPMixed<CR>
+nnoremap <Leader>zt :<C-u>CtrlPTag<CR>
+nnoremap <Leader>zw :<C-u>CtrlPFunky<CR>
+nnoremap <Leader>zu :<C-u>CtrlPFiler<CR>
+
+let g:ctrlp_map = '<Nop>'
+" let g:ctrlp_cmd = 'CtrlPMenu'
+" let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
+" Guess vcs root dir
+let g:ctrlp_working_path_mode = 'ra'
+" Open new file in current window
+let g:ctrlp_open_new_file = 'r'
+let g:ctrlp_extensions = ['tag', 'quickfix', 'dir', 'line', 'mixed', 'filer', 'funky']
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:18'
+
+" set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " Linux/MacOSX
+" set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+
+let g:ctrlp_funky_matchtype = 'path'
+let g:ctrlp_funky_syntax_highlight = 1
+
+nnoremap <silent> <Leader>vf :VimFiler<CR>
+
+set background=dark
+hi IndentGuidesOdd  ctermbg=lightgray
+hi IndentGuidesEven ctermbg=darkgrey
 
 if filereadable(expand($HOME."/.vimrc.local"))
     source ~/.vimrc.local
