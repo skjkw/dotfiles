@@ -506,8 +506,8 @@ nnoremap <silent> [fugitive]d :<C-u>Gdiff<CR>
 nnoremap <silent> [fugitive]b :<C-u>Gblame<CR>
 nnoremap <silent> [fugitive]l :<C-u>Glog<CR>
 
-let g:vimfiler_as_default_explorer = 1
-let g:vimfiler_enable_auto_cd = 1
+" let g:vimfiler_as_default_explorer = 1
+" let g:vimfiler_enable_auto_cd = 1
 
 " vimshell setting
 let g:vimshell_interactive_update_time = 10
@@ -633,7 +633,33 @@ inoremap <expr> '  pumvisible() ? deoplete#close_popup() : "'"
 let g:neoyank#limit = 1000
 let g:neoyank#file = $HOME.'/.vim/yankring.txt'
 
-nnoremap <silent> <Leader><Leader> :NERDTreeToggle<CR>
+nnoremap <silent> <Leader><Leader> :NERDTreeTabsToggle<CR>
+let g:NERDTreeIgnore=['\.DS_Store$', '\.swp$', '\~$', '\.so']
+let g:NERDTreeShowBookmarks=1
+let NERDTreeMinimalUI=1
+autocmd vimenter * NERDTree
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" NERDTress File highlighting
+function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+ exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+ exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+endfunction
+call NERDTreeHighlightFile('py',     'yellow',  'none', 'yellow',  '#151515')
+call NERDTreeHighlightFile('md',     'blue',    'none', '#3366FF', '#151515')
+call NERDTreeHighlightFile('yml',    'yellow',  'none', 'yellow',  '#151515')
+call NERDTreeHighlightFile('config', 'yellow',  'none', 'yellow',  '#151515')
+call NERDTreeHighlightFile('conf',   'yellow',  'none', 'yellow',  '#151515')
+call NERDTreeHighlightFile('json',   'yellow',  'none', 'yellow',  '#151515')
+call NERDTreeHighlightFile('html',   'yellow',  'none', 'yellow',  '#151515')
+call NERDTreeHighlightFile('styl',   'cyan',    'none', 'cyan',    '#151515')
+call NERDTreeHighlightFile('css',    'cyan',    'none', 'cyan',    '#151515')
+call NERDTreeHighlightFile('rb',     'Red',     'none', 'red',     '#151515')
+call NERDTreeHighlightFile('js',     'Red',     'none', '#ffa500', '#151515')
+call NERDTreeHighlightFile('php',    'Magenta', 'none', '#ff00ff', '#151515')
+call NERDTreeHighlightFile('inc',    'Magenta', 'none', '#ff00ff', '#151515')
+call NERDTreeHighlightFile('tpl',    'Magenta', 'none', '#ff00ff', '#151515')
 
 " yankround.vim {{{
 " キーマップ
@@ -740,6 +766,40 @@ let g:loaded_gentags#ctags = 1
 let g:loaded_gentags#gtags = 1
 let g:gen_tags#ctags_auto_gen = 1
 let g:gen_tags#gtags_auto_gen = 1
+
+nnoremap <silent> <Leader>gv :Agit<CR>
+autocmd FileType git :setlocal foldlevel=99
+
+map /  <Plug>(incsearch-forward)\v
+map ?  <Plug>(incsearch-backward)\v
+map g/ <Plug>(incsearch-stay)\v
+
+map m/ <Plug>(incsearch-migemo-/)
+map m? <Plug>(incsearch-migemo-?)
+map mg/ <Plug>(incsearch-migemo-stay)
+
+nnoremap <Esc><Esc> :<C-u>nohlsearch<CR>
+
+let g:incsearch#auto_nohlsearch = 1
+map n  <Plug>(incsearch-nohl-n)zz
+map N  <Plug>(incsearch-nohl-N)zz
+map *  <Plug>(incsearch-nohl-*)zz
+map #  <Plug>(incsearch-nohl-#)zz
+map g* <Plug>(incsearch-nohl-g*)zz
+map g# <Plug>(incsearch-nohl-g#)zz
+
+function! s:config_fuzzyall(...) abort
+  return extend(copy({
+  \   'converters': [
+  \     incsearch#config#fuzzy#converter(),
+  \     incsearch#config#fuzzyspell#converter()
+  \   ],
+  \ }), get(a:, 1, {}))
+endfunction
+
+noremap <silent><expr> z/ incsearch#go(<SID>config_fuzzyall())
+noremap <silent><expr> z? incsearch#go(<SID>config_fuzzyall({'command': '?'}))
+noremap <silent><expr> zg? incsearch#go(<SID>config_fuzzyall({'is_stay': 1}))
 
 if filereadable(expand($HOME."/.vimrc.local"))
     source ~/.vimrc.local
