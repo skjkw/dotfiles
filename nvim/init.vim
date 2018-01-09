@@ -181,7 +181,6 @@ else
     set background=dark
 endif
 
-
 noremap // :<C-u>Migemo<CR>
 
 inoremap <silent> <C-h> <BS>
@@ -504,7 +503,7 @@ nmap <Leader>g [fugitive]
 nnoremap <silent> [fugitive]s :<C-u>Gstatus<CR>
 nnoremap <silent> [fugitive]d :<C-u>Gdiff<CR>
 nnoremap <silent> [fugitive]b :<C-u>Gblame<CR>
-nnoremap <silent> [fugitive]l :<C-u>Glog<CR>
+nnoremap <silent> [fugitive]l :<C-u>Gllog<CR>
 
 " let g:vimfiler_as_default_explorer = 1
 " let g:vimfiler_enable_auto_cd = 1
@@ -685,10 +684,10 @@ let g:ctrlp_open_new_file       = 1   " 新規ファイル作成時にタブで�
 
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_guide_size = 1
-let g:indent_guides_auto_colors = 1
-let g:indent_guides_color_change_percent = 10
 let g:indent_guides_start_level = 2
-let g:indent_guides_space_guides = 1
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=gray   ctermbg=239
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=lightgray ctermbg=247
 
 let g:EasyMotion_do_mapping = 0
 " ホームポジションに近いキーを使う
@@ -758,10 +757,6 @@ let g:ctrlp_funky_syntax_highlight = 1
 
 nnoremap <silent> <Leader>vf :VimFiler<CR>
 
-set background=dark
-hi IndentGuidesOdd  ctermbg=lightgray
-hi IndentGuidesEven ctermbg=darkgrey
-
 let g:loaded_gentags#ctags = 1
 let g:loaded_gentags#gtags = 1
 let g:gen_tags#ctags_auto_gen = 1
@@ -800,6 +795,9 @@ endfunction
 noremap <silent><expr> z/ incsearch#go(<SID>config_fuzzyall())
 noremap <silent><expr> z? incsearch#go(<SID>config_fuzzyall({'command': '?'}))
 noremap <silent><expr> zg? incsearch#go(<SID>config_fuzzyall({'is_stay': 1}))
+
+nnoremap tig :<C-u>w<CR>:te tig<CR>
+tnoremap <silent> <ESC> <C-\><C-n>
 
 if filereadable(expand($HOME."/.vimrc.local"))
     source ~/.vimrc.local
