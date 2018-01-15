@@ -801,6 +801,14 @@ tnoremap <silent> <ESC> <C-\><C-n>
 
 let g:neoterm_repl_php = 'php'
 
+call denite#custom#var('file_rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+call denite#custom#var('grep', 'command', ['ag'])
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'pattern_opt', [])
+call denite#custom#var('grep', 'default_opts', ['--follow', '--no-group', '--no-color'])
+
+let g:auto_update_gttags = 1
+
 if filereadable(expand($HOME."/.vimrc.local"))
     source ~/.vimrc.local
 endif
