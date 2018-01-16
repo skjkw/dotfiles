@@ -605,7 +605,7 @@ inoremap <expr> '  pumvisible() ? deoplete#close_popup() : "'"
 
 " call deoplete#custom#set('ghc', 'sorters', ['sorter_word'])
 
-" " Use auto delimiter
+" Use auto delimiter
 " call deoplete#custom#set('_', 'converters', [
 "       \ 'converter_remove_paren',
 "       \ 'converter_remove_overlap',
@@ -614,21 +614,21 @@ inoremap <expr> '  pumvisible() ? deoplete#close_popup() : "'"
 "       \ 'converter_auto_delimiter',
 "       \ ])
 
-" " Prams of deoplete
-" let g:deoplete#enable_at_startup = 1
-" let g:deoplete#auto_complete_delay = 0
-" let g:deoplete#keyword_patterns = {}
-" let g:deoplete#keyword_patterns._ = '[a-zA-Z_]\k*\(?'
-" let g:deoplete#keyword_patterns.tex = '[^\w|\s][a-zA-Z_]\w*'
-" let g:deoplete#omni#input_patterns = {}
-" let g:deoplete#omni#input_patterns.python = ''
-" let g:deoplete#omni#functions = {}
-" let g:deoplete#enable_camel_case = 1
-" let g:deoplete#skip_chars = ['(', ')']
+" Prams of deoplete
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#auto_complete_delay = 0
+let g:deoplete#keyword_patterns = {}
+let g:deoplete#keyword_patterns._ = '[a-zA-Z_]\k*\(?'
+let g:deoplete#keyword_patterns.tex = '[^\w|\s][a-zA-Z_]\w*'
+let g:deoplete#omni#input_patterns = {}
+let g:deoplete#omni#input_patterns.python = ''
+let g:deoplete#omni#functions = {}
+let g:deoplete#enable_camel_case = 1
+let g:deoplete#skip_chars = ['(', ')']
 
-" " Hidden autocomplete preview
-" set completeopt-=preview
-"
+" Hidden autocomplete preview
+set completeopt-=preview
+
 let g:neoyank#limit = 1000
 let g:neoyank#file = $HOME.'/.vim/yankring.txt'
 
@@ -801,11 +801,11 @@ tnoremap <silent> <ESC> <C-\><C-n>
 
 let g:neoterm_repl_php = 'php'
 
-call denite#custom#var('file_rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
-call denite#custom#var('grep', 'command', ['ag'])
+call denite#custom#var('file_rec', 'command', ['rg', '--files', '--glob', '!.git'])
+call denite#custom#var('grep', 'command', ['rg'])
 call denite#custom#var('grep', 'recursive_opts', [])
 call denite#custom#var('grep', 'pattern_opt', [])
-call denite#custom#var('grep', 'default_opts', ['--follow', '--no-group', '--no-color'])
+call denite#custom#var('grep', 'default_opts', ['--files', '--glob', '!.git'])
 
 let g:auto_update_gttags = 1
 

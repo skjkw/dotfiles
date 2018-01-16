@@ -128,3 +128,6 @@ repo = 'lvht/phpcd.vim'
 
 [[plugins]]
 repo = 'kassio/neoterm'
+
+[[plugins]]
+repo = 'zebult/auto-gtags.vim'
