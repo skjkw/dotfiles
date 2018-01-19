@@ -131,3 +131,7 @@ repo = 'kassio/neoterm'
 
 [[plugins]]
 repo = 'zebult/auto-gtags.vim'
+
+[[plugins]]
+repo = 'jremmen/vim-ripgrep'
+on_cmd = ['Rg']
