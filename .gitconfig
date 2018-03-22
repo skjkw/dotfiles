@@ -4,7 +4,7 @@
     email = kajikawa@reas.jp
     name = Shun Kajikawa
 [core]
-    editor = vim
+    editor = nvim
     quotepath = false
     autocrlf = false
     excludesfile = /Users/kajikawa/.clipho.gitignore

@@ -1,0 +1,251 @@
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+depends = ['denite.nvim']
+
+[[plugins]]
+repo = 'Shougo/neoyank.vim'
+depends = ['denite.nvim']
+
+[[plugins]]
+repo = 'honza/vim-snippets'
+
+[[plugins]]
+repo = 'Shougo/vinarise'
+
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+
+[[plugins]]
+repo = 'zchee/deoplete-jedi'
+
+[[plugins]]
+repo = 'w0rp/ale'
+
+[[plugins]]
+repo = 'jsfaint/gen_tags.vim'
+
+[[plugins]]
+repo = 'tomasr/molokai'
+hook_add = '''
+    set background=dark
+    let g:molokai_original = 1
+    let g:rehash256 = 1
+    au MyAutoCmd VimEnter * nested colorscheme molokai
+'''
+
+[[plugins]]
+repo    = 'Shougo/vimfiler'
+depends = ['denite.nvim']
+
+# git clone 後、実行すべきコマンド
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+hook_post_update = '''
+  if dein#util#_is_windows()
+    let cmd = 'tools\\update-dll-mingw'
+  elseif dein#util#_is_cygwin()
+    let cmd = 'make -f make_cygwin.mak'
+  elseif executable('gmake')
+    let cmd = 'gmake'
+  else
+    let cmd = 'make'
+  endif
+  let g:dein#plugin.build = cmd
+'''
+
+[[plugins]]
+repo = 'StanAngeloff/php.vim'
+on_ft = ['php']
+
+# [[plugins]]
+# repo = 'Lokaltog/vim-easymotion'
+
+[[plugins]]
+repo = 'tomtom/tcomment_vim'
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'haya14busa/incsearch.vim'
+
+[[plugins]]
+repo = 'haya14busa/incsearch-fuzzy.vim'
+depends = ['incsearch.vim']
+
+[[plugins]]
+repo =  'othree/html5.vim'
+
+[[plugins]]
+repo =  'hail2u/vim-css3-syntax'
+
+[[plugins]]
+repo =  'LeafCage/yankround.vim'
+
+[[plugins]]
+repo =  'mattn/emmet-vim.git'
+
+[[plugins]]
+repo =  'vim-scripts/AnsiEsc.vim'
+
+[[plugins]]
+repo =  'nathanaelkane/vim-indent-guides'
+
+[[plugins]]
+repo =  'vim-scripts/jQuery'
+
+[[plugins]]
+repo =  'pbrisbin/html-template-syntax'
+
+[[plugins]]
+repo =  'exu/pgsql.vim'
+
+[[plugins]]
+repo =  'vim-scripts/AutoComplPop'
+
+[[plugins]]
+repo =  'Lokaltog/vim-easymotion'
+
+[[plugins]]
+repo =  'tomtom/tcomment_vim'
+
+[[plugins]]
+repo =  'kana/vim-textobj-indent'
+
+[[plugins]]
+repo =  'kana/vim-textobj-syntax'
+
+[[plugins]]
+repo =  'kana/vim-textobj-user'
+
+[[plugins]]
+repo =  'thinca/vim-textobj-comment'
+
+[[plugins]]
+repo =  'akiyan/vim-textobj-php'
+
+[[plugins]]
+repo =  'nelstrom/vim-textobj-rubyblock'
+
+[[plugins]]
+repo =  'kana/vim-textobj-datetime'
+
+[[plugins]]
+repo =  'kana/vim-textobj-jabraces'
+
+[[plugins]]
+repo =  'kana/vim-textobj-lastpat'
+
+[[plugins]]
+repo =  'thinca/vim-textobj-between'
+
+[[plugins]]
+repo =  'h1mesuke/textobj-wiw'
+
+[[plugins]]
+repo =  'vimtaku/vim-textobj-sigil'
+
+[[plugins]]
+repo =  'kana/vim-textobj-function'
+
+[[plugins]]
+repo =  'akiyan/vim-textobj-xml-attribute'
+
+[[plugins]]
+repo =  'kana/vim-textobj-function'
+
+[[plugins]]
+repo =  'tyru/eskk.vim'
+
+[[plugins]]
+repo =  'tyru/skkdict.vim'
+
+[[plugins]]
+repo =  'majutsushi/tagbar'
+
+[[plugins]]
+repo =  'thinca/vim-ref'
+
+[[plugins]]
+repo =  'mojako/ref-sources.vim'
+
+[[plugins]]
+repo =  'mustardamus/jqapi'
+
+[[plugins]]
+repo =  'tokuhirom/jsref'
+
+[[plugins]]
+repo =  'yuku-t/vim-ref-ri'
+
+[[plugins]]
+repo =  'mattn/ctrlp-filer'
+depends = ['ctrlp.vim']
+
+[[plugins]]
+repo =  'vim-scripts/ctrlp-funky'
+depends = ['ctrlp.vim']
+
+[[plugins]]
+repo =  'sgur/ctrlp-extensions.vim'
+depends = ['ctrlp.vim']
+
+[[plugins]]
+repo =  'haya14busa/vim-migemo'
+
+[[plugins]]
+repo =  'thinca/vim-unite-history'
+depends = ['unite.vim']
+
+[[plugins]]
+repo =  'shawncplus/phpcomplete.vim'
+
+[[plugins]]
+repo =  'vim-scripts/MultipleSearch'
+
+[[plugins]]
+repo =  'tmhedberg/matchit'
+
+[[plugins]]
+repo =  'tpope/vim-abolish'
+
+[[plugins]]
+repo =  'kana/vim-smartinput'
+
+[[plugins]]
+repo =  'osyo-manga/vim-brightest'
+
+[[plugins]]
+repo =  'itchyny/vim-parenmatch'
+
+[[plugins]]
+repo =  'rhysd/migemo-search.vim'
+
+[[plugins]]
+repo =  'kien/ctrlp.vim.git'
+
+[[plugins]]
+repo =  'claco/jasmine.vim'
+
+[[plugins]]
+repo = 'haya14busa/incsearch-migemo.vim'
+depends = ['incsearch.vim']
+
+[[plugins]]
+repo = 'pearofducks/ansible-vim'
+
+[[plugins]]
+repo = 'ozelentok/denite-gtags'
+depends = ['denite.nvim']
+
+[[plugins]]
+repo = 'jistr/vim-nerdtree-tabs'
