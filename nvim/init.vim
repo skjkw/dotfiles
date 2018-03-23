@@ -810,6 +810,8 @@ nnoremap tig :<C-u>w<CR>:te tig<CR>
 tnoremap <silent> <ESC> <C-\><C-n>
 
 let g:neoterm_repl_php = 'php'
+let g:neoterm_repl_python = 'python'
+let g:neoterm_autoscroll = 1
 
 call denite#custom#var('file_rec', 'command', ['rg', '--files', '--glob', '!.git'])
 call denite#custom#var('grep', 'command', ['rg'])

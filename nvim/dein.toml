@@ -249,3 +249,6 @@ depends = ['denite.nvim']
 
 [[plugins]]
 repo = 'jistr/vim-nerdtree-tabs'
+
+[[plugins]]
+repo = 'justinmk/vim-dirvish'
