@@ -536,14 +536,14 @@ let g:ale_lint_on_text_changed = 'never'
 " lint結果をロケーションリストとQuickFixには表示しない
 " 出てると結構うざいしQuickFixを書き換えられるのは困る
 let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 0
+let g:ale_set_quickfix = 1
 let g:ale_open_list = 0
 let g:ale_keep_list_window_open = 0
 
+let b:ale_fixers = {'php': ['php']}
+
 " 有効にするlinter
-let g:ale_linters = {
-\   'php': ['php -l'],
-\}
+let g:ale_linters = {'php': ['php']}
 
 " ALE用プレフィックス
 nmap [ale] <Nop>

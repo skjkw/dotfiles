@@ -252,3 +252,12 @@ repo = 'jistr/vim-nerdtree-tabs'
 
 [[plugins]]
 repo = 'justinmk/vim-dirvish'
+
+[[plugins]]
+repo = 'lambdalisue/gina.vim'
+
+[[plugins]]
+repo = 'lambdalisue/vim-manpager'
+
+[[plugins]]
+repo = 'haya14busa/dein-command.vim'
