@@ -58,6 +58,7 @@
 (package-install 'elfeed)
 (package-install 'quelpa)
 (package-install 'shell-pop)
+(package-install 'markdown-mode)
 
 (use-package quelpa)
 (quelpa '(git-complete :repo "zk-phi/git-complete" :fetcher github))
@@ -442,10 +443,6 @@
 (add-to-list 'auto-mode-alist '("\\.inc" . php-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl" . web-mode))
 
-(cond (window-system
-  (setq x-select-enable-clipboard t)
-  ))
-
 (autoload 'wl "wl" "Wanderlust" t)
 (autoload 'wl-draft "wl" "Write draft with Wanderlust." t)
 (custom-set-variables
@@ -650,3 +647,19 @@
 ;; eshell + shell-pop
 (setq shell-pop-shell-type '("eshell" "*eshell*" (lambda () (eshell))))
 (global-set-key (kbd "C-c o") 'shell-pop)
+
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . gfm-mode))
+(setq markdown-command "jq --slurp --raw-input '{\"text\": \"\\(.)\", \"mode\": \"gfm\"}' | curl -sS --data @- https://api.github.com/markdown")
+
+(defun copy-from-osx ()
+ (shell-command-to-string "pbpaste"))
+
+(defun paste-to-osx (text &optional push)
+ (let ((process-connection-type nil))
+     (let ((proc (start-process "pbcopy" "*Messages*" "pbcopy")))
+       (process-send-string proc text)
+       (process-send-eof proc))))
+
+(setq interprogram-cut-function 'paste-to-osx)
+(setq interprogram-paste-function 'copy-from-osx)

@@ -565,8 +565,10 @@ let g:deoplete#max_list = 10000
 "     \ neosnippet#expandable_or_jumpable() ?
 "     \    "\<Plug>(neosnippet_expand_or_jump)" : "\<tab>"
 "
-" let g:deoplete#ignore_sources = get(g:, 'deoplete#ignore_sources', {})
-" let g:deoplete#ignore_sources.php = ['phpcd', 'omni']
+let g:deoplete#ignore_sources = get(g:, 'deoplete#ignore_sources', {})
+let g:deoplete#ignore_sources.php = ['omni']
+
+" setlocal dictionary+=$HOME/.vim/dict/php.dict
 
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
@@ -578,7 +580,6 @@ function! s:my_cr_function() abort
     return deoplete#close_popup() . "\<CR>"
 endfunction
 
-let g:phpcd_autoload_path = '/Users/kajikawa/clipho/mocom/www/init/init.php'
 let g:phpcd_php_cli_executable = 'php7.0'
 
 " <TAB>: completion.
@@ -823,7 +824,32 @@ call denite#custom#var('grep', 'default_opts', ['--vimgrep', '--no-heading'])
 
 let g:auto_update_gttags = 1
 
+let g:closetag_filenames = '*.html,*.xhtml,*.php'
+let g:closetag_xhtml_filenames = '*.xhtml,*.jsx'
+let g:closetag_filetypes = 'html,xhtml,php'
+let g:closetag_xhtml_filetypes = 'xhtml,jsx'
+
+let g:closetag_emptyTags_caseSensitive = 1
+let g:closetag_shortcut = '>'
+let g:closetag_close_shortcut = '<leader>>'
+
+"オプション機能ONにする
+let g:mta_use_matchparen_group = 1
+
+"使用するファイルタイプ(phpを追加)
+let g:mta_filetypes = {
+    \ 'html' : 1,
+    \ 'xhtml' : 1,
+    \ 'xml' : 1,
+    \ 'jinja' : 1,
+    \ 'php' : 1,
+    \}
+
 autocmd FileType qf nnoremap <buffer> t <C-W><Enter><C-W>T
+
+let g:phpcd_autoload_path = 'init/init.php'
+
+let g:instant_markdown_slow = 1
 
 if filereadable(expand($HOME."/.vimrc.local"))
     source ~/.vimrc.local

@@ -1,13 +1,13 @@
 [color]
     ui = auto
 [user]
-    email = kajikawa@reas.jp
-    name = Shun Kajikawa
+	email = kajikawa@reas.jp
+	name = Shun Kajikawa
 [core]
     editor = nvim
     quotepath = false
     autocrlf = false
-    excludesfile = /Users/kajikawa/.clipho.gitignore
+	excludesfile = /Users/kajikawa/.clipho.gitignore
     attributesfile = /Users/kajikawa/.gitattributes
 [push]
     default = simple
@@ -57,3 +57,11 @@
     diff = auto
     status = auto
     branch = auto
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[commit]
+	template = /Users/kajikawa/.stCommitMsg

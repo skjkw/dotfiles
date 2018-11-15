@@ -116,9 +116,6 @@ repo =  'vim-scripts/AutoComplPop'
 repo =  'Lokaltog/vim-easymotion'
 
 [[plugins]]
-repo =  'tomtom/tcomment_vim'
-
-[[plugins]]
 repo =  'kana/vim-textobj-indent'
 
 [[plugins]]

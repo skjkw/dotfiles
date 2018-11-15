@@ -135,3 +135,22 @@ repo = 'zebult/auto-gtags.vim'
 [[plugins]]
 repo = 'jremmen/vim-ripgrep'
 on_cmd = ['Rg']
+
+[[plugins]]
+repo = 'cohama/lexima.vim'
+
+[[plugins]]
+repo = 'alvan/vim-closetag'
+
+[[plugins]]
+repo = 'Valloric/MatchTagAlways'
+
+[[plugins]]
+repo = 'lvht/phpcd.vim'
+on_ft = ['php']
+
+[[plugins]]
+repo = 'yuratomo/w3m.vim'
+
+[[plugins]]
+repo = 'suan/vim-instant-markdown'
