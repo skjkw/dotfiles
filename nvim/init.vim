@@ -849,7 +849,15 @@ autocmd FileType qf nnoremap <buffer> t <C-W><Enter><C-W>T
 
 let g:phpcd_autoload_path = 'init/init.php'
 
-let g:instant_markdown_slow = 1
+let g:auto_gtags = 1
+
+let g:previm_open_cmd = 'open -a Google\ Chrome'
+let g:previm_enable_realtime = 1
+
+augroup PrevimSettings
+    autocmd!
+    autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+augroup END
 
 if filereadable(expand($HOME."/.vimrc.local"))
     source ~/.vimrc.local

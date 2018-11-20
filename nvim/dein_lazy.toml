@@ -124,9 +124,6 @@ repo = 'mxw/vim-jsx'
 on_ft = ['javascript']
 
 [[plugins]]
-repo = 'lvht/phpcd.vim'
-
-[[plugins]]
 repo = 'kassio/neoterm'
 
 [[plugins]]
@@ -145,12 +142,23 @@ repo = 'alvan/vim-closetag'
 [[plugins]]
 repo = 'Valloric/MatchTagAlways'
 
-[[plugins]]
-repo = 'lvht/phpcd.vim'
-on_ft = ['php']
+# [[plugins]]
+# repo = 'lvht/phpcd.vim'
+# on_ft = ['php']
 
 [[plugins]]
 repo = 'yuratomo/w3m.vim'
 
 [[plugins]]
-repo = 'suan/vim-instant-markdown'
+repo = 'plasticboy/vim-markdown'
+on_ft = ['markdown']
+
+[[plugins]]
+repo = 'previm/previm'
+
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+
+[[plugins]]
+repo = 'prettier/vim-prettier'
+build = 'npm install'
